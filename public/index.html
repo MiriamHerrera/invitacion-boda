@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rubén & Miriam - Invitación</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/styles.css">
+	<meta name="description" content="Invitación de boda de Rubén y Miriam. Confirma tu asistencia.">
+</head>
+<body>
+	<header class="hero">
+		<div class="hero-inner">
+			<p class="overline">Nos casamos</p>
+			<h1 class="couple">Rubén <span>&</span> Miriam</h1>
+			<p class="date-place">Celebremos juntos este gran día</p>
+		</div>
+	</header>
+
+	<main>
+		<section class="intro card">
+			<h2 id="greet">¡Te invitamos a nuestra boda!</h2>
+			<p id="guestNameText" class="muted">Personalizando invitación...</p>
+			<p>Estamos felices de compartir este momento contigo. Agradecemos que puedas confirmar tu asistencia.</p>
+		</section>
+
+		<section class="rsvp card">
+			<h3>Confirmación de asistencia</h3>
+			<div id="codeBox" class="code-box">
+				<label for="inviteCode">Tu código de invitación</label>
+				<div class="inline">
+					<input id="inviteCode" type="text" placeholder="Ej: miriam-amiga-ana">
+					<button id="loadGuest" class="btn secondary">Cargar</button>
+				</div>
+				<p class="help muted">O usa un enlace con ?i=tu-codigo</p>
+			</div>
+			<form id="rsvpForm" class="form" novalidate>
+				<div class="row">
+					<div class="field">
+						<label>Invitado</label>
+						<input id="displayName" type="text" disabled>
+					</div>
+					<div class="field">
+						<label for="attendees">¿Cuántas personas asistirán?</label>
+						<select id="attendees">
+							<option value="0">No podré asistir</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+						<small id="attendeesHelp" class="muted">Máximo permitido: 2</small>
+					</div>
+				</div>
+				<div class="field">
+					<label for="contact">Contacto (teléfono o email, opcional)</label>
+					<input id="contact" type="text" placeholder="Tu teléfono o email">
+				</div>
+				<div class="field">
+					<label for="message">Mensaje para los novios (opcional)</label>
+					<textarea id="message" rows="3" placeholder="Escribe un mensaje..."></textarea>
+				</div>
+				<div class="actions">
+					<button id="submitBtn" class="btn primary" type="submit">Confirmar asistencia</button>
+				</div>
+				<p id="formNote" class="muted small">Al confirmar, podrás modificar tu respuesta más adelante con el mismo enlace.</p>
+				<p id="formError" class="error" hidden></p>
+				<p id="formOk" class="ok" hidden>¡Gracias! Tu respuesta ha sido registrada.</p>
+			</form>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<p>Rubén & Miriam</p>
+	</footer>
+
+	<script src="/app.js" defer></script>
+	<script>
+		// Perf hint: add loaded class to enable transitions after first paint
+		window.addEventListener('load', () => document.body.classList.add('loaded'));
+	</script>
+</body>
+	</html>
+
+

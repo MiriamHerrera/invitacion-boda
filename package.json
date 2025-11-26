@@ -1,0 +1,28 @@
+{
+  "name": "invitacion-boda-rm",
+  "version": "1.0.0",
+  "description": "Invitación de boda elegante y personalizada para Rubén y Miriam con RSVP.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon --quiet server.js"
+  },
+  "keywords": [
+    "wedding",
+    "invitacion",
+    "boda",
+    "rsvp",
+    "rubén",
+    "miriam"
+  ],
+  "author": "Rubén & Miriam",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+
+

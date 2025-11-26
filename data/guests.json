@@ -1,0 +1,19 @@
+[
+  {
+    "code": "ruben-familia",
+    "displayName": "Familia de Rubén",
+    "maxGuests": 4
+  },
+  {
+    "code": "miriam-amiga-ana",
+    "displayName": "Ana",
+    "maxGuests": 2
+  },
+  {
+    "code": "test",
+    "displayName": "Invitado de prueba",
+    "maxGuests": 2
+  }
+]
+
+
