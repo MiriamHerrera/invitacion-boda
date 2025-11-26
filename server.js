@@ -125,6 +125,32 @@ app.get('/api/admin/rsvps', async (req, res) => {
 	}
 });
 
+// GET /api/admin/summary?key=...
+// Resumen con totales de asistentes confirmados
+app.get('/api/admin/summary', async (req, res) => {
+	const key = String(req.query.key || '');
+	if (!key || key !== ADMIN_KEY) {
+		return res.status(401).json({ error: 'No autorizado' });
+	}
+	try {
+		const rsvps = await readJson(RSVPS_FILE);
+		const totalAttendees = rsvps.reduce((acc, r) => acc + (Number(r.attendees) || 0), 0);
+		const rsvpCount = rsvps.length;
+		const lastUpdated = rsvps.reduce((latest, r) => {
+			const t = Date.parse(r.updatedAt || r.createdAt || 0) || 0;
+			return t > latest ? t : latest;
+		}, 0);
+		return res.json({
+			ok: true,
+			rsvpCount,
+			totalAttendees,
+			lastUpdated: lastUpdated ? new Date(lastUpdated).toISOString() : null
+		});
+	} catch (err) {
+		return res.status(500).json({ error: 'Error generando el resumen' });
+	}
+});
+
 // Fallback: serve index.html for unknown routes (SPA-like)
 app.get('*', (req, res, next) => {
 	if (req.path.startsWith('/api/')) return next();

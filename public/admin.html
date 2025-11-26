@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin · Resumen RSVP</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+	<main style="max-width:720px;margin:24px auto;padding:0 16px;">
+		<h2 style="margin: 0 0 6px;">Resumen de confirmaciones</h2>
+		<p class="muted" style="margin-top:0">Solo visible con clave.</p>
+
+		<div class="card" style="margin-top:16px;">
+			<div class="field">
+				<label for="adminKey">Clave de administrador</label>
+				<div class="inline">
+					<input id="adminKey" type="text" placeholder="Introduce tu clave (ADMIN_KEY)">
+					<button id="saveKey" class="btn secondary">Guardar</button>
+				</div>
+				<small class="muted">Se guarda localmente en tu navegador.</small>
+			</div>
+
+			<div class="field" style="margin-top:18px;">
+				<label>Totales</label>
+				<div id="stats" class="inline" style="gap:20px;flex-wrap:wrap;">
+					<div class="card" style="min-width:160px; margin:0;">
+						<div class="muted small">Respuestas recibidas</div>
+						<div id="rsvpCount" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;">—</div>
+					</div>
+					<div class="card" style="min-width:160px;margin:0;">
+						<div class="muted small">Total asistentes confirmados</div>
+						<div id="totalAttendees" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;">—</div>
+					</div>
+				</div>
+				<div class="muted small" id="lastUpdated" style="margin-top:10px;">Actualizado: —</div>
+			</div>
+
+			<div class="actions">
+				<button id="refresh" class="btn primary">Actualizar ahora</button>
+			</div>
+			<p id="err" class="error" hidden></p>
+		</div>
+	</main>
+
+	<script src="/admin.js" defer></script>
+</body>
+</html>
+
+
