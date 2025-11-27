@@ -50,6 +50,29 @@
 		blinkSpeed: rand(0.6, 1.6) // Hz
 	}));
 
+	// Chispazos al tocar/click: partículas efímeras con trazo
+	const sparks = [];
+	function spawnBurst(x, y) {
+		const N = 28 + Math.floor(Math.random() * 18);
+		for (let i = 0; i < N; i++) {
+			const ang = Math.random() * Math.PI * 2;
+			const speed = rand(80, 220); // px/s
+			const life = rand(0.5, 0.9); // s
+			sparks.push({
+				x, y,
+				px: x, py: y, // posición previa para trazo
+				vx: Math.cos(ang) * speed,
+				vy: Math.sin(ang) * speed,
+				life: 0,
+				max: life,
+				size: rand(1, 2.5)
+			});
+		}
+	}
+
+	// Listener global (canvas tiene pointer-events: none)
+	window.addEventListener('pointerdown', (e) => spawnBurst(e.clientX, e.clientY), { passive: true });
+
 	let last = 0;
 	function tick(ts) {
 		const dt = Math.min(0.033, (ts - last) / 1000 || 0.016);
@@ -93,6 +116,40 @@
 			ctx.fillStyle = `${hexToRgba('#ffffff', a * 0.8)}`;
 			ctx.beginPath();
 			ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+			ctx.fill();
+		}
+
+		// Actualizar/dibujar chispas
+		// Físicas sencillas: leve gravedad y fricción
+		for (let i = sparks.length - 1; i >= 0; i--) {
+			const s = sparks[i];
+			s.life += dt;
+			if (s.life >= s.max) { sparks.splice(i, 1); continue; }
+
+			// Guardar posición previa
+			s.px = s.x; s.py = s.y;
+
+			// Update
+			s.vx *= Math.pow(0.9, dt * 60); // arrastre
+			s.vy *= Math.pow(0.9, dt * 60);
+			s.vy += 60 * dt; // gravedad suave
+
+			s.x += s.vx * dt;
+			s.y += s.vy * dt;
+
+			// Alpha según vida
+			const a = Math.max(0, 1 - s.life / s.max);
+			ctx.strokeStyle = hexToRgba(GOLD, a * 0.9);
+			ctx.lineWidth = Math.max(0.5, s.size * a);
+			ctx.beginPath();
+			ctx.moveTo(s.px, s.py);
+			ctx.lineTo(s.x, s.y);
+			ctx.stroke();
+
+			// pequeño núcleo en el extremo
+			ctx.fillStyle = hexToRgba('#ffffff', a * 0.6);
+			ctx.beginPath();
+			ctx.arc(s.x, s.y, Math.max(0.6, s.size * 0.6 * a), 0, Math.PI * 2);
 			ctx.fill();
 		}
 
