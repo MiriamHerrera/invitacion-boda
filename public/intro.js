@@ -9,6 +9,14 @@
 		return;
 	}
 
+	const body = document.body;
+	const contentEls = [document.querySelector('header'), document.querySelector('main'), document.querySelector('footer')];
+	// Mientras el sobre está activo, ocultamos el contenido y bloqueamos scroll
+	body.classList.add('intro-open');
+	const prevOverflow = body.style.overflow;
+	body.style.overflow = 'hidden';
+	contentEls.forEach(el => el && el.setAttribute('aria-hidden', 'true'));
+
 	let opened = false;
 	function openEnvelope() {
 		if (opened) return;
@@ -20,6 +28,10 @@
 			// Y finalmente lo retiramos del flujo
 			setTimeout(() => {
 				overlay.hidden = true;
+				// Restaurar contenido y scroll
+				body.classList.remove('intro-open');
+				body.style.overflow = prevOverflow || '';
+				contentEls.forEach(el => el && el.removeAttribute('aria-hidden'));
 			}, 650);
 		}, 800);
 	}

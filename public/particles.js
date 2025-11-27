@@ -10,6 +10,27 @@
 	const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	if (!forceAnim && (forceOff || prefersReduce)) return;
 
+	// PRNG con semilla para que el fondo siempre sea igual
+	const seedStr = qs.get('seed') || qs.get('i') || 'RM-INVITACION-1';
+	function strToSeed(s) {
+		let h = 2166136261 >>> 0;
+		for (let i = 0; i < s.length; i++) {
+			h ^= s.charCodeAt(i);
+			h = Math.imul(h, 16777619);
+		}
+		return h >>> 0;
+	}
+	function mulberry32(a) {
+		return function () {
+			a |= 0; a = a + 0x6D2B79F5 | 0;
+			let t = Math.imul(a ^ a >>> 15, 1 | a);
+			t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+			return ((t ^ t >>> 14) >>> 0) / 4294967296;
+		};
+	}
+	const seeded = mulberry32(strToSeed(String(seedStr)));
+	function sr(min, max) { return seeded() * (max - min) + min; }
+
 	const canvas = document.getElementById('bg-canvas');
 	if (!canvas) return;
 	const ctx = canvas.getContext('2d');
@@ -38,16 +59,16 @@
 
 	function rand(min, max) { return Math.random() * (max - min) + min; }
 
-	// Partículas doradas
-	const COUNT = Math.round(Math.min(220, Math.max(100, (width * height) / 12000)));
+	// Partículas doradas (conteo fijo para consistencia)
+	const COUNT = 180;
 	const particles = Array.from({ length: COUNT }).map(() => ({
-		x: Math.random() * width,
-		y: Math.random() * height,
-		r: rand(0.8, 2.6),
-		vx: rand(-20, 20),   // px/s
-		vy: rand(-16, 16),   // px/s
-		alpha: rand(0.4, 0.95),
-		blinkSpeed: rand(0.6, 1.6) // Hz
+		x: seeded() * width,
+		y: seeded() * height,
+		r: sr(0.8, 2.6),
+		vx: sr(-20, 20),   // px/s
+		vy: sr(-16, 16),   // px/s
+		alpha: sr(0.4, 0.95),
+		blinkSpeed: sr(0.6, 1.6) // Hz
 	}));
 
 	// Chispazos al tocar/click: partículas efímeras con trazo

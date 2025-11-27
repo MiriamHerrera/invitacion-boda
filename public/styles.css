@@ -312,10 +312,7 @@ body.loaded { opacity: 1; transform: none; }
 	position: fixed;
 	inset: 0;
 	z-index: 20;
-	background:
-		radial-gradient(1200px 600px at 100% -10%, rgba(212,175,55,0.10), transparent 40%),
-		radial-gradient(900px 500px at -10% 0%, rgba(255,255,255,0.05), transparent 45%),
-		var(--bg);
+	background: transparent; /* usa el mismo fondo (canvas/body) */
 	display: grid;
 	place-items: center;
 	cursor: pointer;
@@ -327,6 +324,15 @@ body.loaded { opacity: 1; transform: none; }
 	visibility: hidden;
 	cursor: default;
 	pointer-events: none;
+}
+/* Oculta contenido mientras el sobre está activo */
+body.intro-open header,
+body.intro-open main,
+body.intro-open footer {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity .35s ease;
 }
 .env {
 	position: relative;
