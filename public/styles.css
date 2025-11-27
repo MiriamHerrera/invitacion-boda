@@ -414,4 +414,49 @@ body.intro-open footer {
 .intro-envelope.open .wrapper.opened .lid.two { transform: rotateX(180deg); transition-delay: .25s; }
 .intro-envelope.open .wrapper.opened .letter { transform: translateY(calc(var(--h) * -0.18)); transition-delay: .5s; }
 
+/* Indicador de interacción (instrucción) */
+.intro-envelope .intro-hint {
+	position: absolute;
+	bottom: 8vh;
+	left: 50%;
+	transform: translateX(-50%);
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	color: #e6c873;
+	font-weight: 600;
+	background: rgba(0,0,0,.22);
+	border: 1px solid rgba(255,255,255,.18);
+	border-radius: 999px;
+	padding: 8px 14px;
+	box-shadow: 0 6px 20px rgba(0,0,0,.25);
+	animation: hint-fade 1.2s ease-in-out infinite alternate;
+}
+.intro-envelope.open .intro-hint { opacity: 0; transform: translate(-50%, 8px); transition: opacity .3s, transform .3s; }
+@keyframes hint-fade {
+	from { opacity: .75; }
+	to { opacity: 1; }
+}
+.intro-envelope .tap-icon {
+	position: relative;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: currentColor;
+	box-shadow: 0 0 0 3px rgba(230,200,115,.25);
+}
+.intro-envelope .tap-icon::before,
+.intro-envelope .tap-icon::after {
+	content: '';
+	position: absolute;
+	inset: -6px;
+	border-radius: 50%;
+	border: 2px solid rgba(230,200,115,.35);
+	animation: ripple 1.4s ease-out infinite;
+}
+.intro-envelope .tap-icon::after { animation-delay: .7s; }
+@keyframes ripple {
+	from { transform: scale(0.6); opacity: .8; }
+	to { transform: scale(1.4); opacity: 0; }
+}
 
