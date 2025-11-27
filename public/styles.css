@@ -350,7 +350,18 @@ body.intro-open footer {
 /* Marco superior con el mismo ancho del sobre */
 .intro-envelope .wrapper .frame-top {
 	position: absolute;
-	top: calc(var(--h) * -1.45); /* ligeramente por encima del borde */
+	top: calc(var(--h) * -1.75); /* ligeramente por encima del borde */
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	height: auto;
+	pointer-events: none;
+	z-index: 5;
+}
+/* Marco inferior (mismo ancho y centrado) */
+.intro-envelope .wrapper .frame-bottom {
+	position: absolute;
+	bottom: calc(var(--h) * -1.75); /* ligeramente por debajo del borde */
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
@@ -371,7 +382,7 @@ body.intro-open footer {
 	transition: transform .25s linear;
 }
 .intro-envelope .lid.one {
-	border-top: calc(var(--h) / 2) solid #7a6220; /* dorado */
+	border-top: calc(var(--h) / 2) solid #bd9157; /* dorado */
 	transform: rotateX(0deg);
 	z-index: 3;
 	transition-delay: .75s;
@@ -423,10 +434,10 @@ body.intro-open footer {
 	filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
 }
 /* Esquinas */
-.intro-envelope .env-decor .corner.tl { top: 0; left: 0; width: 36%; height: auto; }
-.intro-envelope .env-decor .corner.tr { top: 0; right: 0; width: 36%; height: auto; }
-.intro-envelope .env-decor .corner.bl { bottom: 0; left: 0; width: 36%; height: auto; }
-.intro-envelope .env-decor .corner.br { bottom: 0; right: 0; width: 36%; height: auto; }
+.intro-envelope .env-decor .corner.tl { top: 0; left: 0; width: 35%; height: auto; }
+.intro-envelope .env-decor .corner.tr { top: 0; right: 0; width: 35%; height: auto; }
+.intro-envelope .env-decor .corner.bl { bottom: 0; left: 0; width: 35%; height: auto; }
+.intro-envelope .env-decor .corner.br { bottom: 0; right: 0; width: 35%; height: auto; }
 /* Marcos superior e inferior */
 .intro-envelope .env-decor .frame.top { top: 4%; left: 0; right: 0; width: 100%; height: auto; }
 .intro-envelope .env-decor .frame.bottom { bottom: 4%; left: 0; right: 0; width: 100%; height: auto; transform: scaleY(-1); }
