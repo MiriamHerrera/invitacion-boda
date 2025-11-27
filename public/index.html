@@ -13,15 +13,14 @@
 <body>
 	<!-- Intro: Sobre animado -->
 	<div id="intro-envelope" class="intro-envelope" role="dialog" aria-label="Abrir invitación" aria-modal="true">
-		<div class="env" aria-hidden="true">
-			<div class="env__shadow"></div>
-			<div class="env__back"></div>
-			<div class="env__paper">
+		<div class="wrapper" id="envWrapper" aria-hidden="true">
+			<div class="lid one"></div>
+			<div class="lid two"></div>
+			<div class="envelope"></div>
+			<div class="letter">
 				<div class="env__names">Rubén <span>&</span> Miriam</div>
 				<div class="env__hint">Toca para abrir</div>
 			</div>
-			<div class="env__front"></div>
-			<div class="env__flap"></div>
 		</div>
 	</div>
 	<canvas id="bg-canvas" aria-hidden="true"></canvas>

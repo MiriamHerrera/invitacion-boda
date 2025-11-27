@@ -10,6 +10,7 @@
 	}
 
 	const body = document.body;
+	const wrapper = document.getElementById('envWrapper');
 	const contentEls = [document.querySelector('header'), document.querySelector('main'), document.querySelector('footer')];
 	// Mientras el sobre está activo, ocultamos el contenido y bloqueamos scroll
 	body.classList.add('intro-open');
@@ -22,6 +23,7 @@
 		if (opened) return;
 		opened = true;
 		overlay.classList.add('open');
+		if (wrapper) wrapper.classList.add('opened');
 		// Tras un pequeño tiempo, desvanecemos el overlay
 		setTimeout(() => {
 			overlay.classList.add('is-hidden');
