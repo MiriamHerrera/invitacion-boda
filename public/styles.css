@@ -22,6 +22,24 @@ body {
 	line-height: 1.6;
 }
 
+/* Canvas de fondo animado */
+#bg-canvas {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background: var(--bg);
+}
+@media (prefers-reduced-motion: reduce) {
+	#bg-canvas { display: none; }
+}
+
+/* Eleva el contenido por encima del canvas */
+header, main, footer {
+	position: relative;
+	z-index: 1;
+}
+
 .hero {
 	display: grid;
 	place-items: center;
