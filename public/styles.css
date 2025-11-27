@@ -347,6 +347,17 @@ body.intro-open footer {
 	align-items: center;
 	z-index: 0;
 }
+/* Marco superior con el mismo ancho del sobre */
+.intro-envelope .wrapper .frame-top {
+	position: absolute;
+	top: calc(var(--h) * -1.45); /* ligeramente por encima del borde */
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	height: auto;
+	pointer-events: none;
+	z-index: 5;
+}
 .intro-envelope .lid {
 	position: absolute;
 	height: 100%;
@@ -397,6 +408,39 @@ body.intro-open footer {
 	text-align: center;
 	padding: 12px;
 	transition: transform .5s ease;
+}
+.intro-envelope .env-decor {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 1;
+}
+.intro-envelope .env-decor .dec {
+	position: absolute;
+	display: block;
+	user-select: none;
+	pointer-events: none;
+	filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+/* Esquinas */
+.intro-envelope .env-decor .corner.tl { top: 0; left: 0; width: 36%; height: auto; }
+.intro-envelope .env-decor .corner.tr { top: 0; right: 0; width: 36%; height: auto; }
+.intro-envelope .env-decor .corner.bl { bottom: 0; left: 0; width: 36%; height: auto; }
+.intro-envelope .env-decor .corner.br { bottom: 0; right: 0; width: 36%; height: auto; }
+/* Marcos superior e inferior */
+.intro-envelope .env-decor .frame.top { top: 4%; left: 0; right: 0; width: 100%; height: auto; }
+.intro-envelope .env-decor .frame.bottom { bottom: 4%; left: 0; right: 0; width: 100%; height: auto; transform: scaleY(-1); }
+/* Sello centrado encima de la carta */
+.intro-envelope .seal {
+	position: absolute;
+	top: calc(var(--h) * -1.45);
+	left: 50%;
+	transform: translateX(-50%);
+	width: 84px;
+	height: auto;
+	opacity: .95;
+	z-index: 4;
+	pointer-events: none;
 }
 .env__names {
 	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
