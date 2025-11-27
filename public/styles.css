@@ -77,12 +77,15 @@ main {
 }
 
 .card {
-	background: var(--card);
+	/* background: var(--card); */
+	/* background: #1b263566; */
+	background: #00172d;
 	border: 1px solid rgba(255,255,255,.10);
 	border-radius: 20px;
 	padding: 24px;
 	margin: 20px 0;
-	box-shadow: 0 8px 30px rgba(0,0,0,.25);
+	/* box-shadow: 0 8px 30px rgba(0,0,0,.25); */
+	box-shadow: 0 8px 30px rgb(119 119 119 / 22%);
 }
 
 h2, h3, label {
@@ -346,6 +349,23 @@ body.intro-open footer {
 	justify-content: center;
 	align-items: center;
 	z-index: 0;
+	/* Sombra sutil para dar profundidad al sobre */
+	/* filter: drop-shadow(0 10px 22px rgba(49, 46, 46, 0.788)); */
+	filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.788));
+}
+.intro-envelope .wrapper::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: calc(var(--h) * -0.02);
+	transform: translateX(-50%);
+	width: 78%;
+	height: 14px;
+	background: radial-gradient(ellipse at center, rgba(0,0,0,.35), rgba(0,0,0,0) 70%);
+	filter: blur(4px);
+	opacity: .5;
+	pointer-events: none;
+	z-index: 1;
 }
 /* Marco superior con el mismo ancho del sobre */
 .intro-envelope .wrapper .frame-top {
@@ -380,9 +400,11 @@ body.intro-open footer {
 	border-left: calc(var(--w) / 2) solid transparent;
 	transform-origin: top;
 	transition: transform .25s linear;
+	border-radius: 8px;
 }
 .intro-envelope .lid.one {
-	border-top: calc(var(--h) / 2) solid #bd9157; /* dorado */
+	/* border-top: calc(var(--h) / 2) solid #bd9157;  */
+	border-top: calc(var(--h) / 2) solid #c9b8a1;
 	transform: rotateX(0deg);
 	z-index: 3;
 	transition-delay: .75s;
@@ -400,9 +422,12 @@ body.intro-open footer {
 	top: 0;
 	left: 0;
 	border-top: calc(var(--h) / 2) solid transparent;
-	border-right: calc(var(--w) / 2) solid #1a2636;
+	/* border-right: calc(var(--w) / 2) solid #1a2636;
 	border-bottom: calc(var(--h) / 2) solid #1a2636;
-	border-left: calc(var(--w) / 2) solid #0f1926;
+	border-left: calc(var(--w) / 2) solid #0f1926; */
+	border-right: calc(var(--w) / 2) solid #dde1e6;
+    border-bottom: calc(var(--h) / 2) solid #d9dbdd;
+    border-left: calc(var(--w) / 2) solid #cecfd0;
 	z-index: 3;
 	border-radius: 8px;
 }
