@@ -14,6 +14,8 @@
 	const attendeesHelp = document.getElementById('attendeesHelp');
 	const inviteesWrap = document.getElementById('inviteesWrap');
 	const inviteesList = document.getElementById('inviteesList');
+	const tableInfoWrap = document.getElementById('tableInfoWrap');
+	const tableInfo = document.getElementById('tableInfo');
 	const contactInput = document.getElementById('contact');
 	const messageInput = document.getElementById('message');
 	const submitBtn = document.getElementById('submitBtn');
@@ -84,6 +86,14 @@
 		} else {
 			inviteesWrap.style.display = 'none';
 			inviteesList.innerHTML = '';
+		}
+		// Mostrar mesa asignada si existe
+		if (guest.table !== undefined && guest.table !== null && String(guest.table).trim() !== '') {
+			tableInfoWrap.style.display = '';
+			tableInfo.textContent = String(guest.table);
+		} else {
+			tableInfoWrap.style.display = 'none';
+			tableInfo.textContent = '';
 		}
 		// Hide manual code box after successful load
 		codeBox.style.display = 'none';

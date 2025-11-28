@@ -18,22 +18,26 @@
     "code": "Fam-Herrera-1",
     "displayName": "Familia Herrera",
     "invitees": ["Maria de la luz", "Denisse"],
-    "maxGuests": 2
+    "maxGuests": 2,
+    "table": 12
   },
   {
     "code": "Fam-Herrera-Sanchez",
     "displayName": "Santiago Herrera Hernandez y Familia",
-    "maxGuests": 7
+    "maxGuests": 7,
+    "table": 15
   },
   {
     "code": "Fam-Herrera-Rubio",
     "displayName": "Martín Herrera Hernandez y Familia",
-    "maxGuests": 5
+    "maxGuests": 5,
+    "table": 4
   },
   {
     "code": "Fan-Herrera-Miranda",
     "displayName": "Felipe Herrera Hernandez y Familia",
-    "maxGuests": 6
+    "maxGuests": 6,
+    "table": 8
   }
 ]
 

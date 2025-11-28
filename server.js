@@ -59,6 +59,7 @@ app.get('/api/guest', async (req, res) => {
 			code: guest.code,
 			displayName: guest.displayName,
 			invitees: Array.isArray(guest.invitees) ? guest.invitees : undefined,
+			table: guest.table ?? undefined,
 			maxGuests: Number.isFinite(guest.maxGuests)
 				? guest.maxGuests
 				: (maxGuestsFromInvitees ?? 2)
