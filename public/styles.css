@@ -91,7 +91,7 @@ main {
 }
 
 h2, h3, label {
-	font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 	font-weight: 300;
 	color: var(--primary-ink);
 	letter-spacing: .02em;
@@ -314,7 +314,7 @@ body.loaded { opacity: 1; transform: none; }
 
 /* Detalles del evento */
 .details .venue {
-	font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 	font-weight: 600;
 	font-size: clamp(20px, 2.6vw, 24px);
 	color: var(--primary-ink);
@@ -607,3 +607,10 @@ body.intro-open footer {
 	to { transform: scale(1.4); opacity: 0; }
 }
 
+
+/* Fuente fija para los nombres (encabezado y carta) */
+.couple,
+.env__names {
+	font-family: 'Parisienne', cursive !important;
+	font-weight: 400;
+}
