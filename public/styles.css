@@ -365,6 +365,10 @@ body.loaded { opacity: 1; transform: none; }
 	margin: 2px 0;
 }
 
+/* Utilidad: ocultar en móvil */
+@media (max-width: 640px) {
+	.hide-mobile { display: none !important; }
+}
 /* Mapa incrustado */
 .details .map {
 	margin-top: 10px;
