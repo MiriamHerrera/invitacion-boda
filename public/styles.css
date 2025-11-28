@@ -97,7 +97,7 @@ h2, h3, label {
 	letter-spacing: .02em;
 }
 
-h2 { font-size: clamp(28px, 3.4vw, 40px); margin: 8px 0 12px; }
+h2 { font-size: clamp(25px, 3.4vw, 40px); margin: 8px 0 12px; }
 h3 { font-size: clamp(22px, 2.8vw, 28px); margin: 6px 0 14px; }
 
 .muted { color: var(--muted); }
@@ -353,6 +353,16 @@ body.loaded { opacity: 1; transform: none; }
 	height: 100%;
 	object-fit: cover;
 	display: block;
+}
+
+/* Lista de invitados dirigida */
+.invitees-list {
+	margin: 0;
+	padding-left: 18px;
+	color: var(--muted);
+}
+.invitees-list li {
+	margin: 2px 0;
 }
 
 /* Mapa incrustado */

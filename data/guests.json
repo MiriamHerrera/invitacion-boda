@@ -5,14 +5,35 @@
     "maxGuests": 4
   },
   {
-    "code": "miriam-amiga-ana",
+    "code": "Ayco",
     "displayName": "Ana",
-    "maxGuests": 2
+    "maxGuests": 3
   },
   {
     "code": "test",
     "displayName": "Invitado de prueba",
     "maxGuests": 2
+  },
+  {
+    "code": "Fam-Herrera-1",
+    "displayName": "Familia Herrera",
+    "invitees": ["Maria de la luz", "Denisse"],
+    "maxGuests": 2
+  },
+  {
+    "code": "Fam-Herrera-Sanchez",
+    "displayName": "Santiago Herrera Hernandez y Familia",
+    "maxGuests": 7
+  },
+  {
+    "code": "Fam-Herrera-Rubio",
+    "displayName": "Martín Herrera Hernandez y Familia",
+    "maxGuests": 5
+  },
+  {
+    "code": "Fan-Herrera-Miranda",
+    "displayName": "Felipe Herrera Hernandez y Familia",
+    "maxGuests": 6
   }
 ]
 

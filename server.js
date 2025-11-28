@@ -54,10 +54,14 @@ app.get('/api/guest', async (req, res) => {
 		if (!guest) {
 			return res.status(404).json({ error: 'Invitado no encontrado' });
 		}
+		const maxGuestsFromInvitees = Array.isArray(guest.invitees) && guest.invitees.length > 0 ? guest.invitees.length : undefined;
 		return res.json({
 			code: guest.code,
 			displayName: guest.displayName,
-			maxGuests: Number.isFinite(guest.maxGuests) ? guest.maxGuests : 2
+			invitees: Array.isArray(guest.invitees) ? guest.invitees : undefined,
+			maxGuests: Number.isFinite(guest.maxGuests)
+				? guest.maxGuests
+				: (maxGuestsFromInvitees ?? 2)
 		});
 	} catch (err) {
 		return res.status(500).json({ error: 'Error leyendo invitados' });

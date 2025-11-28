@@ -12,6 +12,8 @@
 	const displayNameInput = document.getElementById('displayName');
 	const attendeesSelect = document.getElementById('attendees');
 	const attendeesHelp = document.getElementById('attendeesHelp');
+	const inviteesWrap = document.getElementById('inviteesWrap');
+	const inviteesList = document.getElementById('inviteesList');
 	const contactInput = document.getElementById('contact');
 	const messageInput = document.getElementById('message');
 	const submitBtn = document.getElementById('submitBtn');
@@ -44,7 +46,13 @@
 
 	function updateMaxGuests(max) {
 		attendeesHelp.textContent = `Máximo permitido: ${max}`;
-		// No need to trim <option>, we validate on server too
+		// Deshabilitar opciones por encima del máximo
+		Array.from(attendeesSelect.options).forEach((opt) => {
+			const v = Number(opt.value);
+			if (Number.isFinite(v)) {
+				opt.disabled = v > max;
+			}
+		});
 	}
 
 	async function fetchGuestByCode(code) {
@@ -63,6 +71,20 @@
 		guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
 		greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
 		updateMaxGuests(guest.maxGuests);
+		// Mostrar personas dirigidas si existen
+		if (Array.isArray(guest.invitees) && guest.invitees.length > 0) {
+			inviteesWrap.style.display = '';
+			inviteesList.innerHTML = '';
+			guest.invitees.forEach((name) => {
+				const li = document.createElement('li');
+				li.textContent = String(name);
+				inviteesList.appendChild(li);
+			});
+			attendeesHelp.textContent = `Esta invitación es para ${guest.invitees.length} persona(s). Máximo permitido: ${guest.maxGuests}`;
+		} else {
+			inviteesWrap.style.display = 'none';
+			inviteesList.innerHTML = '';
+		}
 		// Hide manual code box after successful load
 		codeBox.style.display = 'none';
 		// Update URL to include code
