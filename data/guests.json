@@ -6,16 +6,11 @@
   },
   {
     "code": "Ayco",
-    "displayName": "Ana",
+    "displayName": "Ana Y Esposo",
     "maxGuests": 3
   },
   {
-    "code": "test",
-    "displayName": "Invitado de prueba",
-    "maxGuests": 2
-  },
-  {
-    "code": "Fam-Herrera-1",
+    "code": "Fam-Herrera-01",
     "displayName": "Familia Herrera",
     "invitees": ["Maria de la luz", "Denisse"],
     "maxGuests": 2,
@@ -38,7 +33,74 @@
     "displayName": "Felipe Herrera Hernandez y Familia",
     "maxGuests": 6,
     "table": 8
+  },
+  {
+    "code": "Familia-Mendez-Cruz",
+    "displayName": "David Mendez y Familia",
+    "maxGuests": 6,
+    "table": 2
+  },
+  {
+    "code": "Pablito-Mix",
+    "displayName": "Pablito Mix y Familia",
+    "maxGuests": 2,
+    "table": 2
+  },
+  {
+    "code": "Jona",
+    "displayName": "Jonathan Pecina",
+    "maxGuests": 2,
+    "table": 2
+  },
+  {
+    "code": "Tavo",
+    "displayName": "Octavio Huerta",
+    "maxGuests": 1,
+    "table": 3
+  },
+  {
+    "code": "Bustos",
+    "displayName": "Juan Manuel Bustos",
+    "maxGuests": 2,
+    "table": 3
+  },
+  {
+    "code": "Anahi",
+    "displayName": "Anahí Herrera y Marco",
+    "maxGuests": 2,
+    "table": 3
+  },
+  {
+    "code": "Chuyito",
+    "displayName": "Jesus Villareal Y Prometida",
+    "maxGuests": 2,
+    "table": 3
+  },
+  {
+    "code": "Mireles",
+    "displayName": "Jorge Mireles",
+    "maxGuests": 1,
+    "table": 3
+  },
+  {
+    "code": "Pablo",
+    "displayName": "Pablo",
+    "maxGuests": 2,
+    "table": 3
+  },
+  {
+    "code": "Christian",
+    "displayName": "Christian",
+    "maxGuests": 2,
+    "table": 3
+  },
+  {
+    "code": "Manolo",
+    "displayName": "Manolo",
+    "maxGuests": 1,
+    "table": 3
   }
+  
 ]
 
 

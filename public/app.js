@@ -11,6 +11,7 @@
 	const form = document.getElementById('rsvpForm');
 	const displayNameInput = document.getElementById('displayName');
 	const attendeesSelect = document.getElementById('attendees');
+	const attendeesField = document.getElementById('attendeesField');
 	const attendeesHelp = document.getElementById('attendeesHelp');
 	const inviteesWrap = document.getElementById('inviteesWrap');
 	const inviteesList = document.getElementById('inviteesList');
@@ -47,14 +48,26 @@
 	}
 
 	function updateMaxGuests(max) {
-		attendeesHelp.textContent = `Máximo permitido: ${max}`;
-		// Deshabilitar opciones por encima del máximo
-		Array.from(attendeesSelect.options).forEach((opt) => {
-			const v = Number(opt.value);
-			if (Number.isFinite(v)) {
-				opt.disabled = v > max;
+		if (max === 1) {
+			attendeesField.style.display = 'none';
+			attendeesHelp.textContent = 'Invitación personal';
+			attendeesSelect.value = '1';
+		} else {
+			attendeesField.style.display = '';
+			attendeesHelp.textContent = `Máximo permitido: ${max}`;
+			// Deshabilitar opciones por encima del máximo
+			Array.from(attendeesSelect.options).forEach((opt) => {
+				const v = Number(opt.value);
+				if (Number.isFinite(v)) {
+					opt.disabled = v > max;
+				}
+			});
+			// si valor actual supera máximo, corrígelo
+			const current = Number(attendeesSelect.value);
+			if (!Number.isFinite(current) || current > max) {
+				attendeesSelect.value = String(Math.min(max, 1));
 			}
-		});
+		}
 	}
 
 	async function fetchGuestByCode(code) {
