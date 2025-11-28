@@ -47,23 +47,25 @@ header, main, footer {
 	/* padding: 32px 16px; */
 	padding-top: 32px;
 }
-.hero-inner { max-width: 960px; width: 100%; }
+.hero-inner { max-width: 960px; width: 100%; padding: 2rem; }
 .overline {
 	letter-spacing: .22em;
 	text-transform: uppercase;
 	color: var(--muted);
 	font-size: 12px;
+	padding: 2rem;
 }
 .couple {
-	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-	font-weight: 500;
-	font-size: clamp(44px, 7vw, 86px);
+	font-family: 'Parisienne', cursive;
+	font-weight: 400;
+	font-size: clamp(80px, 9vw, 110px);
+	/* font-size: clamp(50px, 9vw, 110px); */
 	line-height: 1.05;
 	margin: 8px 0 6px;
+	padding: 2rem;
 }
 .couple span {
 	color: var(--primary);
-	font-weight: 600;
 }
 .date-place {
 	color: var(--muted);
@@ -89,8 +91,8 @@ main {
 }
 
 h2, h3, label {
-	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-	font-weight: 600;
+	font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	font-weight: 300;
 	color: var(--primary-ink);
 	letter-spacing: .02em;
 }
@@ -310,6 +312,70 @@ body.loaded { opacity: 1; transform: none; }
 /* Espaciado en la sección de RSVP */
 .rsvp .form { margin-top: 8px; }
 
+/* Detalles del evento */
+.details .venue {
+	font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	font-weight: 600;
+	font-size: clamp(20px, 2.6vw, 24px);
+	color: var(--primary-ink);
+	margin: 6px 0 2px;
+}
+.details .address {
+	color: var(--muted);
+	margin: 2px 0 6px;
+}
+.details .datetime time {
+	font-weight: 600;
+	color: var(--primary);
+}
+
+/* Intro con foto a un lado */
+.intro .intro-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
+	gap: 16px;
+}
+@media (min-width: 800px) {
+	.intro .intro-grid { grid-template-columns: 2fr 1fr; }
+}
+.intro .photo-frame {
+	position: relative;
+	aspect-ratio: 4 / 5;
+	border-radius: 16px;
+	overflow: hidden;
+	border: 1px solid rgba(255,255,255,.10);
+	box-shadow: 0 10px 26px rgba(0,0,0,.22);
+	background: #0b1522;
+}
+.intro .photo-frame img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* Mapa incrustado */
+.details .map {
+	margin-top: 10px;
+	border-radius: 14px;
+	overflow: hidden;
+	border: 1px solid rgba(255,255,255,.10);
+	box-shadow: 0 6px 22px rgba(0,0,0,.22);
+	aspect-ratio: 16 / 9;
+	background: #0b1522;
+}
+.details .map iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	display: block;
+}
+.details .map-cta {
+	margin-top: 8px;
+	text-align: right;
+}
+
 /* ================== Intro: Sobre animado ================== */
 .intro-envelope {
 	position: fixed;
@@ -479,8 +545,9 @@ body.intro-open footer {
 	pointer-events: none;
 }
 .env__names {
-	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-	font-size: clamp(26px, 5vw, 42px);
+	font-family: 'Parisienne', cursive;
+	font-weight: 400;
+	font-size: clamp(34px, 6vw, 44px);
 	color: #7a6220;
 }
 .env__names span { color: #a48729; }

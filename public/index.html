@@ -6,7 +6,8 @@
 	<title>Rubén & Miriam - Invitación</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/styles.css">
 	<meta name="description" content="Invitación de boda de Rubén y Miriam. Confirma tu asistencia.">
 </head>
@@ -53,9 +54,37 @@
 	<main>
 		<div class="ornament" aria-hidden="true"><span class="dot"></span></div>
 		<section class="intro card">
-			<h2 id="greet">¡Te invitamos a nuestra boda!</h2>
-			<p id="guestNameText" class="muted">Personalizando invitación...</p>
-			<p>Estamos felices de compartir este momento contigo. Agradecemos que puedas confirmar tu asistencia.</p>
+			<div class="intro-grid">
+				<div class="intro-text">
+					<h2 id="greet">¡Te invitamos a nuestra boda!</h2>
+					<p id="guestNameText" class="muted">Personalizando invitación...</p>
+					<p>Estamos felices de compartir este momento contigo. Agradecemos que puedas confirmar tu asistencia.</p>
+				</div>
+				<div class="intro-photo">
+					<div class="photo-frame">
+						<img src="/novios.jpg" alt="Rubén y Miriam" loading="lazy">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="details card">
+			<h3>Detalles del evento</h3>
+			<p class="venue">ARCANGELES EVENTOS</p>
+			<p class="address">Transportes 109, S.C.O.P., 67190 Guadalupe, N.L., Mexico</p>
+			<p class="datetime"><time datetime="2026-03-15T20:00">15 Marzo 2026 · 8:00 pm</time></p>
+			<div class="map">
+				<iframe
+					title="Ubicación - ARCANGELES EVENTOS"
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					allowfullscreen
+					src="https://www.google.com/maps?q=ARCANGELES%20EVENTOS%2C%20Transportes%20109%2C%20S.C.O.P.%2C%2067190%20Guadalupe%2C%20N.L.%2C%20Mexico&z=16&output=embed">
+				</iframe>
+			</div>
+			<p class="map-cta">
+				<a class="btn secondary map-link" href="https://maps.app.goo.gl/RzNwnEfrH5WKFv9Y8" target="_blank" rel="noopener">Ampliar el mapa</a>
+			</p>
 		</section>
 
 		<section class="rsvp card">
