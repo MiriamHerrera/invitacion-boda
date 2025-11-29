@@ -576,10 +576,10 @@ body.intro-open footer {
 	filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
 }
 /* Esquinas */
-.intro-envelope .env-decor .corner.tl { top: 0; left: 0; width: 35%; height: auto; }
-.intro-envelope .env-decor .corner.tr { top: 0; right: 0; width: 35%; height: auto; }
-.intro-envelope .env-decor .corner.bl { bottom: 0; left: 0; width: 35%; height: auto; }
-.intro-envelope .env-decor .corner.br { bottom: 0; right: 0; width: 35%; height: auto; }
+.intro-envelope .env-decor .corner.tl { top: 0; left: 0; width: 30%; height: auto; }
+.intro-envelope .env-decor .corner.tr { top: 0; right: 0; width: 30%; height: auto; }
+.intro-envelope .env-decor .corner.bl { bottom: 0; left: 0; width: 30%; height: auto; }
+.intro-envelope .env-decor .corner.br { bottom: 0; right: 0; width: 30%; height: auto; }
 /* Marcos superior e inferior */
 .intro-envelope .env-decor .frame.top { top: 4%; left: 0; right: 0; width: 100%; height: auto; }
 .intro-envelope .env-decor .frame.bottom { bottom: 4%; left: 0; right: 0; width: 100%; height: auto; transform: scaleY(-1); }
