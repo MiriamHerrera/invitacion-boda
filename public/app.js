@@ -10,6 +10,7 @@
 	const loadGuestBtn = document.getElementById('loadGuest');
 	const form = document.getElementById('rsvpForm');
 	const displayNameInput = document.getElementById('displayName');
+	const displayField = displayNameInput ? displayNameInput.closest('.field') : null;
 	const attendeesSelect = document.getElementById('attendees');
 	const attendeesField = document.getElementById('attendeesField');
 	const attendeesHelp = document.getElementById('attendeesHelp');
@@ -52,9 +53,11 @@
 			attendeesField.style.display = 'none';
 			attendeesHelp.textContent = 'Invitación personal';
 			attendeesSelect.value = '1';
+			if (displayField) displayField.classList.add('span-all');
 		} else {
 			attendeesField.style.display = '';
 			attendeesHelp.textContent = `Máximo permitido: ${max}`;
+			if (displayField) displayField.classList.remove('span-all');
 			// Deshabilitar opciones por encima del máximo
 			Array.from(attendeesSelect.options).forEach((opt) => {
 				const v = Number(opt.value);
