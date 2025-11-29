@@ -375,6 +375,22 @@ body.loaded { opacity: 1; transform: none; }
 @media (max-width: 640px) {
 	.hide-mobile { display: none !important; }
 }
+
+/* FAQ y Dress Code */
+.dresscode p { margin: 4px 0 0; font-weight: 600; color: var(--primary); }
+.faq .faq-list details {
+	background: rgba(255,255,255,.04);
+	border: 1px solid rgba(255,255,255,.10);
+	border-radius: 12px;
+	padding: 10px 12px;
+	margin: 8px 0;
+}
+.faq .faq-list summary {
+	cursor: pointer;
+	font-weight: 600;
+	outline: none;
+}
+.faq .faq-list p { margin: 8px 0 0; color: var(--muted); }
 /* Mapa incrustado */
 .details .map {
 	margin-top: 10px;
