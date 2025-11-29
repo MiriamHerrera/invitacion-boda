@@ -35,7 +35,7 @@
 				body.style.overflow = prevOverflow || '';
 				contentEls.forEach(el => el && el.removeAttribute('aria-hidden'));
 			}, 650);
-		}, 800);
+		}, 1600);
 	}
 
 	// Abrir al clicar/tocar en cualquier sitio del overlay
