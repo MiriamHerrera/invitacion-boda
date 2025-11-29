@@ -412,6 +412,21 @@ body.loaded { opacity: 1; transform: none; }
 	text-align: right;
 }
 
+.details .rides {
+	margin-top: 10px;
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+/* Countdown */
+.countdown-timer {
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+	font-size: clamp(18px, 3vw, 24px);
+	color: var(--primary);
+}
+
 /* ================== Intro: Sobre animado ================== */
 .intro-envelope {
 	position: fixed;

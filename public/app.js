@@ -24,6 +24,9 @@
 	const formError = document.getElementById('formError');
 	const formOk = document.getElementById('formOk');
 	const formNote = document.getElementById('formNote');
+	const uberLink = document.getElementById('uberLink');
+	const didiLink = document.getElementById('didiLink');
+	const countdownEl = document.getElementById('countdown');
 
 	let currentGuest = null;
 	let currentCode = '';
@@ -174,6 +177,39 @@
 
 	// Init
 	(function init() {
+		// Prefill ride links using venue/address from page
+		const venue = (document.querySelector('.details .venue')?.textContent || 'ARCANGELES EVENTOS').trim();
+		const addr = (document.querySelector('.details .address')?.textContent || '').trim();
+		if (uberLink) {
+			uberLink.href = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(addr || venue)}&dropoff[nickname]=${encodeURIComponent(venue)}`;
+		}
+		if (didiLink) {
+			// Fallback web route for DiDi
+			didiLink.href = `https://page.didiglobal.com/mobility-os/route?to=${encodeURIComponent(venue)}&to_addr=${encodeURIComponent(addr)}`;
+		}
+		// Countdown (oculto hasta 16 días antes del evento)
+		if (countdownEl) {
+			const countdownCard = document.querySelector('.countdown.card');
+			const eventDate = new Date(document.querySelector('.details .datetime time')?.getAttribute('datetime') || '2026-03-15T20:00:00');
+			const nowForCheck = new Date();
+			const daysUntil = Math.ceil((eventDate - nowForCheck) / (1000 * 60 * 60 * 24));
+			if (daysUntil > 16) {
+				if (countdownCard) countdownCard.style.display = 'none';
+			} else {
+				if (countdownCard) countdownCard.style.display = '';
+				function updateCountdown() {
+					const now = new Date();
+					let diff = Math.max(0, eventDate - now);
+					const sec = Math.floor(diff / 1000) % 60;
+					const min = Math.floor(diff / (1000 * 60)) % 60;
+					const hr = Math.floor(diff / (1000 * 60 * 60)) % 24;
+					const day = Math.floor(diff / (1000 * 60 * 60 * 24));
+					countdownEl.textContent = `${day} días · ${String(hr).padStart(2,'0')}:${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+				}
+				updateCountdown();
+				setInterval(updateCountdown, 1000);
+			}
+		}
 		if (codeFromUrl) {
 			inviteCodeInput.value = codeFromUrl;
 			handleLoadGuest(codeFromUrl);
