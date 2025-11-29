@@ -180,12 +180,25 @@
 		// Prefill ride links using venue/address from page
 		const venue = (document.querySelector('.details .venue')?.textContent || 'ARCANGELES EVENTOS').trim();
 		const addr = (document.querySelector('.details .address')?.textContent || '').trim();
+		const detailsSection = document.querySelector('.details');
+		const latFromAttr = detailsSection?.getAttribute('data-lat');
+		const lngFromAttr = detailsSection?.getAttribute('data-lng');
+		const dropoffLat = latFromAttr !== null && latFromAttr !== undefined && String(latFromAttr).trim() !== '' ? Number(latFromAttr) : NaN;
+		const dropoffLng = lngFromAttr !== null && lngFromAttr !== undefined && String(lngFromAttr).trim() !== '' ? Number(lngFromAttr) : NaN;
 		if (uberLink) {
-			uberLink.href = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(addr || venue)}&dropoff[nickname]=${encodeURIComponent(venue)}`;
+			if (Number.isFinite(dropoffLat) && Number.isFinite(dropoffLng)) {
+				uberLink.href = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${dropoffLat}&dropoff[longitude]=${dropoffLng}&dropoff[nickname]=${encodeURIComponent(venue)}&dropoff[formatted_address]=${encodeURIComponent(addr || venue)}`;
+			} else {
+				uberLink.href = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(addr || venue)}&dropoff[nickname]=${encodeURIComponent(venue)}`;
+			}
 		}
 		if (didiLink) {
 			// Fallback web route for DiDi
-			didiLink.href = `https://page.didiglobal.com/mobility-os/route?to=${encodeURIComponent(venue)}&to_addr=${encodeURIComponent(addr)}`;
+			if (Number.isFinite(dropoffLat) && Number.isFinite(dropoffLng)) {
+				didiLink.href = `https://page.didiglobal.com/mobility-os/route?to=${encodeURIComponent(venue)}&to_addr=${encodeURIComponent(addr)}&to_lat=${dropoffLat}&to_lng=${dropoffLng}`;
+			} else {
+				didiLink.href = `https://page.didiglobal.com/mobility-os/route?to=${encodeURIComponent(venue)}&to_addr=${encodeURIComponent(addr)}`;
+			}
 		}
 		// Countdown (oculto hasta 16 días antes del evento)
 		if (countdownEl) {
