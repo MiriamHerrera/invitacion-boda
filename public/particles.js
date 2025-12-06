@@ -60,7 +60,7 @@
 	function rand(min, max) { return Math.random() * (max - min) + min; }
 
 	// Partículas (hojas elípticas doradas) - conteo fijo para consistencia
-	const COUNT = 180;
+	const COUNT = 50; // menos hojas para un fondo más sutil
 	const particles = Array.from({ length: COUNT }).map(() => ({
 		x: seeded() * width,
 		y: seeded() * height,
@@ -69,28 +69,32 @@
 		vy: sr(-16, 16),   // px/s
 		alpha: sr(0.4, 0.95),
 		blinkSpeed: sr(0.6, 1.6), // Hz
-		w: sr(3.0, 6.0),         // ancho de la hoja
-		h: sr(1.6, 3.2),         // alto de la hoja
+		w: sr(6.0, 12.0),        // ancho de la hoja (más grande)
+		h: sr(3.2, 6.4),         // alto de la hoja (más grande)
 		angle: sr(0, Math.PI * 2),
 		spin: sr(-0.6, 0.6)      // rotación rad/s
 	}));
 
-	// Chispazos al tocar/click: partículas efímeras con trazo
-	const sparks = [];
+	// Al tocar/clic: brotan hojas elípticas (no líneas)
+	const bursts = [];
 	function spawnBurst(x, y) {
-		const N = 28 + Math.floor(Math.random() * 18);
+		const N = 10 + Math.floor(Math.random() * 8);
 		for (let i = 0; i < N; i++) {
 			const ang = Math.random() * Math.PI * 2;
-			const speed = rand(80, 220); // px/s
-			const life = rand(0.5, 0.9); // s
-			sparks.push({
+			const speed = rand(90, 220); // px/s (más lejos)
+			const life = rand(1.2, 2.0); // s (más duración)
+			const w = rand(8, 16);
+			const h = rand(4, 9);
+			bursts.push({
 				x, y,
-				px: x, py: y, // posición previa para trazo
 				vx: Math.cos(ang) * speed,
 				vy: Math.sin(ang) * speed,
 				life: 0,
 				max: life,
-				size: rand(1, 2.5)
+				w, h,
+				angle: Math.random() * Math.PI * 2,
+				spin: rand(-1.2, 1.2),
+				alpha: rand(0.65, 1)
 			});
 		}
 	}
@@ -131,59 +135,90 @@
 			const pulse = 0.6 + 0.4 * Math.sin(t);
 			const a = Math.max(0.05, Math.min(1, p.alpha * pulse));
 
-			// render: hoja elíptica dorada (con degradado lineal sutil)
+			// render: hoja dorada con puntas y venas (beziers)
 			ctx.save();
 			ctx.translate(p.x, p.y);
 			ctx.rotate(p.angle);
-			const lg = ctx.createLinearGradient(-p.w, -p.h, p.w, p.h);
+			const lg = ctx.createLinearGradient(0, -p.h, 0, p.h);
 			lg.addColorStop(0, hexToRgba(GOLD, a * 0.85));
 			lg.addColorStop(1, hexToRgba(GOLD, a * 0.55));
 			ctx.fillStyle = lg;
+			// forma de hoja (dos beziers)
 			ctx.beginPath();
-			ctx.ellipse(0, 0, p.w, p.h, 0, 0, Math.PI * 2);
+			ctx.moveTo(0, -p.h);
+			ctx.bezierCurveTo(p.w, -p.h * 0.3, p.w, p.h * 0.3, 0, p.h);
+			ctx.bezierCurveTo(-p.w, p.h * 0.3, -p.w, -p.h * 0.3, 0, -p.h);
+			ctx.closePath();
 			ctx.fill();
-			// nervadura
-			ctx.strokeStyle = hexToRgba('#000000', a * 0.08);
-			ctx.lineWidth = Math.max(0.4, Math.min(p.w, p.h) * 0.12);
+			// nervadura principal
+			ctx.strokeStyle = hexToRgba('#000000', a * 0.14);
+			ctx.lineWidth = Math.max(0.5, Math.min(p.w, p.h) * 0.12);
 			ctx.beginPath();
-			ctx.moveTo(-p.w * 0.7, 0);
-			ctx.lineTo(p.w * 0.7, 0);
+			ctx.moveTo(0, -p.h * 0.95);
+			ctx.lineTo(0, p.h * 0.95);
 			ctx.stroke();
+			// venas secundarias (tres por lado)
+			ctx.strokeStyle = hexToRgba('#000000', a * 0.10);
+			ctx.lineWidth = Math.max(0.3, Math.min(p.w, p.h) * 0.06);
+			for (let k = -2; k <= 2; k++) {
+				if (k === 0) continue;
+				const t2 = k / 3;
+				const y2 = t2 * p.h * 0.85;
+				const dir2 = k < 0 ? -1 : 1;
+				ctx.beginPath();
+				ctx.moveTo(0, y2);
+				ctx.quadraticCurveTo(dir2 * p.w * 0.35, y2 + dir2 * p.h * 0.10, dir2 * p.w * 0.6, y2 + dir2 * p.h * 0.02);
+				ctx.stroke();
+			}
 			ctx.restore();
 		}
 
-		// Actualizar/dibujar chispas
-		// Físicas sencillas: leve gravedad y fricción
-		for (let i = sparks.length - 1; i >= 0; i--) {
-			const s = sparks[i];
-			s.life += dt;
-			if (s.life >= s.max) { sparks.splice(i, 1); continue; }
-
-			// Guardar posición previa
-			s.px = s.x; s.py = s.y;
-
-			// Update
-			s.vx *= Math.pow(0.9, dt * 60); // arrastre
-			s.vy *= Math.pow(0.9, dt * 60);
-			s.vy += 60 * dt; // gravedad suave
-
-			s.x += s.vx * dt;
-			s.y += s.vy * dt;
-
-			// Alpha según vida
-			const a = Math.max(0, 1 - s.life / s.max);
-			ctx.strokeStyle = hexToRgba(GOLD, a * 0.9);
-			ctx.lineWidth = Math.max(0.5, s.size * a);
+		// Actualizar/dibujar hojas del burst
+		for (let i = bursts.length - 1; i >= 0; i--) {
+			const b = bursts[i];
+			b.life += dt;
+			if (b.life >= b.max) { bursts.splice(i, 1); continue; }
+			// arrastre y leve gravedad
+			b.vx *= Math.pow(0.97, dt * 60);            // menos arrastre
+			b.vy = b.vy * Math.pow(0.97, dt * 60) + 25 * dt; // gravedad más suave
+			b.x += b.vx * dt;
+			b.y += b.vy * dt;
+			b.angle += b.spin * dt;
+			const a = Math.max(0, 1 - b.life / b.max) * b.alpha;
+			ctx.save();
+			ctx.translate(b.x, b.y);
+			ctx.rotate(b.angle);
+			const lg2 = ctx.createLinearGradient(0, -b.h, 0, b.h);
+			lg2.addColorStop(0, hexToRgba(GOLD, a));
+			lg2.addColorStop(1, hexToRgba(GOLD, a * 0.6));
+			ctx.fillStyle = lg2;
 			ctx.beginPath();
-			ctx.moveTo(s.px, s.py);
-			ctx.lineTo(s.x, s.y);
-			ctx.stroke();
-
-			// pequeño núcleo en el extremo
-			ctx.fillStyle = hexToRgba('#ffffff', a * 0.6);
-			ctx.beginPath();
-			ctx.arc(s.x, s.y, Math.max(0.6, s.size * 0.6 * a), 0, Math.PI * 2);
+			ctx.moveTo(0, -b.h);
+			ctx.bezierCurveTo(b.w, -b.h * 0.3, b.w, b.h * 0.3, 0, b.h);
+			ctx.bezierCurveTo(-b.w, b.h * 0.3, -b.w, -b.h * 0.3, 0, -b.h);
+			ctx.closePath();
 			ctx.fill();
+			// nervadura principal
+			ctx.strokeStyle = hexToRgba('#000000', a * 0.16);
+			ctx.lineWidth = Math.max(0.5, Math.min(b.w, b.h) * 0.12);
+			ctx.beginPath();
+			ctx.moveTo(0, -b.h * 0.95);
+			ctx.lineTo(0, b.h * 0.95);
+			ctx.stroke();
+			// venas secundarias
+			ctx.strokeStyle = hexToRgba('#000000', a * 0.10);
+			ctx.lineWidth = Math.max(0.3, Math.min(b.w, b.h) * 0.06);
+			for (let k = -2; k <= 2; k++) {
+				if (k === 0) continue;
+				const t2 = k / 3;
+				const y2 = t2 * b.h * 0.85;
+				const dir2 = k < 0 ? -1 : 1;
+				ctx.beginPath();
+				ctx.moveTo(0, y2);
+				ctx.quadraticCurveTo(dir2 * b.w * 0.35, y2 + dir2 * b.h * 0.10, dir2 * b.w * 0.6, y2 + dir2 * b.h * 0.02);
+				ctx.stroke();
+			}
+			ctx.restore();
 		}
 
 		requestAnimationFrame(tick);
