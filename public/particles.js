@@ -58,9 +58,15 @@
 	const css = getComputedStyle(document.documentElement);
 	const BG = (css.getPropertyValue('--bg') || '#011229').trim();
 	const GOLD = (css.getPropertyValue('--primary') || '#d4af37').trim();
+	// Colores dorados acordes a las esquinas (toman los CSS vars)
+	const PRIMARY_GOLD = (css.getPropertyValue('--primary') || '#a48729').trim();       // base
+	const PRIMARY_GOLD_LIGHT = (css.getPropertyValue('--primary-ink') || '#e6c873').trim(); // claro
 	const GOLD_PALETTE = [
-		GOLD,
-		'#cfa53a', '#e6c873', '#b38b20', '#f2d682'
+		PRIMARY_GOLD,
+		PRIMARY_GOLD_LIGHT,
+		'#b38b20',  // tono medio cercano
+		'#c9a63a',  // tono medio-claro
+		'#dcbc63'   // tono claro cálido
 	];
 	// Luz direccional (de arriba-izquierda hacia abajo-derecha)
 	const LIGHT_ANGLE = -Math.PI / 4; // -45°
@@ -196,7 +202,7 @@
 				base.addColorStop(1.00, hexToRgba(col, p.alpha * 0.18));
 				const hg = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
 				const pos = 0.5 + Math.sin(ts * 0.004 + (p.phase || 0)) * 0.08; // movimiento del destello
-				const aHi = Math.min(0.35, 0.22 * p.alpha + 0.13); // intensidad más alta
+				const aHi = Math.min(0.45, 0.26 * p.alpha + 0.18); // highlight más brillante
 				hg.addColorStop(0.0, 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.10), 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.03), `rgba(255,255,255,${aHi.toFixed(3)})`);
@@ -302,7 +308,7 @@
 				base.addColorStop(1.00, hexToRgba(col, a * 0.18));
 				const hg = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
 				const pos = 0.5 + Math.sin(ts * 0.004 + i) * 0.08;
-				const aHi = Math.min(0.35, 0.22 * a + 0.13);
+				const aHi = Math.min(0.45, 0.26 * a + 0.18);
 				hg.addColorStop(0.0, 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.10), 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.03), `rgba(255,255,255,${aHi.toFixed(3)})`);
