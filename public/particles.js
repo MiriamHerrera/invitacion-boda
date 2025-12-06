@@ -56,6 +56,11 @@
 	const css = getComputedStyle(document.documentElement);
 	const BG = (css.getPropertyValue('--bg') || '#011229').trim();
 	const GOLD = (css.getPropertyValue('--primary') || '#d4af37').trim();
+	// Colores para pétalos (con fallback a rosas suaves)
+	const PETAL1 = (css.getPropertyValue('--petal1') || '#f6c1cf').trim(); // rosa claro (centro)
+	const PETAL2 = (css.getPropertyValue('--petal2') || '#ffd8e5').trim(); // rosa pálido (borde)
+	const PETAL_EDGE = (css.getPropertyValue('--petalEdge') || '#e55a8a').trim(); // borde más intenso
+	const PETAL_BASE = (css.getPropertyValue('--petalBase') || '#ffe2a6').trim(); // brillo amarillento en la base
 
 	function rand(min, max) { return Math.random() * (max - min) + min; }
 
@@ -135,41 +140,43 @@
 			const pulse = 0.6 + 0.4 * Math.sin(t);
 			const a = Math.max(0.05, Math.min(1, p.alpha * pulse));
 
-			// render: hoja dorada con puntas y venas (beziers)
+			// render: pétalo (forma de lágrima con degradado rosado y borde)
 			ctx.save();
 			ctx.translate(p.x, p.y);
 			ctx.rotate(p.angle);
+			// ligera curvatura (curl) con deformación
+			const curl = 1 + Math.sin(ts * 0.0018 + i) * 0.08;
+			ctx.transform(curl, 0, 0.08, 1, 0, 0);
+
+			// cuerpo con degradado
 			const lg = ctx.createLinearGradient(0, -p.h, 0, p.h);
-			lg.addColorStop(0, hexToRgba(GOLD, a * 0.85));
-			lg.addColorStop(1, hexToRgba(GOLD, a * 0.55));
+			lg.addColorStop(0, hexToRgba(PETAL1, a * 0.95));
+			lg.addColorStop(1, hexToRgba(PETAL2, a * 0.65));
+
 			ctx.fillStyle = lg;
-			// forma de hoja (dos beziers)
 			ctx.beginPath();
 			ctx.moveTo(0, -p.h);
-			ctx.bezierCurveTo(p.w, -p.h * 0.3, p.w, p.h * 0.3, 0, p.h);
-			ctx.bezierCurveTo(-p.w, p.h * 0.3, -p.w, -p.h * 0.3, 0, -p.h);
+			ctx.bezierCurveTo(p.w, -p.h * 0.25, p.w * 0.9, p.h * 0.35, 0, p.h);
+			ctx.bezierCurveTo(-p.w * 0.9, p.h * 0.35, -p.w, -p.h * 0.25, 0, -p.h);
 			ctx.closePath();
 			ctx.fill();
-			// nervadura principal
-			ctx.strokeStyle = hexToRgba('#000000', a * 0.14);
+
+			// borde más intenso
+			ctx.strokeStyle = hexToRgba(PETAL_EDGE, a * 0.35);
 			ctx.lineWidth = Math.max(0.5, Math.min(p.w, p.h) * 0.12);
-			ctx.beginPath();
-			ctx.moveTo(0, -p.h * 0.95);
-			ctx.lineTo(0, p.h * 0.95);
 			ctx.stroke();
-			// venas secundarias (tres por lado)
-			ctx.strokeStyle = hexToRgba('#000000', a * 0.10);
-			ctx.lineWidth = Math.max(0.3, Math.min(p.w, p.h) * 0.06);
-			for (let k = -2; k <= 2; k++) {
-				if (k === 0) continue;
-				const t2 = k / 3;
-				const y2 = t2 * p.h * 0.85;
-				const dir2 = k < 0 ? -1 : 1;
-				ctx.beginPath();
-				ctx.moveTo(0, y2);
-				ctx.quadraticCurveTo(dir2 * p.w * 0.35, y2 + dir2 * p.h * 0.10, dir2 * p.w * 0.6, y2 + dir2 * p.h * 0.02);
-				ctx.stroke();
-			}
+
+			// brillo amarillento en la base
+			const rg = ctx.createRadialGradient(0, p.h * 0.7, 1, 0, p.h * 0.7, p.h * 0.7);
+			rg.addColorStop(0, hexToRgba(PETAL_BASE, a * 0.25));
+			rg.addColorStop(1, hexToRgba(PETAL_BASE, 0));
+			ctx.fillStyle = rg;
+			ctx.beginPath();
+			ctx.moveTo(0, -p.h);
+			ctx.bezierCurveTo(p.w, -p.h * 0.25, p.w * 0.9, p.h * 0.35, 0, p.h);
+			ctx.bezierCurveTo(-p.w * 0.9, p.h * 0.35, -p.w, -p.h * 0.25, 0, -p.h);
+			ctx.closePath();
+			ctx.fill();
 			ctx.restore();
 		}
 
@@ -189,35 +196,30 @@
 			ctx.translate(b.x, b.y);
 			ctx.rotate(b.angle);
 			const lg2 = ctx.createLinearGradient(0, -b.h, 0, b.h);
-			lg2.addColorStop(0, hexToRgba(GOLD, a));
-			lg2.addColorStop(1, hexToRgba(GOLD, a * 0.6));
+			lg2.addColorStop(0, hexToRgba(PETAL1, a));
+			lg2.addColorStop(1, hexToRgba(PETAL2, a * 0.7));
 			ctx.fillStyle = lg2;
 			ctx.beginPath();
 			ctx.moveTo(0, -b.h);
-			ctx.bezierCurveTo(b.w, -b.h * 0.3, b.w, b.h * 0.3, 0, b.h);
-			ctx.bezierCurveTo(-b.w, b.h * 0.3, -b.w, -b.h * 0.3, 0, -b.h);
+			ctx.bezierCurveTo(b.w, -b.h * 0.25, b.w * 0.9, b.h * 0.35, 0, b.h);
+			ctx.bezierCurveTo(-b.w * 0.9, b.h * 0.35, -b.w, -b.h * 0.25, 0, -b.h);
 			ctx.closePath();
 			ctx.fill();
-			// nervadura principal
-			ctx.strokeStyle = hexToRgba('#000000', a * 0.16);
+			// borde
+			ctx.strokeStyle = hexToRgba(PETAL_EDGE, a * 0.35);
 			ctx.lineWidth = Math.max(0.5, Math.min(b.w, b.h) * 0.12);
-			ctx.beginPath();
-			ctx.moveTo(0, -b.h * 0.95);
-			ctx.lineTo(0, b.h * 0.95);
 			ctx.stroke();
-			// venas secundarias
-			ctx.strokeStyle = hexToRgba('#000000', a * 0.10);
-			ctx.lineWidth = Math.max(0.3, Math.min(b.w, b.h) * 0.06);
-			for (let k = -2; k <= 2; k++) {
-				if (k === 0) continue;
-				const t2 = k / 3;
-				const y2 = t2 * b.h * 0.85;
-				const dir2 = k < 0 ? -1 : 1;
-				ctx.beginPath();
-				ctx.moveTo(0, y2);
-				ctx.quadraticCurveTo(dir2 * b.w * 0.35, y2 + dir2 * b.h * 0.10, dir2 * b.w * 0.6, y2 + dir2 * b.h * 0.02);
-				ctx.stroke();
-			}
+			// brillo de base
+			const rg2 = ctx.createRadialGradient(0, b.h * 0.7, 1, 0, b.h * 0.7, b.h * 0.7);
+			rg2.addColorStop(0, hexToRgba(PETAL_BASE, a * 0.25));
+			rg2.addColorStop(1, hexToRgba(PETAL_BASE, 0));
+			ctx.fillStyle = rg2;
+			ctx.beginPath();
+			ctx.moveTo(0, -b.h);
+			ctx.bezierCurveTo(b.w, -b.h * 0.25, b.w * 0.9, b.h * 0.35, 0, b.h);
+			ctx.bezierCurveTo(-b.w * 0.9, b.h * 0.35, -b.w, -b.h * 0.25, 0, -b.h);
+			ctx.closePath();
+			ctx.fill();
 			ctx.restore();
 		}
 
