@@ -59,7 +59,7 @@
 
 	function rand(min, max) { return Math.random() * (max - min) + min; }
 
-	// Partículas doradas (conteo fijo para consistencia)
+	// Partículas (hojas elípticas doradas) - conteo fijo para consistencia
 	const COUNT = 180;
 	const particles = Array.from({ length: COUNT }).map(() => ({
 		x: seeded() * width,
@@ -68,7 +68,11 @@
 		vx: sr(-20, 20),   // px/s
 		vy: sr(-16, 16),   // px/s
 		alpha: sr(0.4, 0.95),
-		blinkSpeed: sr(0.6, 1.6) // Hz
+		blinkSpeed: sr(0.6, 1.6), // Hz
+		w: sr(3.0, 6.0),         // ancho de la hoja
+		h: sr(1.6, 3.2),         // alto de la hoja
+		angle: sr(0, Math.PI * 2),
+		spin: sr(-0.6, 0.6)      // rotación rad/s
 	}));
 
 	// Chispazos al tocar/click: partículas efímeras con trazo
@@ -105,12 +109,16 @@
 		ctx.fillRect(0, 0, width, height);
 
 		// Partículas
-		ctx.globalCompositeOperation = 'lighter';
+		// En fondos claros, 'lighter' casi no se ve; cambiamos a 'source-over'
+		const bgRgb = hexToRgb(BG);
+		const bgLuma = bgRgb ? (0.2126 * bgRgb.r + 0.7152 * bgRgb.g + 0.0722 * bgRgb.b) / 255 : 0.1;
+		ctx.globalCompositeOperation = bgLuma > 0.7 ? 'source-over' : 'lighter';
 		for (let i = 0; i < particles.length; i++) {
 			const p = particles[i];
 			// movimiento
 			p.x += p.vx * dt;
 			p.y += p.vy * dt;
+			p.angle += p.spin * dt;
 
 			// envolver suavemente
 			if (p.x < -5) p.x = width + 5;
@@ -123,21 +131,25 @@
 			const pulse = 0.6 + 0.4 * Math.sin(t);
 			const a = Math.max(0.05, Math.min(1, p.alpha * pulse));
 
-			// render: círculo con leve halo
-			const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-			grad.addColorStop(0, `${hexToRgba(GOLD, a)}`);
-			grad.addColorStop(0.6, `${hexToRgba(GOLD, a * 0.35)}`);
-			grad.addColorStop(1, `${hexToRgba(GOLD, 0)}`);
-			ctx.fillStyle = grad;
+			// render: hoja elíptica dorada (con degradado lineal sutil)
+			ctx.save();
+			ctx.translate(p.x, p.y);
+			ctx.rotate(p.angle);
+			const lg = ctx.createLinearGradient(-p.w, -p.h, p.w, p.h);
+			lg.addColorStop(0, hexToRgba(GOLD, a * 0.85));
+			lg.addColorStop(1, hexToRgba(GOLD, a * 0.55));
+			ctx.fillStyle = lg;
 			ctx.beginPath();
-			ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+			ctx.ellipse(0, 0, p.w, p.h, 0, 0, Math.PI * 2);
 			ctx.fill();
-
-			// núcleo
-			ctx.fillStyle = `${hexToRgba('#ffffff', a * 0.8)}`;
+			// nervadura
+			ctx.strokeStyle = hexToRgba('#000000', a * 0.08);
+			ctx.lineWidth = Math.max(0.4, Math.min(p.w, p.h) * 0.12);
 			ctx.beginPath();
-			ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-			ctx.fill();
+			ctx.moveTo(-p.w * 0.7, 0);
+			ctx.lineTo(p.w * 0.7, 0);
+			ctx.stroke();
+			ctx.restore();
 		}
 
 		// Actualizar/dibujar chispas
@@ -185,6 +197,13 @@
 		const g = (bigint >> 8) & 255;
 		const b = bigint & 255;
 		return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+	}
+	function hexToRgb(hex) {
+		const h = hex.replace('#','');
+		const v = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+		if (!/^[0-9a-fA-F]{6}$/.test(v)) return null;
+		const n = parseInt(v, 16);
+		return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
 	}
 })();
 
