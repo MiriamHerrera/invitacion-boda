@@ -32,6 +32,12 @@
 	function sr(min, max) { return seeded() * (max - min) + min; }
 	const effect = (qs.get('effect') || 'petals').toLowerCase();
 	const IS_CONFETTI = effect === 'confetti';
+	// Control del destello: ?hl=0..1 (0 sin destello, 1 brillo completo)
+	const HL_SCALE = (() => {
+		const v = parseFloat(qs.get('hl') || '');
+		if (isNaN(v)) return 1;
+		return Math.max(0, Math.min(1, v));
+	})();
 
 	const canvas = document.getElementById('bg-canvas');
 	if (!canvas) return;
@@ -202,7 +208,7 @@
 				base.addColorStop(1.00, hexToRgba(col, p.alpha * 0.18));
 				const hg = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
 				const pos = 0.5 + Math.sin(ts * 0.004 + (p.phase || 0)) * 0.08; // movimiento del destello
-				const aHi = Math.min(0.45, 0.26 * p.alpha + 0.18); // highlight más brillante
+				const aHi = HL_SCALE * Math.min(0.45, 0.26 * p.alpha + 0.18); // escala de brillo
 				hg.addColorStop(0.0, 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.10), 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.03), `rgba(255,255,255,${aHi.toFixed(3)})`);
@@ -221,18 +227,42 @@
 				ctx.beginPath();
 				ctx.ellipse(0, 0, r, r, 0, 0, Math.PI * 2);
 				ctx.fill();
-				// (halo removido para evitar "anillo")
-
-				// Destello superpuesto
+				// sombreado por cara: un lado ligeramente más claro que el otro
+				// usamos la dirección de luz para orientar el degradado
 				ctx.save();
-				ctx.globalCompositeOperation = 'screen';
 				ctx.beginPath();
-				ctx.ellipse(0, 0, r * 0.80, r * 0.80, 0, 0, Math.PI * 2); // limitar highlight más al centro
+				ctx.ellipse(0, 0, r, r, 0, 0, Math.PI * 2);
 				ctx.clip();
-				ctx.fillStyle = hg;
+				const SIDE_SHADE = 0.18;
+				// oscurecer lado opuesto a la luz (multiply)
+				ctx.globalCompositeOperation = 'multiply';
+				const lgDark = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
+				lgDark.addColorStop(0.00, `rgba(0,0,0,${(SIDE_SHADE).toFixed(3)})`);
+				lgDark.addColorStop(0.50, `rgba(0,0,0,0.05)`);
+				lgDark.addColorStop(1.00, `rgba(0,0,0,0)`);
+				ctx.fillStyle = lgDark;
 				ctx.fillRect(-r, -r, r * 2, r * 2);
-
+				// aclarar lado hacia la luz (screen)
+				ctx.globalCompositeOperation = 'screen';
+				const lgLight = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
+				lgLight.addColorStop(0.00, `rgba(255,255,255,0)`);
+				lgLight.addColorStop(0.50, `rgba(255,255,255,0.06)`);
+				lgLight.addColorStop(1.00, `rgba(255,255,255,0.14)`);
+				ctx.fillStyle = lgLight;
+				ctx.fillRect(-r, -r, r * 2, r * 2);
 				ctx.restore();
+
+				// Destello superpuesto (opcional según HL_SCALE)
+				if (HL_SCALE > 0.001) {
+					ctx.save();
+					ctx.globalCompositeOperation = 'screen';
+					ctx.beginPath();
+					ctx.ellipse(0, 0, r * 0.80, r * 0.80, 0, 0, Math.PI * 2); // limitar highlight más al centro
+					ctx.clip();
+					ctx.fillStyle = hg;
+					ctx.fillRect(-r, -r, r * 2, r * 2);
+					ctx.restore();
+				}
 				ctx.restore();
 			} else {
 				// brillo/centelleo en pétalos
@@ -308,7 +338,7 @@
 				base.addColorStop(1.00, hexToRgba(col, a * 0.18));
 				const hg = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
 				const pos = 0.5 + Math.sin(ts * 0.004 + i) * 0.08;
-				const aHi = Math.min(0.45, 0.26 * a + 0.18);
+				const aHi = HL_SCALE * Math.min(0.45, 0.26 * a + 0.18);
 				hg.addColorStop(0.0, 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.10), 'rgba(255,255,255,0)');
 				hg.addColorStop(Math.max(0, pos - 0.03), `rgba(255,255,255,${aHi.toFixed(3)})`);
@@ -326,16 +356,38 @@
 				ctx.beginPath();
 				ctx.ellipse(0, 0, r, r, 0, 0, Math.PI * 2);
 				ctx.fill();
-
+				// sombreado por cara (burst): un lado más claro que el otro
 				ctx.save();
-				ctx.globalCompositeOperation = 'screen';
 				ctx.beginPath();
-				ctx.ellipse(0, 0, r * 0.80, r * 0.80, 0, 0, Math.PI * 2); // limitar highlight más al centro
+				ctx.ellipse(0, 0, r, r, 0, 0, Math.PI * 2);
 				ctx.clip();
-				ctx.fillStyle = hg;
+				const SIDE_SHADE2 = 0.18;
+				ctx.globalCompositeOperation = 'multiply';
+				const lgDark2 = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
+				lgDark2.addColorStop(0.00, `rgba(0,0,0,${(SIDE_SHADE2).toFixed(3)})`);
+				lgDark2.addColorStop(0.50, `rgba(0,0,0,0.05)`);
+				lgDark2.addColorStop(1.00, `rgba(0,0,0,0)`);
+				ctx.fillStyle = lgDark2;
 				ctx.fillRect(-r, -r, r * 2, r * 2);
-
+				ctx.globalCompositeOperation = 'screen';
+				const lgLight2 = ctx.createLinearGradient(-lx * r, -ly * r, lx * r, ly * r);
+				lgLight2.addColorStop(0.00, `rgba(255,255,255,0)`);
+				lgLight2.addColorStop(0.50, `rgba(255,255,255,0.06)`);
+				lgLight2.addColorStop(1.00, `rgba(255,255,255,0.14)`);
+				ctx.fillStyle = lgLight2;
+				ctx.fillRect(-r, -r, r * 2, r * 2);
 				ctx.restore();
+
+				if (HL_SCALE > 0.001) {
+					ctx.save();
+					ctx.globalCompositeOperation = 'screen';
+					ctx.beginPath();
+					ctx.ellipse(0, 0, r * 0.80, r * 0.80, 0, 0, Math.PI * 2); // limitar highlight más al centro
+					ctx.clip();
+					ctx.fillStyle = hg;
+					ctx.fillRect(-r, -r, r * 2, r * 2);
+					ctx.restore();
+				}
 			} else {
 				const lg2 = ctx.createLinearGradient(0, -b.h, 0, b.h);
 				lg2.addColorStop(0, hexToRgba(PETAL1, a));

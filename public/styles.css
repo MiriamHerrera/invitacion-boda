@@ -86,14 +86,14 @@ main {
 .card {
 	/* background: var(--card); */
 	/* background: #1b263566; */
-	background: #00172d;
+	background: #a48729e0; /* dorado congruente */
 	border: 1px solid rgba(255,255,255,.10);
 	border-radius: 20px;
 	padding: 24px;
 	margin: 20px 0;
 	/* box-shadow: 0 8px 30px rgba(0,0,0,.25); */
 	box-shadow: 0 8px 30px rgb(119 119 119 / 22%);
-	color: white; /* texto claro sobre tarjeta oscura */
+	color: #223145; /* mejor contraste sobre dorado */
 }
 
 h2, h3, label {
@@ -487,6 +487,17 @@ body.intro-open footer {
 	pointer-events: none;
 	z-index: 1;
 }
+/* Aro interno sutil en el sobre (mismo tono dorado, no afecta tarjeta) */
+.intro-envelope .wrapper::before {
+	content: '';
+	position: absolute;
+	inset: 8% 10%;
+	border: 2px solid rgba(230,200,115,.55);
+	border-radius: 14px;
+	box-shadow: 0 0 14px rgba(230,200,115,.25), inset 0 0 8px rgba(230,200,115,.18);
+	pointer-events: none;
+	z-index: 1;
+}
 /* Marco superior con el mismo ancho del sobre */
 .intro-envelope .wrapper .frame-top {
 	position: absolute;
@@ -524,13 +535,13 @@ body.intro-open footer {
 }
 .intro-envelope .lid.one {
 	/* border-top: calc(var(--h) / 2) solid #bd9157;  */
-	border-top: calc(var(--h) / 2) solid #c9b8a1;
+	border-top: calc(var(--h) / 2) solid #b8a979; /* dorado claro */
 	transform: rotateX(0deg);
 	z-index: 3;
 	transition-delay: .75s;
 }
 .intro-envelope .lid.two {
-	border-top: calc(var(--h) / 2) solid #1a2636; /* azul frontal */
+	border-top: calc(var(--h) / 2) solid #8f8156; /* dorado base */
 	transform: rotateX(90deg);
 	z-index: 1;
 	transition-delay: .5s;
