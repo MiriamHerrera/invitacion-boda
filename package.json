@@ -18,11 +18,10 @@
   "author": "Rubén & Miriam",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^4.19.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
 }
-
-

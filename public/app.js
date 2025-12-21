@@ -27,6 +27,7 @@
 	const uberLink = document.getElementById('uberLink');
 	const didiLink = document.getElementById('didiLink');
 	const countdownEl = document.getElementById('countdown');
+	const rsvpStatusRadios = () => Array.from(document.querySelectorAll('input[name="status"]'));
 
 	let currentGuest = null;
 	let currentCode = '';
@@ -34,6 +35,16 @@
 	function setLoading(isLoading) {
 		submitBtn.disabled = isLoading;
 		[inviteCodeInput, loadGuestBtn].forEach((el) => el && (el.disabled = isLoading));
+	}
+
+	function updateAttendeesVisibilityByStatus() {
+		const selected = rsvpStatusRadios().find(r => r.checked)?.value || 'yes';
+		if (selected === 'yes') {
+			attendeesField.style.display = '';
+		} else {
+			attendeesField.style.display = 'none';
+			attendeesSelect.value = '0';
+		}
 	}
 
 	function showError(msg) {
@@ -151,9 +162,11 @@
 			showError('Primero introduce tu código y cárgalo.');
 			return;
 		}
+		const status = rsvpStatusRadios().find(r => r.checked)?.value || 'yes';
 		const body = {
 			code: currentCode,
-			attendees: Number(attendeesSelect.value),
+			status,
+			attendees: status === 'yes' ? Number(attendeesSelect.value) : 0,
 			message: messageInput.value.trim(),
 			contact: contactInput.value.trim()
 		};
@@ -177,6 +190,77 @@
 
 	// Init
 	(function init() {
+		// Carga de evento por ?e= (requiere code para validar acceso)
+		(async () => {
+			try {
+				const qs2 = new URLSearchParams(window.location.search);
+				const eid = (qs2.get('e') || 'default').trim();
+				const codeParam = (qs2.get('i') || '').trim();
+				if (!codeParam) return; // esperaremos a que el usuario cargue su código
+				const res = await fetch(`/api/event?id=${encodeURIComponent(eid)}&code=${encodeURIComponent(codeParam)}`);
+				if (res.ok) {
+					const ev = await res.json();
+					// aplicar datos al DOM
+					const details = document.querySelector('.details.card');
+					if (details) {
+						const venueEl = details.querySelector('.venue');
+						const addrEl = details.querySelector('.address');
+						const timeEl = details.querySelector('.datetime time');
+						if (venueEl) venueEl.textContent = ev.title ? String(ev.venue || '').trim() : (ev.venue || 'Evento');
+						if (addrEl) addrEl.textContent = String(ev.address || '').trim();
+						if (timeEl && ev.datetimeISO) {
+							timeEl.setAttribute('datetime', String(ev.datetimeISO));
+							const dt = new Date(ev.datetimeISO);
+							timeEl.textContent = `${dt.toLocaleDateString()} · ${dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+						}
+						if (Number.isFinite(ev.lat) && Number.isFinite(ev.lng)) {
+							details.setAttribute('data-lat', String(ev.lat));
+							details.setAttribute('data-lng', String(ev.lng));
+						}
+						// actualizar mapa
+						const iframe = details.querySelector('iframe');
+						const q = encodeURIComponent(`${ev.venue || ''}, ${ev.address || ''}`.trim());
+						if (iframe) iframe.src = `https://www.google.com/maps?q=${q}&z=16&output=embed`;
+					}
+				}
+			} catch {}
+		})();
+		// Cuando el usuario carga su código, reintenta cargar el evento si no había code en la URL
+		const prevHandleLoad = handleLoadGuest;
+		handleLoadGuest = async (code) => {
+			await prevHandleLoad(code);
+			try {
+				const qs2 = new URLSearchParams(window.location.search);
+				const eid = (qs2.get('e') || 'default').trim();
+				const res = await fetch(`/api/event?id=${encodeURIComponent(eid)}&code=${encodeURIComponent(code)}`);
+				if (res.ok) {
+					const ev = await res.json();
+					const details = document.querySelector('.details.card');
+					if (details) {
+						const venueEl = details.querySelector('.venue');
+						const addrEl = details.querySelector('.address');
+						const timeEl = details.querySelector('.datetime time');
+						if (venueEl) venueEl.textContent = ev.title ? String(ev.venue || '').trim() : (ev.venue || 'Evento');
+						if (addrEl) addrEl.textContent = String(ev.address || '').trim();
+						if (timeEl && ev.datetimeISO) {
+							timeEl.setAttribute('datetime', String(ev.datetimeISO));
+							const dt = new Date(ev.datetimeISO);
+							timeEl.textContent = `${dt.toLocaleDateString()} · ${dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+						}
+						if (Number.isFinite(ev.lat) && Number.isFinite(ev.lng)) {
+							details.setAttribute('data-lat', String(ev.lat));
+							details.setAttribute('data-lng', String(ev.lng));
+						}
+						const iframe = details.querySelector('iframe');
+						const q = encodeURIComponent(`${ev.venue || ''}, ${ev.address || ''}`.trim());
+						if (iframe) iframe.src = `https://www.google.com/maps?q=${q}&z=16&output=embed`;
+					}
+				}
+			} catch {}
+		};
+		// listeners de estado
+		rsvpStatusRadios().forEach(r => r.addEventListener('change', updateAttendeesVisibilityByStatus));
+		updateAttendeesVisibilityByStatus();
 		// Prefill ride links using venue/address from page
 		const venue = (document.querySelector('.details .venue')?.textContent || 'ARCANGELES EVENTOS').trim();
 		const addr = (document.querySelector('.details .address')?.textContent || '').trim();

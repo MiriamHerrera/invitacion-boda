@@ -8,12 +8,36 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/styles.css">
+	<style>
+		/* Mini estilos para tabs en admin */
+		.admin-tabs { display: flex; gap: 8px; margin: 16px 0; flex-wrap: wrap; }
+		.admin-tabs .tab-btn {
+			padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,.08);
+			background: var(--primary); color:#223145; font-weight:600; cursor:pointer;
+		}
+		.admin-tabs .tab-btn.secondary { background: transparent; color: var(--ink); border-color: rgba(0,0,0,.12); }
+		.admin-section { display: none; }
+		.admin-section.active { display: block; }
+		.grid-2 { display:grid; grid-template-columns: 1fr; gap:12px; }
+		@media (min-width: 760px){ .grid-2 { grid-template-columns: 1fr 1fr; } }
+		.field.inline-small { display:flex; gap:8px; align-items:center; }
+		.field.inline-small > * { flex: 1; }
+	</style>
 </head>
 <body>
 	<main style="max-width:720px;margin:24px auto;padding:0 16px;">
-		<h2 style="margin: 0 0 6px;">Resumen de confirmaciones</h2>
+		<h2 style="margin: 0 0 6px;">Panel de administración</h2>
 		<p class="muted" style="margin-top:0">Solo visible con clave.</p>
 
+		<div class="admin-tabs">
+			<button id="tabRsvp" class="tab-btn">RSVP</button>
+			<button id="tabDesign" class="tab-btn secondary">Diseño</button>
+			<button id="tabGuests" class="tab-btn secondary">Invitados</button>
+			<button id="tabEvents" class="tab-btn secondary">Eventos</button>
+		</div>
+
+		<!-- Sección RSVP -->
+		<section id="secRsvp" class="admin-section active">
 		<div class="card" style="margin-top:16px;">
 			<div class="field">
 				<label for="adminKey">Clave de administrador</label>
@@ -26,7 +50,7 @@
 
 			<div class="field" style="margin-top:18px;">
 				<label>Totales</label>
-				<div id="stats" class="inline" style="gap:20px;flex-wrap:wrap;">
+				<div id="stats" class="grid-2">
 					<div class="card" style="min-width:160px; margin:0;">
 						<div class="muted small">Respuestas recibidas</div>
 						<div id="rsvpCount" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;">—</div>
@@ -44,9 +68,192 @@
 			</div>
 			<p id="err" class="error" hidden></p>
 		</div>
+		</section>
+
+		<!-- Sección Diseño -->
+		<section id="secDesign" class="admin-section">
+			<div class="card" style="margin-top:16px;">
+				<h3 style="margin-top:0;">Diseño</h3>
+				<div class="field">
+					<label>Colores</label>
+					<div class="grid-2">
+						<div class="field inline-small"><span class="small muted" style="flex:0 0 110px;">Fondo (bg)</span><input id="cBg" type="color"><input id="cBgText" type="text" placeholder="#ffffff"></div>
+						<div class="field inline-small"><span class="small muted" style="flex:0 0 110px;">Card</span><input id="cCard" type="color"><input id="cCardText" type="text" placeholder="#efeee9"></div>
+						<div class="field inline-small"><span class="small muted" style="flex:0 0 110px;">Tinta (ink)</span><input id="cInk" type="color"><input id="cInkText" type="text" placeholder="#a48729"></div>
+						<div class="field inline-small"><span class="small muted" style="flex:0 0 110px;">Muted</span><input id="cMuted" type="color"><input id="cMutedText" type="text" placeholder="#6b6866"></div>
+						<div class="field inline-small"><span class="small muted" style="flex:0 0 110px;">Primario</span><input id="cPrimary" type="color"><input id="cPrimaryText" type="text" placeholder="#a48729"></div>
+						<div class="field inline-small"><span class="small muted" style="flex:0 0 110px;">Primario Ink</span><input id="cPrimaryInk" type="color"><input id="cPrimaryInkText" type="text" placeholder="#e6c873"></div>
+					</div>
+				</div>
+
+				<div class="grid-2">
+					<div class="field">
+						<label>Tipografías</label>
+						<input id="fontBody" type="text" placeholder="Font body (Google o sistema)">
+						<input id="fontHead" type="text" placeholder="Font headings (Google o sistema)">
+						<input id="fontBase" type="text" placeholder="Base size, ej. 17px">
+					</div>
+					<div class="field">
+						<label>Cards (fondo)</label>
+						<select id="cardMode">
+							<option value="color">Color</option>
+							<option value="image">Imagen</option>
+							<option value="pattern">Pattern</option>
+						</select>
+						<input id="cardColor" type="text" placeholder="Ej. #a48729e0 o rgba(...)">
+						<input id="cardImage" type="text" placeholder="/background-effect/fondo-textura.jpg">
+						<div class="inline">
+							<input id="cardSize" type="text" placeholder="cover | contain | 200px">
+							<input id="cardRepeat" type="text" placeholder="no-repeat | repeat">
+						</div>
+						<input id="cardPosition" type="text" placeholder="center | top left">
+					</div>
+				</div>
+
+				<div class="grid-2">
+					<div class="field">
+						<label>Efectos</label>
+						<select id="fxDefault">
+							<option value="petalos">Pétalos</option>
+							<option value="confetti">Confetti</option>
+							<option value="none">Ninguno</option>
+						</select>
+						<div class="field">
+							<label for="fxHl" class="small muted">Brillo (hl)</label>
+							<input id="fxHl" type="range" min="0" max="1" step="0.05">
+						</div>
+						<div class="inline">
+							<label><input id="fxAnim" type="checkbox"> Animación ON por defecto</label>
+						</div>
+						<div class="inline">
+							<label><input id="fxCardTex" type="checkbox"> Textura en cards activa</label>
+						</div>
+						<input id="fxTexSize" type="text" placeholder="200px">
+					</div>
+					<div class="field">
+						<label>&nbsp;</label>
+						<button id="previewDesign" class="btn secondary">Vista previa</button>
+						<button id="saveDesign" class="btn primary">Guardar</button>
+						<p id="designMsg" class="ok" hidden></p>
+						<p id="designErr" class="error" hidden></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Sección Invitados -->
+		<section id="secGuests" class="admin-section">
+			<div class="card" style="margin-top:16px;">
+				<h3 style="margin-top:0;">Alta/edición de invitados</h3>
+				<form id="guestForm" class="form" novalidate>
+					<div class="grid-2">
+						<div class="field">
+							<label for="gCode">Código</label>
+							<input id="gCode" type="text" placeholder="Ej: ruben-familia" required>
+						</div>
+						<div class="field">
+							<label for="gName">Nombre a mostrar</label>
+							<input id="gName" type="text" placeholder="Familia de Rubén" required>
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="field">
+							<label for="gMax">Máximo de invitados</label>
+							<input id="gMax" type="number" min="1" max="12" value="2">
+						</div>
+						<div class="field">
+							<label for="gTable">Mesa (opcional)</label>
+							<input id="gTable" type="number" min="0" placeholder="Ej: 12">
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="field">
+							<label for="gEvent">Evento (id)</label>
+							<input id="gEvent" type="text" placeholder="default">
+						</div>
+					</div>
+					<div class="field">
+						<label for="gInvitees">Lista dirigida (opcional, separada por comas)</label>
+						<input id="gInvitees" type="text" placeholder="Maria de la luz, Denisse">
+					</div>
+					<div class="actions">
+						<button id="saveGuest" class="btn primary" type="submit">Guardar invitado</button>
+					</div>
+					<p id="guestMsg" class="ok" hidden></p>
+					<p id="guestErr" class="error" hidden></p>
+				</form>
+			</div>
+
+			<div class="card" style="margin-top:16px;">
+				<h3 style="margin-top:0;">Invitados existentes</h3>
+				<div id="guestsList" class="table-responsive">Cargando...</div>
+			</div>
+		</section>
+
+		<!-- Sección Eventos -->
+		<section id="secEvents" class="admin-section">
+			<div class="card" style="margin-top:16px;">
+				<h3 style="margin-top:0;">Alta/edición de eventos</h3>
+				<form id="eventForm" class="form" novalidate>
+					<div class="grid-2">
+						<div class="field">
+							<label for="evId">ID (slug)</label>
+							<input id="evId" type="text" placeholder="default" required>
+						</div>
+						<div class="field">
+							<label for="evTitle">Título</label>
+							<input id="evTitle" type="text" placeholder="Rubén & Miriam" required>
+						</div>
+					</div>
+					<div class="grid-2">
+						<div class="field">
+							<label for="evVenue">Lugar</label>
+							<input id="evVenue" type="text" placeholder="Salón / Iglesia">
+						</div>
+						<div class="field">
+							<label for="evDatetime">Fecha/Hora (ISO)</label>
+							<input id="evDatetime" type="datetime-local">
+						</div>
+					</div>
+					<div class="field">
+						<label for="evAddress">Dirección</label>
+						<input id="evAddress" type="text" placeholder="Calle y ciudad">
+					</div>
+					<div class="grid-2">
+						<div class="field">
+							<label for="evLat">Latitud</label>
+							<input id="evLat" type="number" step="any" placeholder="25.6552">
+						</div>
+						<div class="field">
+							<label for="evLng">Longitud</label>
+							<input id="evLng" type="number" step="any" placeholder="-100.2000">
+						</div>
+					</div>
+					<div class="field">
+						<label for="evCover">Cover (opcional)</label>
+						<input id="evCover" type="text" placeholder="/background-effect/cover.jpg">
+					</div>
+					<div class="actions">
+						<button id="saveEvent" class="btn primary" type="submit">Guardar evento</button>
+					</div>
+					<p id="eventMsg" class="ok" hidden></p>
+					<p id="eventErr" class="error" hidden></p>
+				</form>
+			</div>
+			<div class="card" style="margin-top:16px;">
+				<h3 style="margin-top:0;">Eventos existentes</h3>
+				<div id="eventsList" class="table-responsive">Cargando...</div>
+			</div>
+		</section>
 	</main>
 
 	<script src="/admin.js" defer></script>
+	<script src="/admin-design.js" defer></script>
+	<script src="/admin-guests.js" defer></script>
+	<script src="/admin-events.js" defer></script>
+	<script>
+		window.addEventListener('load', () => document.body.classList.add('loaded'));
+	</script>
 </body>
 </html>
 

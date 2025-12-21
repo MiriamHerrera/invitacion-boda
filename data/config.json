@@ -1,0 +1,36 @@
+{
+  "theme": {
+    "colors": {
+      "bg": "#ffffff",
+      "card": "#efeee9",
+      "ink": "#bdaf7f",
+      "muted": "#6b6866",
+      "primary": "#ece3c5",
+      "primaryInk": "#e6c873"
+    },
+    "typography": {
+      "fontFamilyBody": "Cormorant Garamond, Georgia, 'Times New Roman', serif",
+      "fontFamilyHeadings": "Cormorant Garamond, Georgia, 'Times New Roman', serif",
+      "baseSize": "17px"
+    },
+    "cards": {
+      "background": {
+        "mode": "color",
+        "color": "#a48729e0",
+        "image": "",
+        "size": "cover",
+        "repeat": "no-repeat",
+        "position": "center"
+      },
+      "shadow": "0 8px 30px rgb(162 133 9 / 22%)",
+      "border": "1px solid rgba(255,255,255,.10)"
+    }
+  },
+  "effects": {
+    "defaultEffect": "none",
+    "hl": 1,
+    "animDefault": 1,
+    "cardTextureEnabled": true,
+    "textureSize": "200px"
+  }
+}

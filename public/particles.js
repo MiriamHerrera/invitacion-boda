@@ -32,6 +32,7 @@
 	function sr(min, max) { return seeded() * (max - min) + min; }
 	const effect = (qs.get('effect') || 'petals').toLowerCase();
 	const IS_CONFETTI = effect === 'confetti';
+	const IS_ROSE = effect === 'rose' || effect === 'petalos' || effect === 'petals-rose';
 	// Control del destello: ?hl=0..1 (0 sin destello, 1 brillo completo)
 	const HL_SCALE = (() => {
 		const v = parseFloat(qs.get('hl') || '');
@@ -39,11 +40,18 @@
 		return Math.max(0, Math.min(1, v));
 	})();
 
+	// Modo pétalos tipo video (DOM + CSS). Saltamos canvas.
+	if (IS_ROSE) {
+		const roseCtx = setupRosePetals();
+		setupRoseBursts(roseCtx);
+		return;
+	}
+
 	const canvas = document.getElementById('bg-canvas');
 	if (!canvas) return;
 	const ctx = canvas.getContext('2d');
 
-	let dpr = Math.min(window.devicePixelRatio || 1, 2);
+	let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 	let width = 0;
 	let height = 0;
 
@@ -105,7 +113,7 @@
 			}));
 		} else {
 			// Pétalos
-			const COUNT = 50;
+			const COUNT = 36;
 			particles = Array.from({ length: COUNT }).map(() => ({
 				x: seeded() * width,
 				y: seeded() * height,
@@ -436,6 +444,136 @@
 		if (!/^[0-9a-fA-F]{6}$/.test(v)) return null;
 		const n = parseInt(v, 16);
 		return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+	}
+
+	// ========= Pétalos estilo video con DOM/CSS =========
+	function setupRosePetals() {
+		// evita duplicados
+		if (document.querySelector('.rose-petals')) return;
+		// dirección del viento (?wind=left|right|izquierda|derecha)
+		const windParam = (qs.get('wind') || '').toLowerCase();
+		const WIND_SIGN = /left|izq/.test(windParam) ? -1 : /left|der/.test(windParam) ? 1 : 1;
+		// contenedor
+		const wrap = document.createElement('div');
+		wrap.className = 'rose-petals';
+
+		// Usa sprites reales si están disponibles (1.png..8.png)
+		const ROSE_SOURCES = Array.from({ length: 8 }, (_, i) => `/assets/petalos/${i + 1}.png`);
+		spawnImagePetals(wrap, ROSE_SOURCES, WIND_SIGN);
+		document.body.appendChild(wrap);
+		return { wrap, sources: ROSE_SOURCES, windSign: WIND_SIGN };
+	}
+
+	function spawnCssPetals(wrap, windSign = 1) {
+		const count = 40;
+		for (let i = 0; i < count; i++) {
+			const petal = document.createElement('span');
+			petal.className = 'rose-petal';
+			assignPetalVars(petal, windSign);
+			wrap.appendChild(petal);
+		}
+	}
+
+	function spawnImagePetals(wrap, sources, windSign = 1) {
+		const count = 40;
+		for (let i = 0; i < count; i++) {
+			const petal = document.createElement('img');
+			petal.className = 'rose-petal-img';
+			// elige al azar entre las texturas disponibles
+			const s = sources[Math.floor(Math.random() * sources.length)] || sources[0];
+			petal.src = s;
+			// si falla la carga, cae a versión CSS para este elemento
+			petal.onerror = () => {
+				const fallback = document.createElement('span');
+				fallback.className = 'rose-petal';
+				assignPetalVars(fallback, windSign);
+				fallback.style.left = petal.style.left;
+				petal.replaceWith(fallback);
+			};
+			assignPetalVars(petal, windSign);
+			wrap.appendChild(petal);
+		}
+	}
+
+	function assignPetalVars(elem, windSign = 1) {
+		const size = (Math.random() * 14 + 10).toFixed(1) + 'px';
+		const dur = (Math.random() * 8 + 12).toFixed(1) + 's';
+		const delay = (-Math.random() * 20).toFixed(1) + 's';
+		const drift = (Math.random() * 36 + 14).toFixed(1) + 'px';
+		// viento: mover mayormente hacia un lado, con ligera variación
+		const dir = windSign; // -1 izquierda, 1 derecha
+		const variance = (Math.random() * 8 - 4); // +/-4vw para no ser idénticos
+		const dx = (dir * (22 + Math.random() * 26) + variance).toFixed(1) + 'vw';
+		// sesga el punto de inicio para que no salgan fuera de pantalla
+		const startMin = dir > 0 ? 0 : 20;
+		const startMax = dir > 0 ? 80 : 100;
+		const left = (startMin + Math.random() * (startMax - startMin)).toFixed(2) + '%';
+		elem.style.setProperty('--size', size);
+		elem.style.setProperty('--dur', dur);
+		elem.style.setProperty('--delay', delay);
+		elem.style.setProperty('--drift', drift);
+		elem.style.setProperty('--dx', dx);
+		elem.style.left = left;
+	}
+
+	// Bursts para modo ROSA (DOM)
+	function setupRoseBursts(ctx) {
+		const wrap = (ctx && ctx.wrap) || document.querySelector('.rose-petals');
+		const sources = (ctx && ctx.sources) || Array.from({ length: 8 }, (_, i) => `/assets/petalos/${i + 1}.png`);
+		if (!wrap) return;
+		window.addEventListener('pointerdown', (e) => {
+			spawnRoseBurst(wrap, e.clientX, e.clientY, sources);
+		}, { passive: true });
+	}
+	function spawnRoseBurst(wrap, x, y, sources) {
+		const N = 12 + Math.floor(Math.random() * 6);
+		for (let i = 0; i < N; i++) {
+			const useImage = Math.random() < 0.8 && Array.isArray(sources) && sources.length > 0;
+			const ang = Math.random() * Math.PI * 2;
+			const dist = 60 + Math.random() * 120;
+			const bx = Math.cos(ang) * dist;
+			const by = Math.sin(ang) * dist;
+			const size = (Math.random() * 10 + 12).toFixed(1) + 'px';
+			const durMs = (900 + Math.random() * 500) | 0;
+
+			let elem;
+			if (useImage) {
+				const img = document.createElement('img');
+				img.className = 'rose-petal-img rose-petal-burst';
+				const s = sources[Math.floor(Math.random() * sources.length)] || sources[0];
+				img.src = s;
+				img.decoding = 'async';
+				img.loading = 'eager';
+				// fallback a CSS si falla carga
+				img.onerror = () => {
+					const fallback = document.createElement('span');
+					fallback.className = 'rose-petal rose-petal-burst';
+					fallback.style.setProperty('--size', size);
+					fallback.style.left = (x - 8) + 'px';
+					fallback.style.top = (y - 8) + 'px';
+					fallback.style.setProperty('--bx', bx.toFixed(1) + 'px');
+					fallback.style.setProperty('--by', by.toFixed(1) + 'px');
+					fallback.style.setProperty('--bdur', durMs + 'ms');
+					wrap.appendChild(fallback);
+					fallback.addEventListener('animationend', () => fallback.remove(), { once: true });
+					img.remove();
+				};
+				elem = img;
+			} else {
+				const span = document.createElement('span');
+				span.className = 'rose-petal rose-petal-burst';
+				elem = span;
+			}
+
+			elem.style.setProperty('--size', size);
+			elem.style.left = (x - 8) + 'px';
+			elem.style.top = (y - 8) + 'px';
+			elem.style.setProperty('--bx', bx.toFixed(1) + 'px');
+			elem.style.setProperty('--by', by.toFixed(1) + 'px');
+			elem.style.setProperty('--bdur', durMs + 'ms');
+			wrap.appendChild(elem);
+			elem.addEventListener('animationend', () => elem.remove(), { once: true });
+		}
 	}
 })();
 

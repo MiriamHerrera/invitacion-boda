@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Acceso · Admin</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+	<main style="max-width:520px;margin:24px auto;padding:0 16px;">
+		<h2 style="margin: 0 0 6px;">Acceso administrador</h2>
+		<p class="muted" style="margin-top:0">Introduce tu contraseña de admin.</p>
+		<div class="card" style="margin-top:16px;">
+			<form id="loginForm" class="form">
+				<div class="field">
+					<label for="password">Contraseña</label>
+					<input id="password" type="password" autocomplete="current-password" placeholder="Tu contraseña de admin">
+				</div>
+				<div class="actions">
+					<button class="btn primary" type="submit">Entrar</button>
+				</div>
+				<p id="loginErr" class="error" hidden></p>
+			</form>
+		</div>
+	</main>
+	<script src="/admin-login.js" defer></script>
+	<script>
+		// mejora de UX: enter-submit en input
+		document.addEventListener('DOMContentLoaded', () => {
+			const pwd = document.getElementById('password');
+			if (pwd) pwd.focus();
+		});
+		window.addEventListener('load', () => document.body.classList.add('loaded'));
+	</script>
+</body>
+</html>
+
+

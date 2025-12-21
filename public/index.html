@@ -146,6 +146,14 @@
 				<p class="help muted">O usa un enlace con ?i=tu-codigo</p>
 			</div>
 			<form id="rsvpForm" class="form" novalidate>
+				<div class="field">
+					<label>¿Asistirás?</label>
+					<div class="inline" role="radiogroup" aria-label="Estado de asistencia">
+						<label><input type="radio" name="status" value="yes" checked> Asistiré</label>
+						<label><input type="radio" name="status" value="no"> No podré</label>
+						<label><input type="radio" name="status" value="maybe"> Tal vez</label>
+					</div>
+				</div>
 				<div class="row">
 					<div class="field">
 						<label>Invitado</label>
@@ -207,6 +215,7 @@
 		<p>Rubén & Miriam</p>
 	</footer>
 
+	<script src="/versions.js" defer></script>
 	<script src="/particles.js" defer></script>
 	<script src="/intro.js" defer></script>
 	<script src="/app.js" defer></script>
