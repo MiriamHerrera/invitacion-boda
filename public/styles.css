@@ -8,6 +8,7 @@
 	--primary: #a48729; /* Dorado para acentos/botones */
 	--primary-ink: #a48729; /* Dorado claro para títulos */
 	--ring: rgba(212, 175, 55, 0.35); /* Halo dorado */
+	--sparkle-color: #e7b100;
 }
 
 * { box-sizing: border-box; }
