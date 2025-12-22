@@ -418,6 +418,24 @@ body.loaded { opacity: 1; transform: none; }
 	flex-wrap: wrap;
 }
 
+/* Grid responsive para CTAs del mapa/traslados */
+.details .cta-grid {
+	margin-top: 10px;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 8px;
+}
+.details .cta-grid .btn {
+	width: 100%;
+	text-align: center;
+}
+@media (min-width: 420px) {
+	.details .cta-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 800px) {
+	.details .cta-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* Countdown */
 .countdown-timer {
 	font-variant-numeric: tabular-nums;
