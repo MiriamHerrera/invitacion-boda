@@ -447,11 +447,11 @@
 			);
 			// más brillo cerca de la parte alta de la columna
 			const topFactor = Math.max(0, 1 - Math.max(0, p.y) / Math.max(1, endY));
-			let a = Math.max(0.18, Math.min(1,
+			let a = Math.max(0.24, Math.min(1,
 				p.alpha
 				* ff
-				* (0.85 + 0.15 * topFactor)
-				* (0.75 + 0.25 * bead)
+				* (0.90 + 0.10 * topFactor)
+				* (0.80 + 0.20 * bead)
 			));
 
 			// Posición horizontal actual de su columna (carrusel hacia afuera)
@@ -468,13 +468,13 @@
 				const beadRadius = p.r * 1.8; // un poco más grande
 				const outerR = beadRadius * (PERF_MODE ? 2.0 : 2.4); // halo más estrecho en perf
 				const grad = ctx.createRadialGradient(rx, p.y, 0, rx, p.y, outerR);
-				grad.addColorStop(0, rgbaStringWithMultiplier(base, a * 0.92));
-				grad.addColorStop(0.24, rgbaStringWithMultiplier(base, a * 0.68));
-				grad.addColorStop(0.55, rgbaStringWithMultiplier(base, a * 0.36));
+				grad.addColorStop(0, rgbaStringWithMultiplier(base, a * 1.00));
+				grad.addColorStop(0.24, rgbaStringWithMultiplier(base, a * 0.80));
+				grad.addColorStop(0.55, rgbaStringWithMultiplier(base, a * 0.45));
 				grad.addColorStop(1, rgbaStringWithMultiplier(base, 0));
 				ctx.fillStyle = grad;
 				// leve blur por sombra para reforzar el halo (barato y efectivo)
-				ctx.shadowColor = rgbaStringWithMultiplier(base, a * 0.28);
+				ctx.shadowColor = rgbaStringWithMultiplier(base, a * 0.34);
 				ctx.shadowBlur = PERF_MODE ? 0 : Math.max(1, beadRadius * 0.4);
 				ctx.beginPath();
 				ctx.arc(rx, p.y, beadRadius, 0, Math.PI * 2);
@@ -482,7 +482,7 @@
 				ctx.shadowBlur = 0;
 
 				// núcleo
-				ctx.fillStyle = `${hexToRgba('#ffffff', a * 0.7)}`;
+				ctx.fillStyle = `${hexToRgba('#ffffff', a * 0.85)}`;
 				ctx.beginPath();
 				ctx.arc(rx, p.y, Math.max(0.4, p.r * 0.4), 0, Math.PI * 2);
 				ctx.fill();
