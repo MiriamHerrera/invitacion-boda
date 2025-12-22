@@ -46,68 +46,6 @@ header, main, footer {
 	z-index: 1;
 }
 
-/* ===== Fondo por CSS: líneas verticales con brillo dorado ===== */
-.bg-lines {
-	position: fixed;
-	inset: 0;
-	width: 100vw;
-	margin: 0 auto;
-	z-index: 0;
-	pointer-events: none;
-}
-.bg-lines .line {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 1px;
-	height: 100%;
-	background: transparent; /* ocultar línea fija */
-	overflow: hidden;
-}
-.bg-lines .line::after,
-.bg-lines .line::before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: -50%;
-	width: 100%;
-	height: 20vh;
-	background: linear-gradient(to bottom, rgba(212,175,55,0) 0%, rgba(230,200,115,0.9) 75%, rgba(230,200,115,1) 100%);
-	animation: bg-run 4.8s 0s infinite;
-	animation-fill-mode: forwards;
-	animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-}
-.bg-lines .line::before { animation-delay: 2.4s; }
-
-/* Distribución de 9 líneas en el ancho */
-.bg-lines .line:nth-child(1) { margin-left: -55%; }
-.bg-lines .line:nth-child(2) { margin-left: -40%; }
-.bg-lines .line:nth-child(3) { margin-left: -25%; }
-.bg-lines .line:nth-child(4) { margin-left: -10%; }
-.bg-lines .line:nth-child(5) { margin-left: 0%; }
-.bg-lines .line:nth-child(6) { margin-left: 10%; }
-.bg-lines .line:nth-child(7) { margin-left: 25%; }
-.bg-lines .line:nth-child(8) { margin-left: 40%; }
-.bg-lines .line:nth-child(9) { margin-left: 55%; }
-
-/* Diferentes delays para continuidad */
-.bg-lines .line:nth-child(1)::after { animation-delay: .2s; }
-.bg-lines .line:nth-child(2)::after { animation-delay: .8s; }
-.bg-lines .line:nth-child(3)::after { animation-delay: 1.4s; }
-.bg-lines .line:nth-child(4)::after { animation-delay: 0s; }
-.bg-lines .line:nth-child(5)::after { animation-delay: .5s; }
-.bg-lines .line:nth-child(6)::after { animation-delay: 1.2s; }
-.bg-lines .line:nth-child(7)::after { animation-delay: 1.8s; }
-.bg-lines .line:nth-child(8)::after { animation-delay: .9s; }
-.bg-lines .line:nth-child(9)::after { animation-delay: 1.6s; }
-@keyframes bg-run {
-	0% { top: -50%; }
-	100% { top: 110%; }
-}
-
-/* Oculta el canvas si usamos el fondo CSS */
-#bg-canvas { display: none; }
-
 .hero {
 	display: grid;
 	place-items: center;
