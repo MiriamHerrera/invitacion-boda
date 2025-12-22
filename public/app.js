@@ -31,6 +31,43 @@
 	let currentGuest = null;
 	let currentCode = '';
 
+	// Simple gate: require passphrase before viewing invitation
+	const PASS_KEY = 'INVITACION_PASS_OK';
+	const REQUIRED_PASS = 'RubenYMiriam';
+	function createPassOverlay() {
+		const wrap = document.createElement('div');
+		wrap.className = 'pass-overlay';
+		wrap.innerHTML = `
+			<div class="pass-card">
+				<h3>Acceso</h3>
+				<p class="muted small">Introduce la frase para ver la invitación</p>
+				<div class="field">
+					<input type="password" id="passphraseInput" placeholder="Frase de acceso" autocomplete="off" />
+				</div>
+				<div class="actions">
+					<button class="btn primary" id="passOkBtn">Entrar</button>
+				</div>
+				<p class="error" id="passErr" hidden>Frase incorrecta</p>
+			</div>
+		`;
+		document.body.appendChild(wrap);
+		const inp = wrap.querySelector('#passphraseInput');
+		const btn = wrap.querySelector('#passOkBtn');
+		const err = wrap.querySelector('#passErr');
+		function submit() {
+			const v = (inp.value || '').trim();
+			if (v === REQUIRED_PASS) {
+				sessionStorage.setItem(PASS_KEY, '1');
+				wrap.remove();
+			} else {
+				err.hidden = false;
+			}
+		}
+		btn.addEventListener('click', submit);
+		inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') submit(); });
+		setTimeout(() => inp.focus(), 0);
+	}
+
 	function setLoading(isLoading) {
 		submitBtn.disabled = isLoading;
 		[inviteCodeInput, loadGuestBtn].forEach((el) => el && (el.disabled = isLoading));
@@ -92,6 +129,9 @@
 		guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
 		greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
 		updateMaxGuests(guest.maxGuests);
+		// Mostrar detalles del evento cuando se valida el código
+		const detailsSec = document.querySelector('.details');
+		if (detailsSec) detailsSec.hidden = false;
 		// Mostrar personas dirigidas si existen
 		if (Array.isArray(guest.invitees) && guest.invitees.length > 0) {
 			inviteesWrap.style.display = '';
@@ -177,6 +217,13 @@
 
 	// Init
 	(function init() {
+		// Gate: ocultar detalles hasta tener código válido
+		const detailsSec = document.querySelector('.details');
+		if (detailsSec) detailsSec.hidden = true;
+		// Gate: solicitar frase de acceso si no ha sido validada
+		if (sessionStorage.getItem(PASS_KEY) !== '1') {
+			createPassOverlay();
+		}
 		// Prefill ride links using venue/address from page
 		const venue = (document.querySelector('.details .venue')?.textContent || 'ARCANGELES EVENTOS').trim();
 		const addr = (document.querySelector('.details .address')?.textContent || '').trim();
