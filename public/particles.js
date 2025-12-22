@@ -463,6 +463,45 @@
 				ctx.beginPath();
 				ctx.arc(rx, p.y, Math.max(0.35, p.r * 0.55), 0, Math.PI * 2);
 				ctx.fill();
+			} else if (p.hue === 'orange') {
+				// Render tipo destello de click (cruz) para los naranja
+				const crossLen = Math.max(1.6, p.r * 3.0 * a);
+				if (crossLen > 0.05) {
+					ctx.save();
+					ctx.translate(rx, p.y);
+					ctx.lineCap = 'round';
+					// halo suave de la cruz
+					ctx.strokeStyle = rgbaStringWithMultiplier(ORANGE, a * 0.32);
+					ctx.lineWidth = Math.max(0.6, 1.1 * a);
+					// horizontal
+					ctx.beginPath();
+					ctx.moveTo(-crossLen, 0);
+					ctx.lineTo(crossLen, 0);
+					ctx.stroke();
+					// vertical
+					ctx.beginPath();
+					ctx.moveTo(0, -crossLen);
+					ctx.lineTo(0, crossLen);
+					ctx.stroke();
+					// núcleo más brillante y corto
+					ctx.strokeStyle = rgbaStringWithMultiplier(ORANGE, Math.min(1, a * 0.7));
+					ctx.lineWidth = Math.max(0.5, 0.9 * a);
+					const core = crossLen * 0.7;
+					ctx.beginPath();
+					ctx.moveTo(-core, 0);
+					ctx.lineTo(core, 0);
+					ctx.stroke();
+					ctx.beginPath();
+					ctx.moveTo(0, -core);
+					ctx.lineTo(0, core);
+					ctx.stroke();
+					ctx.restore();
+					// pequeño punto central
+					ctx.fillStyle = `${hexToRgba('#ffffff', a * 0.5)}`;
+					ctx.beginPath();
+					ctx.arc(rx, p.y, Math.max(0.32, p.r * 0.35), 0, Math.PI * 2);
+					ctx.fill();
+				}
 			} else {
 				const base = p.hue === 'orange' ? ORANGE : SPARKLE_COLOR;
 				const beadRadius = p.r * 1.8; // un poco más grande
