@@ -489,6 +489,12 @@ body.intro-open footer {
 	/* filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.788)); */
 	filter: drop-shadow(0 1px 10px rgba(153, 146, 113, 9));
 }
+/* Ajuste específico para pantallas ~375x667 (iPhone 6/7/8) */
+@media (max-width: 375px) and (max-height: 667px) {
+	.intro-envelope .wrapper {
+		--h: calc(var(--w) * 0.60);
+	}
+}
 .intro-envelope .wrapper::after {
 	content: '';
 	position: absolute;
