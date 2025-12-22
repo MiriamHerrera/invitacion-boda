@@ -1,21 +1,21 @@
 :root {
 	/* --bg: #223145; Fondo solicitado */
-	--bg: #ffffff; /* Fondo solicitado */
-	--card: #eeeeee; /* Panel ligeramente más oscuro que el fondo */
+	--bg: #020b1dfd; /* Fondo solicitado */
+	--card: #7b7b7b00; /* Panel ligeramente más oscuro que el fondo */
 	--ink: #a48729; /* Dorado para texto */
 	/*--muted: #b79b44;  Dorado más suave para textos secundarios */
 	--muted: gray;
-	--primary: #a48729; /* Dorado para acentos/botones */
+	--primary: #b2a978; /* Dorado para acentos/botones */
 	--primary-ink: #a48729; /* Dorado claro para títulos */
 	--ring: rgba(212, 175, 55, 0.35); /* Halo dorado */
-	--sparkle-color: #e7b100;
+	--sparkle-color: rgb(163, 125, 0);
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
 	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-	color: #363636;
+	color: #ffffff;
 	background:
 		radial-gradient(1200px 600px at 100% -10%, rgba(212,175,55,0.10), transparent 40%),
 		radial-gradient(900px 500px at -10% 0%, rgba(255,255,255,0.05), transparent 45%),
@@ -430,7 +430,7 @@ body.loaded { opacity: 1; transform: none; }
 	position: fixed;
 	inset: 0;
 	z-index: 20;
-	background: transparent; /* usa el mismo fondo (canvas/body) */
+	background: #ffffff; /* fondo blanco detrás del sobre */
 	display: grid;
 	place-items: center;
 	cursor: pointer;
@@ -486,7 +486,7 @@ body.intro-open footer {
 /* Marco superior con el mismo ancho del sobre */
 .intro-envelope .wrapper .frame-top {
 	position: absolute;
-	top: calc(var(--h) * -1.75); /* ligeramente por encima del borde */
+	top: calc(var(--h) * -1.80); /* ligeramente por encima del borde */
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
@@ -552,7 +552,8 @@ body.intro-open footer {
 	top: 0;
 	width: 80%;
 	height: 80%;
-	background-color: #faf3e5;
+	background-color: #ffffff; /* carta blanca */
+	color: #222222;
 	border-radius: 12px;
 	z-index: 2;
 	display: grid;
@@ -575,11 +576,19 @@ body.intro-open footer {
 	filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
 }
 /* Esquinas */
-.intro-envelope .env-decor .corner.tl { top: 0; left: 0; width: 30%; height: auto; }
-.intro-envelope .env-decor .corner.tr { top: 0; right: 0; width: 30%; height: auto; }
-.intro-envelope .env-decor .corner.bl { bottom: 0; left: 0; width: 30%; height: auto; }
-.intro-envelope .env-decor .corner.br { bottom: 0; right: 0; width: 30%; height: auto; }
+.intro-envelope .env-decor .corner.tl { top: 0; left: 0; width: 24%; height: auto; }
+.intro-envelope .env-decor .corner.tr { top: 0; right: 0; width: 24%; height: auto; }
+.intro-envelope .env-decor .corner.bl { bottom: 0; left: 0; width: 24%; height: auto; }
+.intro-envelope .env-decor .corner.br { bottom: 0; right: 0; width: 24%; height: auto; }
 /* Marcos superior e inferior */
+@media (max-width: 640px) {
+	.intro-envelope .env-decor .corner.tl,
+	.intro-envelope .env-decor .corner.tr,
+	.intro-envelope .env-decor .corner.bl,
+	.intro-envelope .env-decor .corner.br {
+		width: 35%;
+	}
+}
 .intro-envelope .env-decor .frame.top { top: 4%; left: 0; right: 0; width: 100%; height: auto; }
 .intro-envelope .env-decor .frame.bottom { bottom: 4%; left: 0; right: 0; width: 100%; height: auto; transform: scaleY(-1); }
 /* Sello centrado encima de la carta */
