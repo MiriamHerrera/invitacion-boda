@@ -70,8 +70,8 @@
 	const BG = (css.getPropertyValue('--bg') || '#011229').trim();
 	const SPARKLE_COLOR = (css.getPropertyValue('--sparkle-color') || css.getPropertyValue('--primary') || 'rgb(165 146 82 / 49%)').trim();
 	const PRIMARY = (css.getPropertyValue('--primary') || '#a48729').trim(); // para chispazos de click
-	const ORANGE = (css.getPropertyValue('--sparkle-orange') || '#ff9100').trim(); // puntos naranja
-	const BLACK = '#000000'; // puntos negros
+	const ORANGE = (css.getPropertyValue('--sparkle-orange') || '#ffff00').trim(); // puntos naranja
+	const BLACK = '#a48729'; // puntos blancos
 
 	// Zona de exclusión sobre el título (no dibujar cortina encima)
 	let exclusionRect = null; // {left, top, right, bottom}
@@ -169,7 +169,7 @@
 	}
 
 	// Partículas doradas (cortina en arco)
-	function detectCols() { return (window.innerWidth <= 640 ? 9 : 30); }
+	function detectCols() { return (window.innerWidth <= 640 ? 10 : 30); }
 	let COLS = detectCols(); // móvil: 10, desktop: 20
 	const EDGE_BIAS_ALPHA = 0.6; // <1 => más densidad hacia orillas
 	// Dos cortinas laterales: dejar un hueco central sin columnas
