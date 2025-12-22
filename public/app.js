@@ -14,6 +14,7 @@
 	const attendeesSelect = document.getElementById('attendees');
 	const attendeesField = document.getElementById('attendeesField');
 	const attendeesHelp = document.getElementById('attendeesHelp');
+	const attendeesInlineErr = document.getElementById('attendeesInlineErr');
 	const inviteesWrap = document.getElementById('inviteesWrap');
 	const inviteesList = document.getElementById('inviteesList');
 	const tableInfoWrap = document.getElementById('tableInfoWrap');
@@ -93,10 +94,12 @@
 			attendeesField.style.display = 'none';
 			attendeesHelp.textContent = 'Invitación personal';
 			attendeesSelect.value = '1';
+			if (attendeesInlineErr) attendeesInlineErr.hidden = true;
 			if (displayField) displayField.classList.add('span-all');
 		} else {
 			attendeesField.style.display = '';
 			attendeesHelp.textContent = `Máximo permitido: ${max}`;
+			if (attendeesInlineErr) attendeesInlineErr.hidden = true;
 			if (displayField) displayField.classList.remove('span-all');
 			// Deshabilitar opciones por encima del máximo
 			Array.from(attendeesSelect.options).forEach((opt) => {
@@ -206,10 +209,16 @@
 		// Validar que el usuario haya elegido asistentes (no placeholder vacío)
 		const attendeesRaw = attendeesSelect.value;
 		if (attendeesRaw === '' || attendeesRaw === null || attendeesRaw === undefined) {
-			showError('Selecciona el número de asistentes.');
+			if (attendeesInlineErr) {
+				attendeesInlineErr.textContent = 'Selecciona el número de asistentes.';
+				attendeesInlineErr.hidden = false;
+			} else {
+				showError('Selecciona el número de asistentes.');
+			}
 			attendeesSelect.focus();
 			return;
 		}
+		if (attendeesInlineErr) attendeesInlineErr.hidden = true;
 		const body = {
 			code: currentCode,
 			attendees: Number(attendeesSelect.value),
