@@ -203,6 +203,13 @@
 			showError('Primero introduce tu código y cárgalo.');
 			return;
 		}
+		// Validar que el usuario haya elegido asistentes (no placeholder vacío)
+		const attendeesRaw = attendeesSelect.value;
+		if (attendeesRaw === '' || attendeesRaw === null || attendeesRaw === undefined) {
+			showError('Selecciona el número de asistentes.');
+			attendeesSelect.focus();
+			return;
+		}
 		const body = {
 			code: currentCode,
 			attendees: Number(attendeesSelect.value),
