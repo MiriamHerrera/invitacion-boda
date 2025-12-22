@@ -186,6 +186,14 @@ h3 { font-size: clamp(22px, 2.8vw, 28px); margin: 6px 0 14px; }
 	border-radius: 10px;
 }
 
+/* Error en línea debajo del campo */
+.field-error {
+	color: #f5b5b5;
+	margin-top: 6px;
+	font-size: 13px;
+	display: block;
+}
+
 .code-box {
 	background: #ffffff;
 	border: 1px dashed rgba(197,160,89,.6);
