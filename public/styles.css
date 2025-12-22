@@ -491,9 +491,28 @@ body.intro-open footer {
 }
 /* Ajuste específico para pantallas ~375x667 (iPhone 6/7/8) */
 @media (max-width: 375px) and (max-height: 667px) {
+
 	.intro-envelope .wrapper {
 		--h: calc(var(--w) * 0.60);
+		margin-bottom: -5rem !important;
 	}
+	.intro-envelope .wrapper .frame-top {
+		top: calc(var(--h) * -2) !important;
+	}
+	.intro-envelope .wrapper .frame-bottom {
+		bottom: calc(var(--h) * -1.60) !important;
+	}
+	/* Ajuste del sello para que quede centrado sobre la carta en este viewport */
+	.intro-envelope .seal {
+		top: 20.52rem !important;
+	}
+	/* Hacer que la tarjeta (letter) salga más arriba al abrir */
+	.intro-envelope.open .wrapper.opened .letter {
+		transform: translateY(calc(var(--h) * -0.42)) !important;
+	}
+	/* Opcional: un poco más alta para que luzca mejor al salir */
+	.intro-envelope .letter { height: 82%; }
+
 }
 .intro-envelope .wrapper::after {
 	content: '';
@@ -564,9 +583,6 @@ body.intro-open footer {
 	top: 0;
 	left: 0;
 	border-top: calc(var(--h) / 2) solid transparent;
-	/* border-right: calc(var(--w) / 2) solid #1a2636;
-	border-bottom: calc(var(--h) / 2) solid #1a2636;
-	border-left: calc(var(--w) / 2) solid #0f1926; */
 	border-right: calc(var(--w) / 2) solid #dde1e6;
     border-bottom: calc(var(--h) / 2) solid #d9dbdd;
     border-left: calc(var(--w) / 2) solid #cecfd0;
@@ -645,7 +661,10 @@ body.intro-open footer {
 }
 .intro-envelope.open .wrapper.opened .lid.one { transform: rotateX(90deg); transition-delay: 0s; }
 .intro-envelope.open .wrapper.opened .lid.two { transform: rotateX(180deg); transition-delay: .25s; }
-.intro-envelope.open .wrapper.opened .letter { transform: translateY(calc(var(--h) * -0.18)); transition-delay: .5s; }
+.intro-envelope.open .wrapper.opened .letter { transform: translateY(calc(var(--h) * -0.30)); transition-delay: .5s; }
+@media (max-width: 640px) {
+	.intro-envelope.open .wrapper.opened .letter { transform: translateY(calc(var(--h) * -0.36)); }
+}
 
 /* Indicador de interacción (instrucción) */
 .intro-envelope .intro-hint {
