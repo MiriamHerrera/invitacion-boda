@@ -575,7 +575,8 @@ body.intro-open footer {
 }
 .intro-envelope .letter {
 	position: absolute;
-	top: 0;
+	top: auto;
+	bottom: 0;
 	width: 80%;
 	height: 80%;
 	background-color: #ffffff; /* carta blanca */
@@ -613,6 +614,9 @@ body.intro-open footer {
 	.intro-envelope .env-decor .corner.bl,
 	.intro-envelope .env-decor .corner.br {
 		width: 35%;
+	}
+	.intro-envelope .wrapper {
+		--h: calc(var(--w) * 0.80);
 	}
 }
 .intro-envelope .env-decor .frame.top { top: 4%; left: 0; right: 0; width: 100%; height: auto; }
