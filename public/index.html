@@ -6,25 +6,51 @@
 	<title>Rubén & Miriam - Invitación</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/styles.css">
+	<link rel="icon" href="/background-effect/anillos.png" type="image/png" sizes="any">
+	<link rel="apple-touch-icon" href="/background-effect/anillos.png">
 	<meta name="description" content="Invitación de boda de Rubén y Miriam. Confirma tu asistencia.">
 </head>
 <body>
-	<!-- Fondo CSS con líneas doradas -->
-	<div class="bg-lines" aria-hidden="true">
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
+	<!-- Intro: Sobre animado -->
+	<div id="intro-envelope" class="intro-envelope" role="dialog" aria-label="Abrir invitación" aria-modal="true">
+		<div class="wrapper" id="envWrapper" aria-hidden="true">
+			<div class="lid one"></div>
+			<div class="lid two"></div>
+			<div class="envelope"></div>
+ 			<!-- Marco superior: mismo ancho del sobre -->
+ 			<img class="frame-top" src="/background-effect/Marco%20superior.png" alt="" aria-hidden="true">
+ 			<!-- Marco inferior: mismo ancho del sobre -->
+ 			<img class="frame-bottom" src="/background-effect/Marco%20inferior.png" alt="" aria-hidden="true">
+			<div class="letter">
+				<div class="env__names">Rubén <span>&</span> Miriam</div>
+				<div class="env__hint">Toca para abrir</div>
+			</div>
+		</div>
+		<!-- Decoraciones en el body (fuera de la carta) -->
+		<div class="env-decor" aria-hidden="true">
+			<img class="dec corner tl" src="/background-effect/Esquina%20superior%20izquierda.png" alt="">
+			<img class="dec corner tr" src="/background-effect/Esquina%20superior%20derecha.png" alt="">
+			<img class="dec corner bl" src="/background-effect/Esquina%20inferior%20izquierda.png" alt="">
+			<img class="dec corner br" src="/background-effect/Esquina%20inferior%20derecha.png" alt="">
+			<!-- Marco inferior removido por cubrir demasiado -->
+		</div>
+		<!-- Sello sobre la carta -->
+		<img class="seal" src="/background-effect/Sello%20de%20carta.png" alt="" aria-hidden="true">
+		<div class="intro-hint" aria-hidden="true">
+			<span class="tap-icon"></span>
+			<span class="hint-text">Toca el sobre</span>
+		</div>
 	</div>
-	<!-- Canvas queda desactivado por CSS, se mantiene por si se quiere reactivar -->
 	<canvas id="bg-canvas" aria-hidden="true"></canvas>
+	<!-- Cortina de luces (CSS only) -->
+	<div class="light-curtain" aria-hidden="true">
+		<div class="layer l1"></div>
+		<div class="layer l2"></div>
+		<div class="layer l3"></div>
+	</div>
 	<header class="hero">
 		<div class="hero-inner">
 			<p class="overline">Nos casamos</p>
@@ -36,9 +62,83 @@
 	<main>
 		<div class="ornament" aria-hidden="true"><span class="dot"></span></div>
 		<section class="intro card">
-			<h2 id="greet">¡Te invitamos a nuestra boda!</h2>
-			<p id="guestNameText" class="muted">Personalizando invitación...</p>
-			<p>Estamos felices de compartir este momento contigo. Agradecemos que puedas confirmar tu asistencia.</p>
+			<div class="intro-grid">
+				<div class="intro-text">
+					<h2 id="greet">¡Te invitamos a nuestra boda!</h2>
+					<p id="guestNameText" class="muted">Personalizando invitación...</p>
+					<p>Estamos felices de compartir este momento contigo. Agradecemos que puedas confirmar tu asistencia.</p>
+				</div>
+				<div class="intro-photo">
+					<div class="photo-frame">
+						<img src="/novios.jpg" alt="Rubén y Miriam" loading="lazy">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="details card" data-lat="25.6552494" data-lng="-100.2000449">
+			<h3>Detalles del evento</h3>
+			<p class="venue">ARCANGELES EVENTOS</p>
+			<p class="address">Transportes 109, S.C.O.P., 67190 Guadalupe, N.L., Mexico</p>
+			<p class="datetime"><time datetime="2026-03-15T20:00">15 Marzo 2026 · 8:00 pm</time></p>
+			<div class="map">
+				<iframe
+					title="Ubicación - ARCANGELES EVENTOS"
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					allowfullscreen
+					src="https://www.google.com/maps?q=ARCANGELES%20EVENTOS%2C%20Transportes%20109%2C%20S.C.O.P.%2C%2067190%20Guadalupe%2C%20N.L.%2C%20Mexico&z=16&output=embed">
+				</iframe>
+			</div>
+			<p class="map-cta">
+				<a class="btn secondary map-link" href="https://maps.app.goo.gl/RzNwnEfrH5WKFv9Y8" target="_blank" rel="noopener">Ver en maps</a>
+			</p>
+			<div class="rides">
+				<a id="uberLink" class="btn secondary" target="_blank" rel="noopener">Ir con Uber</a>
+				<a id="didiLink" class="btn secondary" target="_blank" rel="noopener">Ir con DiDi</a>
+			</div>
+		</section>
+
+		<section class="dresscode card">
+			<h3>Código de vestimenta</h3>
+			<p class="muted">Formal</p>
+		</section>
+
+		<section class="countdown card">
+			<h3>Cuenta regresiva</h3>
+			<div id="countdown" class="countdown-timer">—</div>
+		</section>
+
+		<section class="faq card">
+			<h3>Preguntas frecuentes</h3>
+			<div class="faq-list">
+				<details>
+					<summary>¿Puedo llevar niños?</summary>
+					<p>Amamos a los peques, pero el evento es para adultos. Si necesitas algo especial, escríbenos.</p>
+				</details>
+				<details>
+					<summary>¿A qué hora debo llegar?</summary>
+					<p>Te recomendamos llegar 20–30 minutos antes para acomodarte con calma.</p>
+				</details>
+				<details>
+					<summary>¿Hay estacionamiento?</summary>
+					<p>Sí, el salón cuenta con estacionamiento. Te sugerimos llegar con tiempo.</p>
+				</details>
+				<details>
+					<summary>¿Qué puedo regalar?</summary>
+					<p>Tu presencia es nuestro mejor regalo.
+						Si deseas hacernos un obsequio, agradecemos cualquier contribución económica. Tendremos un espacio destinado para sobres el día del evento.
+						¡Gracias por tu cariño!</p>
+				</details>
+				<details>
+					<summary>¿Puedo cambiar mi confirmación?</summary>
+					<p>Sí. Con el mismo enlace/código puedes actualizar tu respuesta hasta días antes del evento.</p>
+				</details>
+				<details>
+					<summary>¿Cómo sabré mi mesa?</summary>
+					<p>Si ya tienes mesa asignada, aparecerá en esta invitación al cargar tu código; de lo contrario, se asignará al llegar.</p>
+				</details>
+			</div>
 		</section>
 
 		<section class="rsvp card">
@@ -57,7 +157,7 @@
 						<label>Invitado</label>
 						<input id="displayName" type="text" disabled>
 					</div>
-					<div class="field">
+					<div class="field" id="attendeesField">
 						<label for="attendees">¿Cuántas personas asistirán?</label>
 						<select id="attendees">
 							<option value="0">No podré asistir</option>
@@ -76,11 +176,20 @@
 						</select>
 					</div>
 				</div>
+				<div id="inviteesWrap" class="field" style="display:none;">
+					<label>Invitación dirigida a</label>
+					<ul id="inviteesList" class="invitees-list"></ul>
+				</div>
+				
 				<div class="row">
-					<div class="field"></div>
+					<div class="field hide-mobile"></div>
 					<div class="field">
 						<small id="attendeesHelp" class="muted" style="text-align: end;padding-right: .25rem;">Máximo permitido: 2</small>
 					</div>
+				</div>
+				<div id="tableInfoWrap" class="field" style="display:none;">
+					<label>Mesa asignada</label>
+					<div id="tableInfo" class="muted"></div>
 				</div>
 				<div class="field">
 					<label for="contact">Contacto (teléfono o email, opcional)</label>
@@ -104,7 +213,8 @@
 		<p>Rubén & Miriam</p>
 	</footer>
 
-	<script src="/bg.js" defer></script>
+	<script src="/particles.js" defer></script>
+	<script src="/intro.js" defer></script>
 	<script src="/app.js" defer></script>
 	<script>
 		// Perf hint: add loaded class to enable transitions after first paint
