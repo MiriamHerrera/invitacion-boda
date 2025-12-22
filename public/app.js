@@ -125,6 +125,7 @@
 	function personalize(guest, code) {
 		currentGuest = guest;
 		currentCode = code;
+		try { sessionStorage.setItem(PASS_KEY, '1'); } catch {}
 		displayNameInput.value = guest.displayName;
 		guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
 		greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
@@ -220,10 +221,7 @@
 		// Gate: ocultar detalles hasta tener código válido
 		const detailsSec = document.querySelector('.details');
 		if (detailsSec) detailsSec.hidden = true;
-		// Gate: solicitar frase de acceso si no ha sido validada
-		if (sessionStorage.getItem(PASS_KEY) !== '1') {
-			createPassOverlay();
-		}
+		const passOk = sessionStorage.getItem(PASS_KEY) === '1';
 		// Prefill ride links using venue/address from page
 		const venue = (document.querySelector('.details .venue')?.textContent || 'ARCANGELES EVENTOS').trim();
 		const addr = (document.querySelector('.details .address')?.textContent || '').trim();
@@ -272,8 +270,17 @@
 		}
 		if (codeFromUrl) {
 			inviteCodeInput.value = codeFromUrl;
-			handleLoadGuest(codeFromUrl);
+			handleLoadGuest(codeFromUrl)
+				.then(() => {
+					// Código válido: no mostrar overlay
+				})
+				.catch(() => {
+					// Código inválido → pedir frase si no la han pasado
+					if (!passOk) createPassOverlay();
+				});
 		} else {
+			// Sin código en URL → si no tiene pase, pedir frase
+			if (!passOk) createPassOverlay();
 			guestNameTextEl.textContent = 'Introduce tu código para personalizar tu invitación.';
 		}
 	})();
