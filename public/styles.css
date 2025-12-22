@@ -4,12 +4,13 @@
 	--card: #7b7b7b00; /* Panel ligeramente más oscuro que el fondo */
 	--ink: #a48729; /* Dorado para texto */
 	/*--muted: #b79b44;  Dorado más suave para textos secundarios */
-	--muted: gray;
+	--muted: #fff3b1;
 	--primary: #b2a978; /* Dorado para acentos/botones */
 	--primary-ink: #a48729; /* Dorado claro para títulos */
 	--ring: rgba(212, 175, 55, 0.35); /* Halo dorado */
 	--sparkle-color: #ffc880;
 	--sparkle-orange: #ffffff;
+	--white-text: #ffffff;
 }
 
 * { box-sizing: border-box; }
@@ -22,10 +23,10 @@ body {
 		radial-gradient(900px 500px at -10% 0%, rgba(255,255,255,0.05), transparent 45%),
 		var(--bg);
 	line-height: 1.6;
-	font-size: 17px;
+	font-size: 18px;
 }
 @media (min-width: 800px) {
-	body { font-size: 18px; }
+	body { font-size: 20px; }
 }
 
 /* Canvas de fondo animado */
@@ -57,8 +58,8 @@ header, main, footer {
 .overline {
 	letter-spacing: .22em;
 	text-transform: uppercase;
-	color: var(--muted);
-	font-size: 12px;
+	color: var(--primary);
+	font-size: 15px;
 	padding: 2rem;
 }
 .couple {
@@ -74,8 +75,8 @@ header, main, footer {
 	color: var(--primary);
 }
 .date-place {
-	color: var(--muted);
-	font-size: 16px;
+	color: var(--primary);
+	font-size: 19px;
 }
 
 main {
@@ -96,14 +97,14 @@ main {
 h2, h3, label {
 	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 	font-weight: 300;
-	color: var(--primary-ink);
+	color: var(--muted);
 	letter-spacing: .02em;
 }
 
 h2 { font-size: clamp(25px, 3.4vw, 40px); margin: 8px 0 12px; }
 h3 { font-size: clamp(22px, 2.8vw, 28px); margin: 6px 0 14px; }
 
-.muted { color: var(--muted); }
+.muted { color: var(--primary); }
 .small { font-size: 13px; }
 
 .form .row {
@@ -152,7 +153,7 @@ h3 { font-size: clamp(22px, 2.8vw, 28px); margin: 6px 0 14px; }
 }
 .btn:active { transform: translateY(1px); }
 .btn.primary {
-	background: var(--primary-ink);
+	background: var(--muted);
 	color: #ffffff; /* mejor contraste sobre dorado */
 	box-shadow: 0 8px 18px rgba(197,160,89,0.32);
 }
@@ -322,16 +323,16 @@ body.loaded { opacity: 1; transform: none; }
 	font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 	font-weight: 600;
 	font-size: clamp(20px, 2.6vw, 24px);
-	color: var(--primary-ink);
+	color: var(--muted);
 	margin: 6px 0 2px;
 }
 .details .address {
-	color: var(--muted);
+	color: var(--white-text);
 	margin: 2px 0 6px;
 }
 .details .datetime time {
 	font-weight: 600;
-	color: var(--primary);
+	color: var(--white-text);
 }
 
 /* Intro con foto a un lado */
@@ -376,7 +377,7 @@ body.loaded { opacity: 1; transform: none; }
 }
 
 /* FAQ y Dress Code */
-.dresscode p { margin: 4px 0 0; font-weight: 600; color: var(--primary); }
+.dresscode p { margin: 4px 0 0; font-weight: 600; color: var(--white-text); }
 .faq .faq-list details {
 	background: rgba(255,255,255,.04);
 	border: 1px solid rgba(255,255,255,.10);

@@ -147,8 +147,18 @@
 			inviteesWrap.style.display = 'none';
 			inviteesList.innerHTML = '';
 		}
-		// Mostrar mesa asignada si existe
-		if (guest.table !== undefined && guest.table !== null && String(guest.table).trim() !== '') {
+		// Mostrar mesa asignada si existe (acepta números o strings numéricos).
+		// Cadenas como "No asignada", "pendiente", etc., se consideran no asignadas.
+		let hasAssignedTable = false;
+		if (guest.table !== undefined && guest.table !== null) {
+			if (typeof guest.table === 'number' && Number.isFinite(guest.table)) {
+				hasAssignedTable = true;
+			} else if (typeof guest.table === 'string') {
+				const sv = guest.table.trim().toLowerCase();
+				if (sv && /^\d+$/.test(sv)) hasAssignedTable = true;
+			}
+		}
+		if (hasAssignedTable) {
 			tableInfoWrap.style.display = '';
 			tableInfo.textContent = String(guest.table);
 		} else {
