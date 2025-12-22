@@ -152,8 +152,9 @@
 			tableInfoWrap.style.display = '';
 			tableInfo.textContent = String(guest.table);
 		} else {
-			tableInfoWrap.style.display = 'none';
-			tableInfo.textContent = '';
+			// Mostrar leyenda cuando aún no hay mesa asignada
+			tableInfoWrap.style.display = '';
+			tableInfo.textContent = 'La asignación de tu mesa se mostrará acercándose la fecha del evento.';
 		}
 		// Hide manual code box after successful load
 		codeBox.style.display = 'none';
