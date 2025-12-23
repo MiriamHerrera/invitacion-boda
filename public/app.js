@@ -31,6 +31,7 @@
 
 	let currentGuest = null;
 	let currentCode = '';
+	let triedSubmit = false; // para no mostrar el error hasta que intente enviar
 
 	// Simple gate: require passphrase before viewing invitation
 	const PASS_KEY = 'INVITACION_PASS_OK';
@@ -217,12 +218,21 @@
 	// Ocultar el mensaje inline en cuanto el usuario elija asistentes
 	attendeesSelect.addEventListener('change', () => {
 		const n = Number(attendeesSelect.value);
-		if (attendeesInlineErr) {
-			attendeesInlineErr.hidden = Number.isFinite(n) && n > 0;
-			if (!attendeesInlineErr.hidden) {
-				attendeesInlineErr.textContent = 'Selecciona al menos 1 asistente.';
+		// 0 (no asistiré) también es válido
+		if (Number.isFinite(n)) {
+			if (attendeesInlineErr) attendeesInlineErr.hidden = true;
+			// Si el usuario ya había intentado enviar y ahora corrigió, limpiar aviso general
+			if (triedSubmit) {
+				clearAlerts();
+				triedSubmit = false;
 			}
+			return;
 		}
+		// No mostrar mensaje hasta que haya intentado enviar
+		if (!attendeesInlineErr) return;
+		if (!triedSubmit) { attendeesInlineErr.hidden = true; return; }
+		attendeesInlineErr.hidden = false;
+		attendeesInlineErr.textContent = 'Selecciona una opción valida.';
 	});
 
 	form.addEventListener('submit', async (e) => {
@@ -232,20 +242,22 @@
 			showError('Primero introduce tu código y cárgalo.');
 			return;
 		}
-		// Validar que el usuario haya elegido asistentes (> 0)
+		// Validar que el usuario haya elegido una opción (0 es válido = no asistiré)
 		const attendeesRaw = attendeesSelect.value;
 		const attendeesNum = Number(attendeesRaw);
-		if (attendeesRaw === '' || attendeesRaw === null || attendeesRaw === undefined || !Number.isFinite(attendeesNum) || attendeesNum <= 0) {
+		if (attendeesRaw === '' || attendeesRaw === null || attendeesRaw === undefined || !Number.isFinite(attendeesNum)) {
+			triedSubmit = true;
 			if (attendeesInlineErr) {
-				attendeesInlineErr.textContent = 'Selecciona al menos 1 asistente.';
+				attendeesInlineErr.textContent = 'Selecciona una opción valida.';
 				attendeesInlineErr.hidden = false;
 			} else {
-				showError('Selecciona al menos 1 asistente.');
+				showError('Selecciona una opción valida.');
 			}
 			attendeesSelect.focus();
 			return;
 		}
 		if (attendeesInlineErr) attendeesInlineErr.hidden = true;
+		triedSubmit = false; // todo ok; ocultar error para futuros cambios
 		const body = {
 			code: currentCode,
 			attendees: attendeesNum,
