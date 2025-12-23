@@ -169,7 +169,7 @@
 	}
 
 	// Partículas doradas (cortina en arco)
-	function detectCols() { return (window.innerWidth <= 640 ? 10 : 30); }
+	function detectCols() { return (window.innerWidth <= 640 ? 10 : 40); }
 	let COLS = detectCols(); // móvil: 10, desktop: 20
 	const EDGE_BIAS_ALPHA = 0.6; // <1 => más densidad hacia orillas
 	// Dos cortinas laterales: dejar un hueco central sin columnas
