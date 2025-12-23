@@ -216,7 +216,13 @@
 	});
 	// Ocultar el mensaje inline en cuanto el usuario elija asistentes
 	attendeesSelect.addEventListener('change', () => {
-		if (attendeesInlineErr) attendeesInlineErr.hidden = true;
+		const n = Number(attendeesSelect.value);
+		if (attendeesInlineErr) {
+			attendeesInlineErr.hidden = Number.isFinite(n) && n > 0;
+			if (!attendeesInlineErr.hidden) {
+				attendeesInlineErr.textContent = 'Selecciona al menos 1 asistente.';
+			}
+		}
 	});
 
 	form.addEventListener('submit', async (e) => {
@@ -226,14 +232,15 @@
 			showError('Primero introduce tu código y cárgalo.');
 			return;
 		}
-		// Validar que el usuario haya elegido asistentes (no placeholder vacío)
+		// Validar que el usuario haya elegido asistentes (> 0)
 		const attendeesRaw = attendeesSelect.value;
-		if (attendeesRaw === '' || attendeesRaw === null || attendeesRaw === undefined) {
+		const attendeesNum = Number(attendeesRaw);
+		if (attendeesRaw === '' || attendeesRaw === null || attendeesRaw === undefined || !Number.isFinite(attendeesNum) || attendeesNum <= 0) {
 			if (attendeesInlineErr) {
-				attendeesInlineErr.textContent = 'Selecciona el número de asistentes.';
+				attendeesInlineErr.textContent = 'Selecciona al menos 1 asistente.';
 				attendeesInlineErr.hidden = false;
 			} else {
-				showError('Selecciona el número de asistentes.');
+				showError('Selecciona al menos 1 asistente.');
 			}
 			attendeesSelect.focus();
 			return;
@@ -241,7 +248,7 @@
 		if (attendeesInlineErr) attendeesInlineErr.hidden = true;
 		const body = {
 			code: currentCode,
-			attendees: Number(attendeesSelect.value),
+			attendees: attendeesNum,
 			message: messageInput.value.trim(),
 			contact: contactInput.value.trim()
 		};
