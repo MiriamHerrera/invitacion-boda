@@ -133,6 +133,20 @@
 		guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
 		greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
 		updateMaxGuests(guest.maxGuests);
+		// Prefill con RSVP previo si existe
+		(async () => {
+			try {
+				const r = await fetch(`/api/rsvp?code=${encodeURIComponent(code)}`);
+				if (r.ok) {
+					const prev = await r.json();
+					if (Number.isFinite(Number(prev.attendees))) {
+						attendeesSelect.value = String(prev.attendees);
+					}
+					if (typeof prev.contact === 'string') contactInput.value = prev.contact;
+					if (typeof prev.message === 'string') messageInput.value = prev.message;
+				}
+			} catch {}
+		})();
 		// Mostrar detalles del evento cuando se valida el código
 		const detailsSec = document.querySelector('.details');
 		if (detailsSec) detailsSec.hidden = false;
@@ -199,6 +213,10 @@
 			return;
 		}
 		handleLoadGuest(code);
+	});
+	// Ocultar el mensaje inline en cuanto el usuario elija asistentes
+	attendeesSelect.addEventListener('change', () => {
+		if (attendeesInlineErr) attendeesInlineErr.hidden = true;
 	});
 
 	form.addEventListener('submit', async (e) => {

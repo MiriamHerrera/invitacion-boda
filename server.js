@@ -116,6 +116,23 @@ app.post('/api/rsvp', async (req, res) => {
 	}
 });
 
+// GET /api/rsvp?code=XXXX
+// Devuelve la última respuesta guardada para ese código (si existe)
+app.get('/api/rsvp', async (req, res) => {
+	const code = String(req.query.code || '').trim().toLowerCase();
+	if (!code) {
+		return res.status(400).json({ error: 'Falta el parámetro code' });
+	}
+	try {
+		const rsvps = await readJson(RSVPS_FILE);
+		const record = rsvps.find((r) => String(r.code || '').trim().toLowerCase() === code);
+		if (!record) return res.status(404).json({ error: 'Sin respuesta' });
+		return res.json(record);
+	} catch (err) {
+		return res.status(500).json({ error: 'Error leyendo RSVPs' });
+	}
+});
+
 // GET /api/admin/rsvps?key=...
 app.get('/api/admin/rsvps', async (req, res) => {
 	const key = String(req.query.key || '');
