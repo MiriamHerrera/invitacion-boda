@@ -173,6 +173,8 @@
 		codeBox.style.display = 'none';
 		// Update URL to include code
 		const url = new URL(window.location.href);
+		// Personaliza la ruta visible para la invitación
+		url.pathname = '/rubenymiriam';
 		url.searchParams.set('i', code);
 		window.history.replaceState({}, '', url.toString());
 	}
