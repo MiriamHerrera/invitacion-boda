@@ -1,6 +1,6 @@
 :root {
 	/* --bg: #223145; Fondo solicitado */
-	--bg: #011229; /* Fondo solicitado */
+	--bg:white/* Fondo solicitado */
 	--card: #7b7b7b00; /* Panel ligeramente más oscuro que el fondo */
 	--ink: #a48729; /* Dorado para texto */
 	/*--muted: #b79b44;  Dorado más suave para textos secundarios */
@@ -36,6 +36,8 @@ body {
 	z-index: 0;
 	pointer-events: none;
 	background: var(--bg);
+	opacity: 1;
+	filter: none;
 }
 @media (prefers-reduced-motion: reduce) {
 	#bg-canvas { display: none; }
@@ -54,14 +56,17 @@ header, main, footer {
 	/* padding: 32px 16px; */
 	padding-top: 32px;
 }
-.hero-inner { max-width: 960px; width: 100%; padding: 2rem; }
+.hero-inner { max-width: 960px; width: 100%; padding: 2rem; text-align: center;}
 .overline {
 	letter-spacing: .22em;
 	text-transform: uppercase;
 	color: var(--primary);
 	font-size: 15px;
-	padding: 2rem;
+	background: #011229;
+    width: 14rem;
+    display: inline-block;
 }
+
 .couple {
 	font-family: 'Parisienne', cursive;
 	font-weight: 400;

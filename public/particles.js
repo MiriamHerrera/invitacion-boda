@@ -82,7 +82,7 @@
 			const r = el.getBoundingClientRect();
 			// Menos padding en móvil para no comer los costados
 			const isMobile = window.innerWidth <= 640;
-			const padX = isMobile ? Math.max(8, Math.min(28, r.width * 0.04)) : Math.max(16, Math.min(48, r.width * 0.06));
+			const padX = isMobile ? Math.max(4, Math.min(16, r.width * 0.02)) : Math.max(8, Math.min(28, r.width * 0.03));
 			const padY = isMobile ? Math.max(8, Math.min(28, r.height * 0.14)) : Math.max(10, Math.min(40, r.height * 0.18));
 			exclusionRect = {
 				left: r.left - padX,
@@ -172,13 +172,13 @@
 	function detectCols() { return (window.innerWidth <= 640 ? 12 : 50); }
 	let COLS = detectCols(); // móvil: 10, desktop: 20
 	const EDGE_BIAS_ALPHA = 0.6; // <1 => más densidad hacia orillas
-	// Dos cortinas laterales: dejar un hueco central sin columnas
-	function detectGap() { return (window.innerWidth <= 640 ? 0.34 : 0.22); }
-	let CURTAIN_GAP = detectGap(); // gap mayor en móvil para que se vean más a los costados
+	// Sin hueco central: columnas también pasan por el medio
+	function detectGap() { return 0; }
+	let CURTAIN_GAP = detectGap();
 	// "Cuentas" discretas por columna (look de puntos de luz)
 	const BEAD_STEP_BASE = 12;
 	const BEAD_STEP = PERF_MODE ? 12 : Math.max(10, BEAD_STEP_BASE - 2); // más denso incluso en perf
-	const BEAD_POWER = 11;     // nitidez (mayor = más definido)
+	const BEAD_POWER = 14;     // nitidez (mayor = más definido)
 	// Movimiento cilíndrico hacia afuera (sin ondular la línea):
 	// la columna completa se desplaza lateralmente según el tiempo.
 	const ROT_TIME_SPEED = 0.9;      // velocidad temporal del giro
@@ -303,7 +303,7 @@
 					col,
 					y,
 					r: srb(0.8, 3.0, 2.2), // sesgo a tamaños pequeños, algunos grandes
-					alpha: sr(0.55, 0.95),
+					alpha: sr(0.85, 1.0),
 					blinkSpeed: sr(0.55, 1.0),
 					// parámetros de luciérnaga: tasa/duración/ fase
 					ffRate: sr(0.18, 0.42),   // Hz (más lento)
@@ -313,7 +313,7 @@
 					// tono del destello: mayormente dorado, algunos naranja y algunos negros
 					hue: (() => {
 						const u = seeded();
-						return u < 0.06 ? 'black' : (u < 0.14 ? 'orange' : 'gold');
+						return u < 0.02 ? 'black' : (u < 0.18 ? 'orange' : 'gold');
 					})(),
 					jitter: 0 // sin oscilación lateral
 				});
@@ -324,7 +324,7 @@
 						col,
 						y: y2,
 						r: PERF_MODE ? srb(0.25, 0.8, 1.4) : srb(0.4, 1.2, 1.3),
-						alpha: PERF_MODE ? sr(0.28, 0.6) : sr(0.35, 0.8),
+						alpha: PERF_MODE ? sr(0.55, 0.85) : sr(0.6, 0.95),
 						blinkSpeed: PERF_MODE ? sr(0.7, 1.0) : sr(0.7, 1.3),
 						ffRate: PERF_MODE ? sr(0.18, 0.46) : sr(0.22, 0.56),
 						ffDuty: PERF_MODE ? sr(0.16, 0.30) : sr(0.18, 0.34),
@@ -332,7 +332,7 @@
 						beadPhase: 0.5,
 						hue: (() => {
 							const u = seeded();
-							return u < 0.08 ? 'black' : (u < 0.20 ? 'orange' : 'gold');
+							return u < 0.02 ? 'black' : (u < 0.25 ? 'orange' : 'gold');
 						})(),
 						jitter: 0
 					});
@@ -386,7 +386,12 @@
 
 		// Fondo
 		ctx.globalCompositeOperation = 'source-over';
-		ctx.fillStyle = BG;
+		// Relleno con gradiente horizontal solicitado
+		const bgGrad = ctx.createLinearGradient(0, 0, width, 0);
+		bgGrad.addColorStop(0.00, 'rgba(1, 18, 41, 1)');
+		bgGrad.addColorStop(0.64, 'rgba(1, 18, 41, 1)');
+		bgGrad.addColorStop(1.00, 'rgb(4, 24, 53)');
+		ctx.fillStyle = bgGrad;
 		ctx.fillRect(0, 0, width, height);
 
 		// Partículas
@@ -447,7 +452,7 @@
 			);
 			// más brillo cerca de la parte alta de la columna
 			const topFactor = Math.max(0, 1 - Math.max(0, p.y) / Math.max(1, endY));
-			let a = Math.max(0.24, Math.min(1,
+			let a = Math.max(0.4, Math.min(1,
 				p.alpha
 				* ff
 				* (0.90 + 0.10 * topFactor)
@@ -505,16 +510,17 @@
 			} else {
 				const base = p.hue === 'orange' ? ORANGE : SPARKLE_COLOR;
 				const beadRadius = p.r * 1.8; // un poco más grande
-				const outerR = beadRadius * (PERF_MODE ? 2.0 : 2.4); // halo más estrecho en perf
+				const outerR = beadRadius * (PERF_MODE ? 1.4 : 1.6); // halo más estrecho para menos blur
 				const grad = ctx.createRadialGradient(rx, p.y, 0, rx, p.y, outerR);
 				grad.addColorStop(0, rgbaStringWithMultiplier(base, a * 1.00));
-				grad.addColorStop(0.24, rgbaStringWithMultiplier(base, a * 0.80));
-				grad.addColorStop(0.55, rgbaStringWithMultiplier(base, a * 0.45));
+				grad.addColorStop(0.18, rgbaStringWithMultiplier(base, a * 0.95));
+				grad.addColorStop(0.40, rgbaStringWithMultiplier(base, a * 0.60));
+				grad.addColorStop(0.80, rgbaStringWithMultiplier(base, a * 0.10));
 				grad.addColorStop(1, rgbaStringWithMultiplier(base, 0));
 				ctx.fillStyle = grad;
 				// leve blur por sombra para reforzar el halo (barato y efectivo)
-				ctx.shadowColor = rgbaStringWithMultiplier(base, a * 0.34);
-				ctx.shadowBlur = PERF_MODE ? 0 : Math.max(1, beadRadius * 0.4);
+				ctx.shadowColor = rgbaStringWithMultiplier(base, a * 0.20);
+				ctx.shadowBlur = 0;
 				ctx.beginPath();
 				ctx.arc(rx, p.y, beadRadius, 0, Math.PI * 2);
 				ctx.fill();
