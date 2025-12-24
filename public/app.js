@@ -306,10 +306,11 @@
 		if (didiLink) {
 			// Fallback web route for DiDi
 			if (Number.isFinite(dropoffLat) && Number.isFinite(dropoffLng)) {
-				didiLink.href = `https://page.didiglobal.com/mobility-os/route?to=${encodeURIComponent(venue)}&to_addr=${encodeURIComponent(addr)}&to_lat=${dropoffLat}&to_lng=${dropoffLng}`;
-			} else {
-				didiLink.href = `https://page.didiglobal.com/mobility-os/route?to=${encodeURIComponent(venue)}&to_addr=${encodeURIComponent(addr)}`;
-			}
+				didiLink.href = `didi://passenger/route?destinationLat=${dropoffLat}&destinationLng=${dropoffLng}&destinationName=${encodeURIComponent(venue)}&destinationAddress=${encodeURIComponent(addr)}`;
+			  } else {
+				didiLink.href = `didi://passenger/route?destinationName=${encodeURIComponent(venue)}&destinationAddress=${encodeURIComponent(addr)}`;
+			  }
+			  
 		}
 		// Countdown (oculto hasta 16 días antes del evento)
 		if (countdownEl) {
