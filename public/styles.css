@@ -545,6 +545,10 @@ body.intro-open footer {
 	/* Opcional: un poco más alta para que luzca mejor al salir */
 	.intro-envelope .letter { height: 82%; }
 
+	.overline {
+		width: 10rem;
+	}
+
 }
 .intro-envelope .wrapper::after {
 	content: '';
