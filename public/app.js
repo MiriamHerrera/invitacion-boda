@@ -306,11 +306,11 @@
 		if (didiLink) {
 			// Fallback web route for DiDi
 			if (Number.isFinite(dropoffLat) && Number.isFinite(dropoffLng)) {
-				didiLink.href = `didi://passenger/route?destinationLat=${dropoffLat}&destinationLng=${dropoffLng}&destinationName=${encodeURIComponent(venue)}&destinationAddress=${encodeURIComponent(addr)}`;
-			  } else {
-				didiLink.href = `didi://passenger/route?destinationName=${encodeURIComponent(venue)}&destinationAddress=${encodeURIComponent(addr)}`;
-			  }
-			  
+				didiLink.href = `didi://didi_rider/map?lat=${dropoffLat}&lng=${dropoffLng}`;
+			} else {
+				// Si no hay coordenadas, solo abre la app
+				didiLink.href = `didi://`;
+			}			
 		}
 		// Countdown (oculto hasta 16 días antes del evento)
 		if (countdownEl) {
