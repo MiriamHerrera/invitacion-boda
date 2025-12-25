@@ -96,7 +96,7 @@ main {
 	border-radius: 20px;
 	padding: 24px;
 	margin: 20px 0;
-	box-shadow: 0 8px 30px rgb(165 146 82 / 49%);
+	box-shadow: 0 8px 30px rgb(255 243 203 / 49%);
 }
 
 h2, h3, label {
@@ -522,7 +522,7 @@ body.intro-open footer {
 	filter: drop-shadow(0 1px 10px rgba(153, 146, 113, 9));
 }
 /* Ajuste específico para pantallas ~375x667 (iPhone 6/7/8) */
-@media (max-width: 375px) and (max-height: 667px) {
+@media (max-width: 620px) {
 
 	.intro-envelope .wrapper {
 		--h: calc(var(--w) * 0.60);
@@ -535,9 +535,7 @@ body.intro-open footer {
 		bottom: calc(var(--h) * -1.60) !important;
 	}
 	/* Ajuste del sello para que quede centrado sobre la carta en este viewport */
-	.intro-envelope .seal {
-		top: 20.52rem !important;
-	}
+	/* (ya no es necesario override específico; el sello se centra con transform) */
 	/* Hacer que la tarjeta (letter) salga más arriba al abrir */
 	.intro-envelope.open .wrapper.opened .letter {
 		transform: translateY(calc(var(--h) * -0.42)) !important;
@@ -673,10 +671,12 @@ body.intro-open footer {
 /* Sello centrado encima de la carta */
 .intro-envelope .seal {
 	position: absolute;
-	top: calc(var(--h) * -1.45);
+	/* Centro del sobre: relativo a .wrapper */
+	top: 50%;
 	left: 50%;
-	transform: translateX(-50%);
-	width: 84px;
+	transform: translate(-50%, -50%);
+	/* Tamaño responsivo en función del ancho del sobre */
+	width: clamp(64px, calc(var(--w) * 0.18), 120px);
 	height: auto;
 	opacity: .95;
 	z-index: 4;
