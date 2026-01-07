@@ -31,34 +31,51 @@
     "table": "No asignada"
   },
   {
-    "code": "Fam-Hernandez-Moreno",
-    "displayName": "Familia Hernandez Moreno",
+    "code": "Fam-Moreno-Hernandez",
+    "displayName": "Familia Moreno Hernandez",
     "maxGuests": 3,
     "table": "No asignada"
   },
   {
-    "code": "Fam-Nuñez-Alicia-NL",
+    "code": "Fam-Nuñez-Abigail",
+    "displayName": "Abigail Salas Nuñez",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Nuñez-Alicia",
     "displayName": "Alicia Nuñez Limon",
-    "invitees": ["Alicia Nuñez Limon", "Hija"],
-    "maxGuests": 2,
+    "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Fam-Nuñez-Mela",
-    "displayName": "Mela Y Mara",
-    "maxGuests": 2,
+    "displayName": "Mela Nuñez Limon",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Nuñez-Mara",
+    "displayName": "Mara Sarai Lerma Nuñez",
+    "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Fam-Nuñez-Miasael",
-    "displayName": "Misael",
+    "displayName": "Familia Lerma Carranza",
     "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Fam-Nuñez-Andrea",
-    "displayName": "Andrea Y Familia",
-    "maxGuests": 4,
+    "displayName": "Andrea Nuñez Limon",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Nuñez-Debanhi",
+    "displayName": "Debanhi Hernandez Nuñez",
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
