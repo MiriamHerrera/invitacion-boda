@@ -278,9 +278,9 @@ body.loaded { opacity: 1; transform: none; }
 }
 .card {
 	/* Fondo dentro de las cards: imagen fija + velo para legibilidad */
-	background-image:
+	/* background-image:
 		linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
-		url('https://i.pinimg.com/736x/a2/fe/52/a2fe52b3075f26d3ebca98a845168801.jpg');
+		url('./background-effect/0ccd42fa-99a6-47f2-a440-4e2698788f5b.png'); */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
