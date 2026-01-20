@@ -191,13 +191,13 @@
   {
     "code": "IN-Cleme",
     "displayName": "Missael y Familia",
+    "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Am-Marcos",
     "displayName": "Marcos Mendez Cruz",
-    "partnerLabel": "esposa",
     "honorRoles": ["caballero"],
     "maxGuests": 1,
     "table": "No asignada"
