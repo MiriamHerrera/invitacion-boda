@@ -1,13 +1,13 @@
 [
   {
     "code": "Fam-Herrera-Miranda",
-    "displayName": "Felipe Herrera Hernandez y Familia",
+    "displayName": "Felipe Herrera Hernandez",
     "maxGuests": 6,
     "table": "No asignada"
   },
   {
     "code": "AM-Ayco",
-    "displayName": "Ana Y familia",
+    "displayName": "Ana Cruz Ortiz",
     "maxGuests": 3, 
     "table": "No asignada"
   },
@@ -204,7 +204,7 @@
   },
   {
     "code": "Am-Chuyito",
-    "displayName": "Jesus Villareal Y Prometida",
+    "displayName": "Jesus Villareal",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -216,31 +216,55 @@
   },
   {
     "code": "Am-Pablo",
-    "displayName": "Pablo",
-    "maxGuests": 1,
+    "displayName": "Luis Pablo Alvarado Martinez",
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Am-Christian",
-    "displayName": "Christian",
-    "maxGuests": 1,
+    "displayName": "Christian Loredo",
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Am-Manolo",
-    "displayName": "Manolo",
+    "displayName": "José Manolo Rodriguez Perez",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Am-Osvaldo",
+    "displayName": "Osvaldo Ruedas",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Am-Edson",
+    "displayName": "Edson De La Rosa",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Am-Arturo",
+    "displayName": "Arturo Estrada",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Am-Lore",
+    "displayName": "Lore",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-Marlon",
-    "displayName": "Marlon",
+    "displayName": "Marlon Rastelli",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-Brayan",
-    "displayName": "Brayan",
+    "displayName": "Brayan Gonzalez",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -288,7 +312,7 @@
   },
   {
     "code": "Am-William",
-    "displayName": "William",
+    "displayName": "William Guillermo Rodriguez",
     "maxGuests": 2,
     "table": "No asignada"
   },
