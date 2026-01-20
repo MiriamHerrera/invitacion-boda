@@ -38,6 +38,45 @@
     "table": "No asignada"
   },
   {
+    "code": "Fam-Reyna-Victor",
+    "displayName": "Victor Reyna Gonzalez y Familia",
+    "maxGuests": 3,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-Sugami",
+    "displayName": "Sugami Reyna Santana y esposo",
+    "partnerLabel": "esposo",
+    "maxGuests": 2,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-Alejandro",
+    "displayName": "Alejandro Reyna Santana y esposa",
+    "partnerLabel": "esposa",
+    "maxGuests": 2,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-Gaudencio",
+    "displayName": "Gaudencio Reyna Gonzalez",
+    "maxGuests": 4,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-Gaudencio",
+    "displayName": "Gaudencio Reyna Gonzalez",
+    "maxGuests": 4,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-Pedro",
+    "displayName": "Pedro Reyna Gonzalez y esposa",
+    "partnerLabel": "esposa",
+    "maxGuests": 2,
+    "table": "No asignada"
+  },
+  {
     "code": "Fam-Moreno-Hernandez",
     "displayName": "Familia Moreno Hernandez",
     "maxGuests": 3,
