@@ -28,6 +28,8 @@
 	const uberLink = document.getElementById('uberLink');
 	const didiLink = document.getElementById('didiLink');
 	const countdownEl = document.getElementById('countdown');
+	const honorBadge = document.getElementById('honorBadge');
+	const honorSpeech = document.getElementById('honorSpeech');
 
 	let currentGuest = null;
 	let currentCode = '';
@@ -146,6 +148,13 @@
 		const partnerLabel = (typeof guest.partnerLabel === 'string' && guest.partnerLabel.trim())
 			? guest.partnerLabel.trim()
 			: null;
+		// Rol de honor (dama/caballero) para mostrar badge y mensaje especial
+		const honorRole = (typeof guest.honorRole === 'string' && guest.honorRole.trim())
+			? guest.honorRole.trim().toLowerCase()
+			: null;
+		const honorRolesArray = Array.isArray(guest.honorRoles)
+			? guest.honorRoles.map((r) => String(r || '').trim().toLowerCase()).filter(Boolean)
+			: null;
 		function sanitizeNameForTwo(name, label) {
 			if (!label) return String(name || '').trim();
 			const pattern = new RegExp(`\\s+y\\s+${label}$`, 'i');
@@ -166,6 +175,27 @@
 			const nameForFamily = ensureFamilySuffix(guest.displayName);
 			guestNameTextEl.textContent = `Hola ${nameForFamily}, esta invitación es para ustedes.`;
 			greetEl.textContent = `¡${nameForFamily}, nos hará ilusión verles!`;
+		}
+		// Mostrar aviso especial para caballeros/damas de honor
+		if ((honorRolesArray && honorRolesArray.length) || honorRole) {
+			let roleLabel = null;
+			if (honorRolesArray && honorRolesArray.length) {
+				const hasDama = honorRolesArray.includes('dama');
+				const hasCab = honorRolesArray.includes('caballero');
+				if (hasDama && hasCab) roleLabel = 'Dama y Caballero de honor';
+				else if (hasDama) roleLabel = 'Dama de honor';
+				else if (hasCab) roleLabel = 'Caballero de honor';
+				else roleLabel = 'Corte de honor';
+			} else if (honorRole) {
+				roleLabel = honorRole === 'dama' ? 'Dama de honor' : (honorRole === 'caballero' ? 'Caballero de honor' : 'Corte de honor');
+			}
+			if (roleLabel && honorBadge) honorBadge.textContent = roleLabel;
+			honorBadge.hidden = false;
+			honorSpeech.textContent = 'Como parte de la corte de honor, te pedimos llegar a las 7:00 pm para la ceremonia civil y actividades previas. ¡Gracias por acompañarnos!';
+			honorSpeech.hidden = false;
+		} else {
+			if (honorBadge) honorBadge.hidden = true;
+			if (honorSpeech) honorSpeech.hidden = true;
 		}
 		updateMaxGuests(guest.maxGuests);
 		// Prefill con RSVP previo si existe

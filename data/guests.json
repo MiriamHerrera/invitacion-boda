@@ -8,6 +8,7 @@
   {
     "code": "AM-Ayco",
     "displayName": "Ana Yulisa Cruz Ortiz",
+    "honorRoles": ["caballero","dama"],
     "maxGuests": 3, 
     "table": "No asignada"
   },
@@ -156,6 +157,7 @@
   {
     "code": "Am-Marcos",
     "displayName": "Marcos Mendez Cruz",
+    "honorRoles": ["caballero"],
     "maxGuests": 1,
     "table": "No asignada"
   },
@@ -169,13 +171,13 @@
     "code": "Am-Pablito-Mix",
     "displayName": "Pablo Quiroz Galvan",
     "partnerLabel": "esposa",
-    "honorRole": "caballero",
     "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Am-Jona",
     "displayName": "Jonathan Cerda Pecina",
+    "honorRoles": ["caballero","dama"],
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -188,12 +190,15 @@
   {
     "code": "Am-Bustos",
     "displayName": "Juan Manuel Bustos",
+    "honorRoles": ["caballero","dama"],
     "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Am-Anahi",
     "displayName": "Anahí Herrera y Marco",
+    "honorRoles": ["dama","caballero"],
+    "honorRole": "dama",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -248,7 +253,6 @@
   {
     "code": "Am-Lore",
     "displayName": "Lorena Rangel",
-    "honorRole": "dama",
     "maxGuests": 2,
     "table": "No asignada"
   },
