@@ -123,18 +123,21 @@
   {
     "code": "IN-Ramiro",
     "displayName": "Ramiro Marroquin y Esposa",
+    "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "IN-Rogelio",
     "displayName": "Rogelio Marroquin y Esposa",
+    "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "IN-Miro",
     "displayName": "Miro y Esposa",
+    "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -163,8 +166,15 @@
     "table": "No asignada"
   },
   {
+    "code": "Am-David",
+    "displayName": "David Mendez Cruz",
+    "maxGuests": 5,
+    "table": "No asignada"
+  },
+  {
     "code": "Am-Pablito-Mix",
-    "displayName": "Pablito Mix y Familia",
+    "displayName": "Pablo Quiroz Galvan",
+    "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
   },

@@ -142,11 +142,25 @@
 		const inviteeCount = Array.isArray(guest.invitees) && guest.invitees.length > 0
 			? guest.invitees.length
 			: (Number.isFinite(guest.maxGuests) ? guest.maxGuests : 1);
+		// Etiqueta opcional para el acompañante cuando son 2 (p.ej. "esposa", "esposo")
+		const partnerLabel = (typeof guest.partnerLabel === 'string' && guest.partnerLabel.trim())
+			? guest.partnerLabel.trim()
+			: null;
+		function sanitizeNameForTwo(name, label) {
+			if (!label) return String(name || '').trim();
+			const pattern = new RegExp(`\\s+y\\s+${label}$`, 'i');
+			return String(name || '').trim().replace(pattern, '').trim();
+		}
 		if (inviteeCount <= 1) {
 			guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
 			greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
 		} else if (inviteeCount === 2) {
-			guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti y tu acompañante.`;
+			if (partnerLabel) {
+				const nameForTwo = sanitizeNameForTwo(guest.displayName, partnerLabel);
+				guestNameTextEl.textContent = `Hola ${nameForTwo}, esta invitación es para ti y tu ${partnerLabel}.`;
+			} else {
+				guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti y tu acompañante.`;
+			}
 			greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verles!`;
 		} else {
 			const nameForFamily = ensureFamilySuffix(guest.displayName);
