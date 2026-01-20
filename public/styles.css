@@ -88,6 +88,11 @@ main {
 	max-width: 920px;
 	margin: 0 auto;
 	padding: 0 16px 48px;
+	/* Fondo visible solo en el área de las cards */
+	/* background-image: url('https://i.pinimg.com/736x/3f/92/9a/3f929a3d81ebc3795cbaf5e1740a079c.jpg'); */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .card {
@@ -270,6 +275,16 @@ body.loaded { opacity: 1; transform: none; }
 /* Cards con acento superior */
 .card {
 	position: relative;
+}
+.card {
+	/* Fondo dentro de las cards: imagen fija + velo para legibilidad */
+	/* background-image:
+		linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+		url('./background-effect/0ccd42fa-99a6-47f2-a440-4e2698788f5b.png'); */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 .card::before {
 	content: '';
