@@ -28,7 +28,13 @@
   {
     "code": "Fam-Herrera-Rubio",
     "displayName": "Martín Herrera Hernandez y Familia",
-    "maxGuests": 5,
+    "maxGuests": 3,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Herrera-Dani",
+    "displayName": "Daniel Herrera",
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
