@@ -131,8 +131,28 @@
 		currentCode = code;
 		try { sessionStorage.setItem(PASS_KEY, '1'); } catch {}
 		displayNameInput.value = guest.displayName;
-		guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
-		greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
+		// Utilidad: añade "y familia" solo si no está ya presente
+		function ensureFamilySuffix(name) {
+			const n = String(name || '').trim();
+			const lower = n.toLowerCase();
+			// Si ya contiene "familia" (ej. "y Familia" o "Familia Pérez"), no añadir
+			if (lower.includes('familia')) return n;
+			return `${n} y familia`;
+		}
+		const inviteeCount = Array.isArray(guest.invitees) && guest.invitees.length > 0
+			? guest.invitees.length
+			: (Number.isFinite(guest.maxGuests) ? guest.maxGuests : 1);
+		if (inviteeCount <= 1) {
+			guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
+			greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
+		} else if (inviteeCount === 2) {
+			guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti y tu acompañante.`;
+			greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verles!`;
+		} else {
+			const nameForFamily = ensureFamilySuffix(guest.displayName);
+			guestNameTextEl.textContent = `Hola ${nameForFamily}, esta invitación es para ustedes.`;
+			greetEl.textContent = `¡${nameForFamily}, nos hará ilusión verles!`;
+		}
 		updateMaxGuests(guest.maxGuests);
 		// Prefill con RSVP previo si existe
 		(async () => {
