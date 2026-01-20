@@ -169,6 +169,7 @@
     "code": "Am-Pablito-Mix",
     "displayName": "Pablo Quiroz Galvan",
     "partnerLabel": "esposa",
+    "honorRole": "caballero",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -192,7 +193,7 @@
   },
   {
     "code": "Am-Anahi",
-    "displayName": "Vieja piruja y Marco",
+    "displayName": "Anahí Herrera y Marco",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -247,6 +248,7 @@
   {
     "code": "Am-Lore",
     "displayName": "Lorena Rangel",
+    "honorRole": "dama",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -264,49 +266,49 @@
   },
   {
     "code": "Am-Karla",
-    "displayName": "Karla",
+    "displayName": "Karla Gonzalez",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-Lili",
-    "displayName": "Lili",
+    "displayName": "Lili Hernández",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-Charls",
-    "displayName": "Charls",
+    "displayName": "Charls Mendoza Andrade",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-Javier",
-    "displayName": "Javier",
+    "displayName": "Javier Anguiano",
     "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Am-Aaron",
-    "displayName": "Aaron",
+    "displayName": "Aaron Arredondo",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-Natalia",
-    "displayName": "Natalia",
+    "displayName": "Natalia Rodríguez",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-Andrew",
-    "displayName": "Andrew",
+    "displayName": "Andres Coronado",
     "maxGuests": 1,
     "table": "No asignada"
   },
   {
     "code": "Am-William",
-    "displayName": "William Guillermo Rodriguez",
+    "displayName": "William Guillermo Rodríguez",
     "maxGuests": 2,
     "table": "No asignada"
   },
