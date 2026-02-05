@@ -1,23 +1,5 @@
 [
   {
-    "code": "ruben-familia",
-    "displayName": "Familia de Rubén",
-    "attendees": 2,
-    "message": "",
-    "contact": "",
-    "updatedAt": "2025-11-26T20:03:38.240Z",
-    "createdAt": "2025-11-26T19:43:15.725Z"
-  },
-  {
-    "code": "Fam-Herrera-Sanchez",
-    "displayName": "Santiago Herrera Hernandez y Familia",
-    "attendees": 6,
-    "message": "werwer",
-    "contact": "werwer",
-    "updatedAt": "2025-11-28T05:01:11.556Z",
-    "createdAt": "2025-11-28T05:01:11.556Z"
-  },
-  {
     "code": "Pablito-Mix",
     "displayName": "Pablito Mix y Familia",
     "attendees": 2,
@@ -25,5 +7,104 @@
     "contact": "",
     "updatedAt": "2025-12-23T01:55:22.620Z",
     "createdAt": "2025-12-22T23:30:06.347Z"
+  },
+  {
+    "code": "Am-Jona",
+    "displayName": "Jonathan Cerda Pecina",
+    "attendees": 2,
+    "message": "Rubén, hermano… quién diría que después de tantos años desde la FCFM, de desveladas, risas y etapas compartidas, hoy te veo dando uno de los pasos más importantes de tu vida. Me da muchísimo gusto verte formar esta nueva etapa junto a Miriam, con quien también compartimos tantos momentos y que desde entonces ya se notaba que hacían un gran equipo.\n\nRubén, cuídala mucho (porque ya sabemos quién manda 😅) y Miriam, gracias por “quitármelo”, pero cuidarlo tan bien. ¡Felicidades a los dos! 🥂❤️ Les deseamos una vida llena de amor, paciencia, risas y sueños cumplidos.\n\nJonathan & Fatima",
+    "contact": "8118243317",
+    "updatedAt": "2026-01-22T04:59:55.946Z",
+    "createdAt": "2026-01-22T04:59:55.946Z"
+  },
+  {
+    "code": "Am-Manolo",
+    "displayName": "José Manolo Rodriguez Perez",
+    "attendees": 1,
+    "message": "",
+    "contact": "8118576165",
+    "updatedAt": "2026-01-25T20:30:25.577Z",
+    "createdAt": "2026-01-25T20:30:25.577Z"
+  },
+  {
+    "code": "Am-Marlon",
+    "displayName": "Marlon Rastelli",
+    "attendees": 1,
+    "message": "Amigos, me da muchísimo gusto verlos comenzar esta etapa tan bonita. Te deseo una vida llena de amor, paz y felicidad en su matrimonio. Gracias por tantos años de amistad; aquí sigo para lo que necesites.",
+    "contact": "8119774054",
+    "updatedAt": "2026-01-25T20:43:10.917Z",
+    "createdAt": "2026-01-25T20:43:09.163Z"
+  },
+  {
+    "code": "Am-Brayan",
+    "displayName": "Brayan Gonzalez",
+    "attendees": 2,
+    "message": "Gracias por la invitación amigos! Ahi estaremos mi prometida y yo! Mes mejores deseos siempre \u003C3!",
+    "contact": "brayan_snt7@live.com.mx",
+    "updatedAt": "2026-01-25T20:45:43.353Z",
+    "createdAt": "2026-01-25T20:45:43.353Z"
+  },
+  {
+    "code": "Am-Charls",
+    "displayName": "Charls Mendoza Andrade",
+    "attendees": 1,
+    "message": "",
+    "contact": "8110414032",
+    "updatedAt": "2026-01-25T20:48:00.605Z",
+    "createdAt": "2026-01-25T20:47:56.387Z"
+  },
+  {
+    "code": "Am-Aaron",
+    "displayName": "Aaron Arredondo",
+    "attendees": 1,
+    "message": "Muchas felicidades en su matrimonio Rubén y Miriam! Les deseo un día muy especial y un matrimonio estable y feliz!!!",
+    "contact": "aaron.arredondoar@gmail.com",
+    "updatedAt": "2026-01-25T22:50:58.657Z",
+    "createdAt": "2026-01-25T22:50:58.657Z"
+  },
+  {
+    "code": "Am-Osvaldo",
+    "displayName": "Osvaldo Ruedas",
+    "attendees": 1,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2026-01-26T01:30:49.646Z",
+    "createdAt": "2026-01-26T01:30:49.646Z"
+  },
+  {
+    "code": "Am-Javier",
+    "displayName": "Javier Anguiano",
+    "attendees": 1,
+    "message": "",
+    "contact": "8117216831",
+    "updatedAt": "2026-01-26T04:20:16.492Z",
+    "createdAt": "2026-01-26T04:20:16.492Z"
+  },
+  {
+    "code": "Am-Lili",
+    "displayName": "Lili Hernández",
+    "attendees": 1,
+    "message": "Muchisimas felicidades a los dos🫶🏼✨✨",
+    "contact": "8132699128",
+    "updatedAt": "2026-01-26T16:20:25.990Z",
+    "createdAt": "2026-01-26T16:20:15.304Z"
+  },
+  {
+    "code": "Fam-Reyna-Alejandro",
+    "displayName": "Alejandro Reyna Santana y esposa",
+    "attendees": 2,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2026-02-02T19:02:53.835Z",
+    "createdAt": "2026-02-02T19:02:53.835Z"
+  },
+  {
+    "code": "Fam-Reyna-Sugami",
+    "displayName": "Sugami Reyna Santana y esposo",
+    "attendees": 2,
+    "message": "Que el amor sea su guía siempre\", \"Felicidades por dar este gran paso\"",
+    "contact": "8112402030",
+    "updatedAt": "2026-02-02T21:11:59.999Z",
+    "createdAt": "2026-02-02T21:11:59.999Z"
   }
 ]
