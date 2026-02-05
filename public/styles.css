@@ -27,6 +27,9 @@ body {
 }
 @media (min-width: 800px) {
 	body { font-size: 20px; }
+	.intro-envelope .intro-hint {
+		bottom: 18vh !important;
+	}
 }
 
 /* Canvas de fondo animado */
@@ -726,9 +729,9 @@ body.intro-open footer {
 	display: inline-flex;
 	align-items: center;
 	gap: 10px;
-	color: #ffffff;
+	color: #c9b8a1 !important;
 	font-weight: 600;
-	background: rgb(201 184 161);
+	background: rgb(201 184 161 / 0%) !important;
 	border: 1px solid rgba(255,255,255,.18);
 	border-radius: 999px;
 	padding: 8px 14px;
