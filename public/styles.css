@@ -713,7 +713,8 @@ body.intro-open footer {
 }
 .intro-envelope.open .wrapper.opened .lid.one { transform: rotateX(90deg); transition-delay: 0s; }
 .intro-envelope.open .wrapper.opened .lid.two { transform: rotateX(180deg); transition-delay: .25s; }
-.intro-envelope.open .wrapper.opened .letter { transform: translateY(calc(var(--h) * -0.30)); transition-delay: .5s; }
+/* PC: tarjeta sale más arriba al abrir el sobre */
+.intro-envelope.open .wrapper.opened .letter { transform: translateY(calc(var(--h) * -0.42)); transition-delay: .5s; }
 @media (max-width: 640px) {
 	.intro-envelope.open .wrapper.opened .letter { transform: translateY(calc(var(--h) * -0.36)); }
 }
