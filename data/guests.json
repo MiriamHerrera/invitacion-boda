@@ -359,7 +359,8 @@
   },
   {
     "code": "Cm-Sebastian",
-    "displayName": "Sebastian Guerrera",
+    "displayName": "Sebastian Guerrero y esposa",
+    "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -421,6 +422,13 @@
     "code": "Cm-Luis",
     "displayName": "Luis Alfonso Martinez",
     "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Cm-Joaquin",
+    "displayName": "Joaquin Nabi y esposa",
+    "partnerLabel": "esposa",
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
