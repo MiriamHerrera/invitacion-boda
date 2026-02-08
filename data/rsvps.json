@@ -106,5 +106,23 @@
     "contact": "8112402030",
     "updatedAt": "2026-02-02T21:11:59.999Z",
     "createdAt": "2026-02-02T21:11:59.999Z"
+  },
+  {
+    "code": "Cm-Raul",
+    "displayName": "Raul Barbosa",
+    "attendees": 1,
+    "message": "Muchas felicidades y espero tengan un gran futuro juntos!! Nos vemos ese día tan especial",
+    "contact": "raul.rrbg@gmail.com",
+    "updatedAt": "2026-02-06T02:51:41.357Z",
+    "createdAt": "2026-02-06T02:51:41.357Z"
+  },
+  {
+    "code": "Cm-Francisco",
+    "displayName": "Francisco Rivera",
+    "attendees": 1,
+    "message": "No les deseo nada más que abundancia y prosperidad en su nueva etapa.",
+    "contact": "friverap.fr@gmail.com",
+    "updatedAt": "2026-02-06T15:41:15.590Z",
+    "createdAt": "2026-02-06T15:41:08.699Z"
   }
 ]

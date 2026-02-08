@@ -27,9 +27,7 @@ body {
 }
 @media (min-width: 800px) {
 	body { font-size: 20px; }
-	.intro-envelope .intro-hint {
-		bottom: 18vh !important;
-	}
+
 }
 
 /* Canvas de fondo animado */
@@ -723,7 +721,7 @@ body.intro-open footer {
 /* Indicador de interacción (instrucción) */
 .intro-envelope .intro-hint {
 	position: absolute;
-	bottom: 8vh;
+	bottom: 6vh;
 	left: 50%;
 	transform: translateX(-50%);
 	display: inline-flex;
