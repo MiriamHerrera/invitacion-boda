@@ -162,7 +162,7 @@
 		}
 		if (inviteeCount <= 1) {
 			guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
-			greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verte!`;
+			greetEl.textContent = `¡${guest.displayName}, nos complave invitarte!`;
 		} else if (inviteeCount === 2) {
 			if (partnerLabel) {
 				const nameForTwo = sanitizeNameForTwo(guest.displayName, partnerLabel);
@@ -170,11 +170,11 @@
 			} else {
 				guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti y tu acompañante.`;
 			}
-			greetEl.textContent = `¡${guest.displayName}, nos hará ilusión verles!`;
+			greetEl.textContent = `¡${guest.displayName}, nos complace invitarles!`;
 		} else {
 			const nameForFamily = ensureFamilySuffix(guest.displayName);
 			guestNameTextEl.textContent = `Hola ${nameForFamily}, esta invitación es para ustedes.`;
-			greetEl.textContent = `¡${nameForFamily}, nos hará ilusión verles!`;
+			greetEl.textContent = `¡${nameForFamily}, nos complace invitarles!`;
 		}
 		// Mostrar aviso especial para caballeros/damas de honor
 		if ((honorRolesArray && honorRolesArray.length) || honorRole) {
