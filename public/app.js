@@ -30,6 +30,7 @@
 	const countdownEl = document.getElementById('countdown');
 	const honorBadge = document.getElementById('honorBadge');
 	const honorSpeech = document.getElementById('honorSpeech');
+	const introShareTextEl = document.getElementById('introShareText');
 
 	let currentGuest = null;
 	let currentCode = '';
@@ -196,6 +197,12 @@
 		} else {
 			if (honorBadge) honorBadge.hidden = true;
 			if (honorSpeech) honorSpeech.hidden = true;
+		}
+		// Mensaje según tipo de invitación: personal (contigo/puedas) o resto (puedan/su)
+		if (introShareTextEl) {
+			introShareTextEl.textContent = inviteeCount <= 1
+				? 'Estamos felices de compartir este momento contigo. Agradecemos que puedas confirmar tu asistencia.'
+				: 'Estamos felices de compartir este momento. Agradecemos que puedan confirmar su asistencia.';
 		}
 		updateMaxGuests(guest.maxGuests);
 		// Prefill con RSVP previo si existe

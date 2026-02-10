@@ -385,6 +385,7 @@
   {
     "code": "Cm-Alfredo",
     "displayName": "Alfredo Minor",
+    "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
   },
@@ -403,13 +404,14 @@
   {
     "code": "Cm-Emily",
     "displayName": "Emily Salazar",
-    "maxGuests": 1,
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
     "code": "Cm-Santiago",
     "displayName": "Santiago Laredo",
-    "maxGuests": 1,
+    "partnerLabel": "esposa",
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
