@@ -162,7 +162,7 @@
 		}
 		if (inviteeCount <= 1) {
 			guestNameTextEl.textContent = `Hola ${guest.displayName}, esta invitación es para ti.`;
-			greetEl.textContent = `¡${guest.displayName}, nos complave invitarte!`;
+			greetEl.textContent = `¡${guest.displayName}, nos complace invitarte!`;
 		} else if (inviteeCount === 2) {
 			if (partnerLabel) {
 				const nameForTwo = sanitizeNameForTwo(guest.displayName, partnerLabel);
