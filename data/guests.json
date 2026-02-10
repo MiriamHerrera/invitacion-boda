@@ -1,441 +1,147 @@
 [
   {
-    "code": "Fam-Herrera-Miranda",
-    "displayName": "Felipe Herrera Hernandez",
-    "maxGuests": 6,
-    "table": "No asignada"
-  },
-  {
-    "code": "AM-Ayco",
-    "displayName": "Ana Yulisa Cruz Ortiz",
-    "honorRoles": ["caballero","dama"],
-    "maxGuests": 3, 
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Herrera-ML",
-    "displayName": "Maria de la luz Herrera y Denisse",
-    "invitees": ["Maria de la luz Herrera", "Denisse"],
-    "partnerLabel": "hija",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Herrera-Sanchez",
-    "displayName": "Santiago Herrera Hernandez y Familia",
-    "maxGuests": 7,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Herrera-Rubio",
-    "displayName": "Martín Herrera Hernandez y Familia",
-    "maxGuests": 3,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Herrera-Dani",
-    "displayName": "Daniel Herrera",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Reyna-Victor",
-    "displayName": "Victor Reyna Gonzalez y Familia",
-    "maxGuests": 3,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Reyna-Sugami",
-    "displayName": "Sugami Reyna Santana y esposo",
-    "partnerLabel": "esposo",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Reyna-Alejandro",
-    "displayName": "Alejandro Reyna Santana y esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Reyna-Gaudencio",
-    "displayName": "Gaudencio Reyna Gonzalez",
-    "maxGuests": 4,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Reyna-Pedro",
-    "displayName": "Pedro Reyna Gonzalez y esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Moreno-Hernandez",
-    "displayName": "Familia Moreno Hernandez",
-    "maxGuests": 3,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Abigail",
-    "displayName": "Abigail Salas Nuñez",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Alicia",
-    "displayName": "Alicia Nuñez Limon",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Mela",
-    "displayName": "Mela Nuñez Limon",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Mara",
-    "displayName": "Mara Sarai Lerma Nuñez",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Miasael",
-    "displayName": "Familia Lerma Carranza",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Andrea",
-    "displayName": "Andrea Nuñez Limon",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Debanhi",
-    "displayName": "Debanhi Hernandez Nuñez",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Marcelo",
-    "displayName": "Marcelo Sosa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Nuñez-Paula",
-    "displayName": "Paula Nuñez",
-    "maxGuests": 4,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-M-Jaime",
-    "displayName": "Jaime Cortez y Familia",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Montiel-Ale",
-    "displayName": "Alejandra Montiel y Familia",
-    "maxGuests": 3,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Montiel-Alma",
-    "displayName": "Alma Montiel y Familia",
-    "maxGuests": 3,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Montiel-Blanca",
-    "displayName": "Blanca Montiel y Familia",
-    "maxGuests": 4,
-    "table": "No asignada"
-  },
-  {
-    "code": "Fam-Montiel-Vero",
-    "displayName": "Veronica Montiel y Familia",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "IN-Ramiro",
-    "displayName": "Ramiro Marroquin y Esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "IN-Rogelio",
-    "displayName": "Rogelio Marroquin y Esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "IN-Miro",
-    "displayName": "Miro y Esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "IN-ELsa",
-    "displayName": "Elsa Tamez y Familia",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "IN-Cleme",
-    "displayName": "Missael y esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Marcos",
-    "displayName": "Marcos Mendez Cruz",
-    "honorRoles": ["caballero"],
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-David",
-    "displayName": "David Mendez Cruz",
-    "maxGuests": 5,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Pablito-Mix",
-    "displayName": "Pablo Quiroz Galvan",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
+    "code": "Pablito-Mix",
+    "displayName": "Pablito Mix y Familia",
+    "attendees": 2,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2025-12-23T01:55:22.620Z",
+    "createdAt": "2025-12-22T23:30:06.347Z"
   },
   {
     "code": "Am-Jona",
     "displayName": "Jonathan Cerda Pecina",
-    "honorRoles": ["caballero","dama"],
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Tavo",
-    "displayName": "Octavio Huerta",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Bustos",
-    "displayName": "Juan Manuel Bustos",
-    "honorRoles": ["caballero","dama"],
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Anahi",
-    "displayName": "Anahí Herrera y Marco",
-    "honorRoles": ["dama","caballero"],
-    "honorRole": "dama",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Chuyito",
-    "displayName": "Jesus Villareal",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Mireles",
-    "displayName": "Mireles Jorge",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Pablo",
-    "displayName": "Luis Pablo Alvarado Martinez",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Christian",
-    "displayName": "Christian Loredo",
-    "maxGuests": 2,
-    "table": "No asignada"
+    "attendees": 2,
+    "message": "Rubén, hermano… quién diría que después de tantos años desde la FCFM, de desveladas, risas y etapas compartidas, hoy te veo dando uno de los pasos más importantes de tu vida. Me da muchísimo gusto verte formar esta nueva etapa junto a Miriam, con quien también compartimos tantos momentos y que desde entonces ya se notaba que hacían un gran equipo.\n\nRubén, cuídala mucho (porque ya sabemos quién manda 😅) y Miriam, gracias por “quitármelo”, pero cuidarlo tan bien. ¡Felicidades a los dos! 🥂❤️ Les deseamos una vida llena de amor, paciencia, risas y sueños cumplidos.\n\nJonathan & Fatima",
+    "contact": "8118243317",
+    "updatedAt": "2026-01-22T04:59:55.946Z",
+    "createdAt": "2026-01-22T04:59:55.946Z"
   },
   {
     "code": "Am-Manolo",
     "displayName": "José Manolo Rodriguez Perez",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Osvaldo",
-    "displayName": "Osvaldo Ruedas",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Edson",
-    "displayName": "Edson De La Rosa",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Arturo",
-    "displayName": "Arturo Estrada",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Lore",
-    "displayName": "Lorena Rangel",
-    "maxGuests": 2,
-    "table": "No asignada"
+    "attendees": 1,
+    "message": "",
+    "contact": "8118576165",
+    "updatedAt": "2026-01-25T20:30:25.577Z",
+    "createdAt": "2026-01-25T20:30:25.577Z"
   },
   {
     "code": "Am-Marlon",
     "displayName": "Marlon Rastelli",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "attendees": 1,
+    "message": "Amigos, me da muchísimo gusto verlos comenzar esta etapa tan bonita. Te deseo una vida llena de amor, paz y felicidad en su matrimonio. Gracias por tantos años de amistad; aquí sigo para lo que necesites.",
+    "contact": "8119774054",
+    "updatedAt": "2026-01-25T20:43:10.917Z",
+    "createdAt": "2026-01-25T20:43:09.163Z"
   },
   {
     "code": "Am-Brayan",
     "displayName": "Brayan Gonzalez",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Karla",
-    "displayName": "Karla Gonzalez",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Lili",
-    "displayName": "Lili Hernández",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "attendees": 2,
+    "message": "Gracias por la invitación amigos! Ahi estaremos mi prometida y yo! Mes mejores deseos siempre \u003C3!",
+    "contact": "brayan_snt7@live.com.mx",
+    "updatedAt": "2026-01-25T20:45:43.353Z",
+    "createdAt": "2026-01-25T20:45:43.353Z"
   },
   {
     "code": "Am-Charls",
     "displayName": "Charls Mendoza Andrade",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Javier",
-    "displayName": "Javier Anguiano",
-    "maxGuests": 2,
-    "table": "No asignada"
+    "attendees": 1,
+    "message": "",
+    "contact": "8110414032",
+    "updatedAt": "2026-01-25T20:48:00.605Z",
+    "createdAt": "2026-01-25T20:47:56.387Z"
   },
   {
     "code": "Am-Aaron",
     "displayName": "Aaron Arredondo",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "attendees": 1,
+    "message": "Muchas felicidades en su matrimonio Rubén y Miriam! Les deseo un día muy especial y un matrimonio estable y feliz!!!",
+    "contact": "aaron.arredondoar@gmail.com",
+    "updatedAt": "2026-01-25T22:50:58.657Z",
+    "createdAt": "2026-01-25T22:50:58.657Z"
   },
   {
-    "code": "Am-Natalia",
-    "displayName": "Natalia Rodríguez",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "code": "Am-Osvaldo",
+    "displayName": "Osvaldo Ruedas",
+    "attendees": 1,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2026-01-26T01:30:49.646Z",
+    "createdAt": "2026-01-26T01:30:49.646Z"
   },
   {
-    "code": "Am-Andrew",
-    "displayName": "Andres Coronado",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "code": "Am-Javier",
+    "displayName": "Javier Anguiano",
+    "attendees": 1,
+    "message": "",
+    "contact": "8117216831",
+    "updatedAt": "2026-01-26T04:20:16.492Z",
+    "createdAt": "2026-01-26T04:20:16.492Z"
   },
   {
-    "code": "Am-William",
-    "displayName": "William Guillermo Rodríguez",
-    "maxGuests": 2,
-    "table": "No asignada"
+    "code": "Am-Lili",
+    "displayName": "Lili Hernández",
+    "attendees": 1,
+    "message": "Muchisimas felicidades a los dos🫶🏼✨✨",
+    "contact": "8132699128",
+    "updatedAt": "2026-01-26T16:20:25.990Z",
+    "createdAt": "2026-01-26T16:20:15.304Z"
   },
   {
-    "code": "Cm-Sebastian",
-    "displayName": "Sebastian Guerrero y esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
+    "code": "Fam-Reyna-Alejandro",
+    "displayName": "Alejandro Reyna Santana y esposa",
+    "attendees": 2,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2026-02-02T19:02:53.835Z",
+    "createdAt": "2026-02-02T19:02:53.835Z"
+  },
+  {
+    "code": "Fam-Reyna-Sugami",
+    "displayName": "Sugami Reyna Santana y esposo",
+    "attendees": 2,
+    "message": "Que el amor sea su guía siempre\", \"Felicidades por dar este gran paso\"",
+    "contact": "8112402030",
+    "updatedAt": "2026-02-02T21:11:59.999Z",
+    "createdAt": "2026-02-02T21:11:59.999Z"
   },
   {
     "code": "Cm-Raul",
     "displayName": "Raul Barbosa",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Cm-Cesar",
-    "displayName": "Cesar Romero",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Cm-Aracely",
-    "displayName": "Aracely Martinez",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Cm-Alfredo",
-    "displayName": "Alfredo Minor",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Cm-Omar",
-    "displayName": "Omar Mendez",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "attendees": 1,
+    "message": "Muchas felicidades y espero tengan un gran futuro juntos!! Nos vemos ese día tan especial",
+    "contact": "raul.rrbg@gmail.com",
+    "updatedAt": "2026-02-06T02:51:41.357Z",
+    "createdAt": "2026-02-06T02:51:41.357Z"
   },
   {
     "code": "Cm-Francisco",
     "displayName": "Francisco Rivera",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "attendees": 1,
+    "message": "No les deseo nada más que abundancia y prosperidad en su nueva etapa.",
+    "contact": "friverap.fr@gmail.com",
+    "updatedAt": "2026-02-06T15:41:15.590Z",
+    "createdAt": "2026-02-06T15:41:08.699Z"
   },
   {
-    "code": "Cm-Emily",
-    "displayName": "Emily Salazar",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "code": "Fam-Reyna-Gaudencio",
+    "displayName": "Gaudencio Reyna Gonzalez",
+    "attendees": 4,
+    "message": "Que sean felices y que está etapa de tu vida se muy prospera y llena de alegría y bendiciones.",
+    "contact": "gaudenciogonzalez29@gmail.com",
+    "updatedAt": "2026-02-09T00:07:19.411Z",
+    "createdAt": "2026-02-09T00:05:24.160Z"
   },
   {
-    "code": "Cm-Santiago",
-    "displayName": "Santiago Laredo",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Cm-Antonio",
-    "displayName": "Antonio De Jesus",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Cm-Luis",
-    "displayName": "Luis Alfonso Martinez",
-    "maxGuests": 1,
-    "table": "No asignada"
-  },
-  {
-    "code": "Cm-Joaquin",
-    "displayName": "Joaquin Nabi y esposa",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
-    "code": "Am-Garza",
-    "displayName": "Alejandro Garza",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "code": "Am-Karla",
+    "displayName": "Karla Gonzalez",
+    "attendees": 1,
+    "message": "",
+    "contact": "8116159907",
+    "updatedAt": "2026-02-09T16:49:29.529Z",
+    "createdAt": "2026-02-09T16:49:29.529Z"
   }
 ]
 

@@ -722,7 +722,7 @@ body.intro-open footer {
 /* Indicador de interacción (instrucción) */
 .intro-envelope .intro-hint {
 	position: absolute;
-	bottom: 6vh;
+	bottom: 18vh;
 	left: 50%;
 	transform: translateX(-50%);
 	display: inline-flex;
