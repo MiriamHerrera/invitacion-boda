@@ -683,6 +683,9 @@ body.intro-open footer {
 	.intro-envelope .env-decor .corner.br {
 		width: 35%;
 	}
+	.intro-envelope .intro-hint {
+		bottom: 6vh;
+	}
 }
 .intro-envelope .env-decor .frame.top { top: 4%; left: 0; right: 0; width: 100%; height: auto; }
 .intro-envelope .env-decor .frame.bottom { bottom: 4%; left: 0; right: 0; width: 100%; height: auto; transform: scaleY(-1); }
