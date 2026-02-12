@@ -563,7 +563,7 @@ body.intro-open footer {
 		width: 10rem;
 	}
 	.intro-envelope .intro-hint {
-		bottom: 6vh;
+		bottom: 6vh !important;
 	}
 }
 .intro-envelope .wrapper::after {
@@ -684,7 +684,7 @@ body.intro-open footer {
 		width: 35%;
 	}
 	.intro-envelope .intro-hint {
-		bottom: 6vh;
+		bottom: 6vh !important;
 	}
 }
 .intro-envelope .env-decor .frame.top { top: 4%; left: 0; right: 0; width: 100%; height: auto; }
