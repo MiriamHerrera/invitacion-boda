@@ -562,7 +562,9 @@ body.intro-open footer {
 	.overline {
 		width: 10rem;
 	}
-
+	.intro-envelope .intro-hint {
+		bottom: 6vh;
+	}
 }
 .intro-envelope .wrapper::after {
 	content: '';
