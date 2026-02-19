@@ -478,15 +478,45 @@
     "code": "Fam-Reyna-Justin",
     "displayName": "Justin Ramirez Reyna",
     "honorRoles": ["caballero"],
-    "maxGuests": 1,
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
-    "code": "Fam-Herrera",
-    "displayName": "Familia Herrera",
-    "maxGuests": "10",
+    "code": "Fam-M-Cortez-Manuel",
+    "displayName": "Manuel Cortez y Señora",
+    "partnerLabel": "esposa",
+    "maxGuests": 2,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-M-Cortez-Jaime",
+    "displayName": "Jaime Cortez y Familia",
+    "maxGuests": 3,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Herrera-Torres",
+    "displayName": "Familia Herrera Torres",
+    "maxGuests": "",
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-Marita",
+    "displayName": "Marisabeth Estrada y Familia",
+    "maxGuests": 3,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-HectorJr",
+    "displayName": "Héctor Reyna Tovar y Señora",
+    "partnerLabel": "esposa",
+    "maxGuests": 2,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Reyna-Hector",
+    "displayName": "Héctor Reyna Gonzalez y Familia",
+    "maxGuests": 3,
     "table": "No asignada"
   }
 ]
-
-
