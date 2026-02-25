@@ -496,7 +496,7 @@
   {
     "code": "Fam-Herrera-Torres",
     "displayName": "Familia Herrera Torres",
-    "maxGuests": 10,
+    "maxGuests": 8,
     "table": "No asignada"
   },
   {
@@ -523,6 +523,18 @@
     "displayName": "Brenda Jasso y Esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Herrera-Jesus",
+    "displayName": "Jesus Herrera Hernandez y Familia",
+    "maxGuests": 4,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Herrera-Gera",
+    "displayName": "Gerardo Herrera Torres y Familia",
+    "maxGuests": 3,
     "table": "No asignada"
   }
 ]
