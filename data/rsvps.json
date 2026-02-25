@@ -39,9 +39,9 @@
     "code": "Am-Brayan",
     "displayName": "Brayan Gonzalez",
     "attendees": 2,
-    "message": "Gracias por la invitación amigos! Ahi estaremos mi prometida y yo! Mes mejores deseos siempre \u003C3!",
+    "message": "Gracias por la invitación amigos! Ahi estaremos mi prometida y yo! Mis mejores deseos siempre \u003C3!",
     "contact": "brayan_snt7@live.com.mx",
-    "updatedAt": "2026-01-25T20:45:43.353Z",
+    "updatedAt": "2026-02-22T05:07:44.895Z",
     "createdAt": "2026-01-25T20:45:43.353Z"
   },
   {
@@ -223,6 +223,60 @@
     "contact": "",
     "updatedAt": "2026-02-17T17:09:38.255Z",
     "createdAt": "2026-02-17T17:09:38.255Z"
+  },
+  {
+    "code": "Cm-Sebastian",
+    "displayName": "Sebastian Guerrero y esposa",
+    "attendees": 2,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2026-02-22T17:56:45.070Z",
+    "createdAt": "2026-02-22T17:56:45.070Z"
+  },
+  {
+    "code": "Fam-M-Cortez-Manuel",
+    "displayName": "Manuel Cortez y Señora",
+    "attendees": 2,
+    "message": "Muchas felicidades, éxito en esta nueva etapa.",
+    "contact": "8182548113",
+    "updatedAt": "2026-02-22T21:10:53.511Z",
+    "createdAt": "2026-02-22T21:10:53.511Z"
+  },
+  {
+    "code": "Fam-Reyna-HectorJr",
+    "displayName": "Héctor Reyna Tovar y Señora",
+    "attendees": 2,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2026-02-25T00:54:30.989Z",
+    "createdAt": "2026-02-25T00:54:30.989Z"
+  },
+  {
+    "code": "Fam-Reyna-Marita",
+    "displayName": "Marisabeth Estrada y Familia",
+    "attendees": 3,
+    "message": "",
+    "contact": "",
+    "updatedAt": "2026-02-25T16:12:44.272Z",
+    "createdAt": "2026-02-25T16:12:44.272Z"
+  },
+  {
+    "code": "Am-William",
+    "displayName": "William Guillermo Rodríguez",
+    "attendees": 2,
+    "message": "Muchas felicidades chicos,espero que ese día se la pasen super bien y lo disfruten muchísimo ya que es un día muy especial mis mejores deseos para ustedes.",
+    "contact": "8126455580",
+    "updatedAt": "2026-02-25T21:47:33.954Z",
+    "createdAt": "2026-02-25T21:47:33.954Z"
+  },
+  {
+    "code": "Am-Edson",
+    "displayName": "Edson De La Rosa",
+    "attendees": 1,
+    "message": "Estoy muy feliz de poder ir a la boda de ustedes! \nMiriam! Nos lo cuidas eh!",
+    "contact": "rumaniatacos@gmail.com",
+    "updatedAt": "2026-02-25T22:03:10.249Z",
+    "createdAt": "2026-02-25T22:03:10.249Z"
   }
 
 ]

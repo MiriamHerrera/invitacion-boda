@@ -23,7 +23,7 @@
   {
     "code": "Fam-Herrera-Sanchez",
     "displayName": "Santiago Herrera Hernandez y Familia",
-    "maxGuests": 7,
+    "maxGuests": 6,
     "table": "No asignada"
   },
   {
@@ -98,7 +98,7 @@
   {
     "code": "Fam-Nuñez-Mara",
     "displayName": "Mara Sarai Lerma Nuñez",
-    "maxGuests": 1,
+    "maxGuests": 2,
     "table": "No asignada"
   },
   {
@@ -110,6 +110,12 @@
   {
     "code": "Fam-Nuñez-Andrea",
     "displayName": "Andrea Nuñez Limon",
+    "maxGuests": 1,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-Nuñez-Luis",
+    "displayName": "Luis Hernandez",
     "maxGuests": 1,
     "table": "No asignada"
   },
@@ -416,13 +422,6 @@
     "table": "No asignada"
   },
   {
-    "code": "Cm-Santiago",
-    "displayName": "Santiago Laredo",
-    "partnerLabel": "esposa",
-    "maxGuests": 2,
-    "table": "No asignada"
-  },
-  {
     "code": "Cm-JesusB",
     "displayName": "Jose de Jesus Bernal Mercado",
     "maxGuests": 1,
@@ -497,7 +496,7 @@
   {
     "code": "Fam-Herrera-Torres",
     "displayName": "Familia Herrera Torres",
-    "maxGuests": "",
+    "maxGuests": 10,
     "table": "No asignada"
   },
   {
@@ -517,6 +516,13 @@
     "code": "Fam-Reyna-Hector",
     "displayName": "Héctor Reyna Gonzalez y Familia",
     "maxGuests": 3,
+    "table": "No asignada"
+  },
+  {
+    "code": "Fam-H-Jasso",
+    "displayName": "Brenda Jasso y Esposo",
+    "partnerLabel": "esposo",
+    "maxGuests": 2,
     "table": "No asignada"
   }
 ]
