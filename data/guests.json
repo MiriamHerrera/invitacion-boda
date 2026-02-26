@@ -536,5 +536,12 @@
     "displayName": "Gerardo Herrera Torres y Familia",
     "maxGuests": 3,
     "table": "No asignada"
+  },
+  {
+    "code": "Cm-Gilberto-Hernandez",
+    "displayName": "Gilberto Hernandez y Esposa",
+    "partnerLabel": "esposa",
+    "maxGuests": 2,
+    "table": "No asignada"
   }
 ]
