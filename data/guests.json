@@ -544,5 +544,11 @@
     "partnerLabel": "esposa",
     "maxGuests": 2,
     "table": "No asignada"
+  },
+  {
+    "code": "Cm-Abel",
+    "displayName": "Abel Rubio",
+    "maxGuests": 1,
+    "table": "No asignada"
   }
 ]
