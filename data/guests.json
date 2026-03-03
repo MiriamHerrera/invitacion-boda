@@ -8,9 +8,8 @@
   {
     "code": "AM-Ayco",
     "displayName": "Ana Yulisa Cruz Ortiz",
-    "honorRoles": ["caballero","dama"],
     "maxGuests": 3, 
-    "table": "No asignada"
+    "table": 4
   },
   {
     "code": "Fam-Herrera-ML",
@@ -18,25 +17,25 @@
     "invitees": ["Maria de la luz Herrera", "Denisse"],
     "partnerLabel": "hija",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 8
   },
   {
     "code": "Fam-Herrera-Sanchez",
     "displayName": "Santiago Herrera Hernandez y Familia",
     "maxGuests": 6,
-    "table": "No asignada"
+    "table": 8
   },
   {
     "code": "Fam-Herrera-Rubio",
     "displayName": "Martín Herrera Hernandez y Familia",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 7
   },
   {
     "code": "Fam-Herrera-Dani",
     "displayName": "Daniel Herrera",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 7
   },
   {
     "code": "Fam-Reyna-Victor",
@@ -49,131 +48,131 @@
     "displayName": "Sugami Reyna Santana y esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 10
   },
   {
     "code": "Fam-Reyna-Alejandro",
     "displayName": "Alejandro Reyna Santana y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 10
   },
   {
     "code": "Fam-Reyna-Gaudencio",
     "displayName": "Gaudencio Reyna Gonzalez",
     "maxGuests": 4,
-    "table": "No asignada"
+    "table": 9
   },
   {
     "code": "Fam-Reyna-Pedro",
     "displayName": "Pedro Reyna Poblano y Esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 18
   },
   {
     "code": "Fam-Moreno-Hernandez",
     "displayName": "Familia Moreno Hernandez",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 11
   },
   {
     "code": "Fam-Nuñez-Abigail",
     "displayName": "Abigail Salas Nuñez",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 11
   },
   {
     "code": "Fam-Nuñez-Alicia",
     "displayName": "Alicia Nuñez Limon",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 12
   },
   {
     "code": "Fam-Nuñez-Mela",
     "displayName": "Mela Nuñez Limon",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 12
   },
   {
     "code": "Fam-Nuñez-Mara",
     "displayName": "Mara Sarai Lerma Nuñez",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 11
   },
   {
     "code": "Fam-Nuñez-Miasael",
     "displayName": "Familia Lerma Carranza",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 11
   },
   {
     "code": "Fam-Nuñez-Andrea",
     "displayName": "Andrea Nuñez Limon",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 12
   },
   {
     "code": "Fam-Nuñez-Luis",
     "displayName": "Luis Hernandez",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 12
   },
   {
     "code": "Fam-Nuñez-Debanhi",
     "displayName": "Debanhi Hernandez Nuñez",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 11
   },
   {
     "code": "Fam-Nuñez-Marcelo",
     "displayName": "Marcelo Sosa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 12
   },
   {
     "code": "Fam-Nuñez-Paula",
     "displayName": "Paula Nuñez",
     "maxGuests": 4,
-    "table": "No asignada"
+    "table": 12
   },
   {
     "code": "Fam-M-Jaime",
     "displayName": "Jaime Cortez y Familia",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 12
   },
   {
     "code": "Fam-Montiel-Ale",
     "displayName": "Alejandra Montiel y Familia",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 15
   },
   {
     "code": "Fam-Montiel-Alma",
     "displayName": "Alma Montiel y Familia",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 15
   },
   {
     "code": "Fam-Montiel-Blanca",
     "displayName": "Blanca Montiel y Familia",
     "maxGuests": 4,
-    "table": "No asignada"
+    "table": 15
   },
   {
     "code": "Fam-Montiel-Vero",
     "displayName": "Veronica Montiel y Esposo",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 17
   },
   {
     "code": "Fam-Montiel-Titi",
     "displayName": "Titi Montiel y Esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 17
   },
   {
     "code": "IN-Ramiro",
@@ -201,27 +200,27 @@
     "displayName": "Jorge Montelongo y Elsa Tamez",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 16
   },
   {
     "code": "IN-Cleme",
     "displayName": "Missael y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 17
   },
   {
     "code": "Am-Marcos",
     "displayName": "Marcos Mendez Cruz",
     "honorRoles": ["caballero"],
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 2
   },
   {
     "code": "Am-David",
     "displayName": "David Mendez Cruz",
     "maxGuests": 5,
-    "table": "No asignada"
+    "table": 18
   },
   {
     "code": "Am-Pablito-Mix",
@@ -235,7 +234,7 @@
     "displayName": "Jonathan Cerda Pecina",
     "honorRoles": ["caballero","dama"],
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 2
   },
   {
     "code": "Am-Tavo",
@@ -248,7 +247,7 @@
     "displayName": "Juan Manuel Bustos",
     "honorRoles": ["caballero","dama"],
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 2
   },
   {
     "code": "Am-Anahi",
@@ -256,7 +255,7 @@
     "honorRoles": ["dama","caballero"],
     "honorRole": "dama",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 2
   },
   {
     "code": "Am-Chuyito",
@@ -268,13 +267,13 @@
     "code": "Am-Mireles",
     "displayName": "Mireles Jorge",
     "maxGuests": 1,
-    "table": "3 Favor de respetar lugares"
+    "table": 3
   },
   {
     "code": "Am-Pablo",
     "displayName": "Luis Pablo Alvarado Martinez",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 2
   },
   {
     "code": "Am-Christian",
@@ -286,37 +285,37 @@
     "code": "Am-Manolo",
     "displayName": "José Manolo Rodriguez Perez",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 4
   },
   {
     "code": "Am-Osvaldo",
     "displayName": "Osvaldo Ruedas",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 4
   },
   {
     "code": "Am-Edson",
     "displayName": "Edson De La Rosa",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 4
   },
   {
     "code": "Am-Arturo",
     "displayName": "Arturo Estrada",
-    "maxGuests": 1,
-    "table": "No asignada"
+    "maxGuests": 2,
+    "table": 4
   },
   {
     "code": "Am-Lore",
     "displayName": "Lorena Rangel",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 2
   },
   {
     "code": "Am-Marlon",
     "displayName": "Marlon Rastelli",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 4
   },
   {
     "code": "Am-Brayan",
@@ -328,138 +327,138 @@
     "code": "Am-Karla",
     "displayName": "Karla Gonzalez",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Am-Lili",
     "displayName": "Lili Hernández",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Am-Charls",
     "displayName": "Charls Mendoza Andrade",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Am-Javier",
     "displayName": "Javier Anguiano",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Am-Aaron",
     "displayName": "Aaron Arredondo",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Am-Natalia",
     "displayName": "Natalia Rodríguez",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Am-Andrew",
     "displayName": "Andres Coronado",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Am-William",
     "displayName": "William Guillermo Rodríguez",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 5
   },
   {
     "code": "Cm-Sebastian",
     "displayName": "Sebastian Guerrero y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Raul",
     "displayName": "Raul Barbosa",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Cesar",
     "displayName": "Cesar Romero",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Aracely",
     "displayName": "Aracely Martinez",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Alfredo",
     "displayName": "Alfredo Minor",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Orlando",
     "displayName": "Orlando Martinez",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Francisco",
     "displayName": "Francisco Rivera",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Emily",
     "displayName": "Emily Salazar",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-JesusB",
     "displayName": "Jose de Jesus Bernal Mercado",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Luis",
     "displayName": "Luis Alfonso Martinez",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Cm-Joaquin",
     "displayName": "Joaquin Nabi y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 6
   },
   {
     "code": "Am-Garza",
     "displayName": "Alejandro Garza",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 4
   },
   {
     "code": "Fam-Montiel-Enrique",
     "displayName": "Enrique Montiel y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 17
   },
   {
     "code": "Fam-Montiel-Damian",
     "displayName": "Damian Montiel y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 17
   },
   {
     "code": "V-MT",
@@ -479,14 +478,14 @@
     "displayName": "Justin Ramirez Reyna",
     "honorRoles": ["caballero"],
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 9
   },
   {
     "code": "Fam-M-Cortez-Manuel",
     "displayName": "Manuel Cortez y Señora",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 14
   },
   {
     "code": "Fam-M-Cortez-Jaime",
@@ -504,20 +503,20 @@
     "code": "Fam-Reyna-Marita",
     "displayName": "Marisabeth Estrada y Familia",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 9
   },
   {
     "code": "Fam-Reyna-HectorJr",
     "displayName": "Héctor Reyna Tovar y Señora",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 7
   },
   {
     "code": "Fam-Reyna-Hector",
     "displayName": "Héctor Reyna Gonzalez y Familia",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 7
   },
   {
     "code": "Fam-H-Jasso",
@@ -543,19 +542,19 @@
     "displayName": "Gilberto Hernandez y Esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 18
   },
   {
     "code": "Cm-Abel",
     "displayName": "Abel Rubio",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 18
   },
   {
     "code": "Fam-Montiel-Cristel",
     "displayName": "Cristel y Esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 17
   }
 ]
