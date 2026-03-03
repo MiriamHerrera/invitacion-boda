@@ -228,7 +228,7 @@
     "displayName": "Pablo Quiroz Galvan",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 3
   },
   {
     "code": "Am-Jona",
@@ -241,7 +241,7 @@
     "code": "Am-Tavo",
     "displayName": "Octavio Huerta",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 3
   },
   {
     "code": "Am-Bustos",
@@ -262,13 +262,13 @@
     "code": "Am-Chuyito",
     "displayName": "Jesus Villareal",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 3
   },
   {
     "code": "Am-Mireles",
     "displayName": "Mireles Jorge",
     "maxGuests": 1,
-    "table": "No asignada"
+    "table": 3
   },
   {
     "code": "Am-Pablo",
@@ -280,7 +280,7 @@
     "code": "Am-Christian",
     "displayName": "Christian Loredo",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 3
   },
   {
     "code": "Am-Manolo",
@@ -322,7 +322,7 @@
     "code": "Am-Brayan",
     "displayName": "Brayan Gonzalez",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 3
   },
   {
     "code": "Am-Karla",
