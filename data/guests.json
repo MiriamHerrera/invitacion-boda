@@ -550,5 +550,12 @@
     "displayName": "Abel Rubio",
     "maxGuests": 1,
     "table": "No asignada"
+  },
+  {
+    "code": "Fam-Montiel-Cristel",
+    "displayName": "Cristel y Esposo",
+    "partnerLabel": "esposo",
+    "maxGuests": 2,
+    "table": "No asignada"
   }
 ]
