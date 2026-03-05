@@ -390,6 +390,21 @@ body.loaded { opacity: 1; transform: none; }
 	display: block;
 }
 
+/* Leyenda: respetar lugares y cantidad */
+.places-legend {
+	font-size: 0.9em;
+	color: var(--muted);
+	font-style: italic;
+	margin-top: 1rem;
+	padding: 0.6rem 0.9rem;
+	border-left: 3px solid var(--primary);
+	background: rgba(212, 175, 55, 0.08);
+	border-radius: 0 8px 8px 0;
+}
+@media (min-width: 800px) {
+	.places-legend { font-size: 0.95em; }
+}
+
 /* Lista de invitados dirigida */
 .invitees-list {
 	margin: 0;

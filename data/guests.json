@@ -239,7 +239,7 @@
   {
     "code": "Am-Tavo",
     "displayName": "Octavio Huerta",
-    "maxGuests": 1,
+    "maxGuests": 2,
     "table": 3
   },
   {
@@ -302,7 +302,7 @@
   {
     "code": "Am-Arturo",
     "displayName": "Arturo Estrada",
-    "maxGuests": 2,
+    "maxGuests": 1,
     "table": 4
   },
   {
@@ -344,7 +344,7 @@
   {
     "code": "Am-Javier",
     "displayName": "Javier Anguiano",
-    "maxGuests": 2,
+    "maxGuests": 1,
     "table": 5
   },
   {
@@ -356,7 +356,7 @@
   {
     "code": "Am-Natalia",
     "displayName": "Natalia Rodríguez",
-    "maxGuests": 2,
+    "maxGuests": 1,
     "table": 5
   },
   {
@@ -406,8 +406,8 @@
   {
     "code": "Cm-Orlando",
     "displayName": "Orlando Martinez",
-    "maxGuests": 1,
-    "table": 6
+    "maxGuests": 2,
+    "table": 4
   },
   {
     "code": "Cm-Francisco",
@@ -419,13 +419,13 @@
     "code": "Cm-Emily",
     "displayName": "Emily Salazar",
     "maxGuests": 2,
-    "table": 6
+    "table": 10
   },
   {
     "code": "Cm-JesusB",
     "displayName": "Jose de Jesus Bernal Mercado",
     "maxGuests": 1,
-    "table": 6
+    "table": 10
   },
   {
     "code": "Cm-Luis",
@@ -465,13 +465,13 @@
     "displayName": "Elsa Tamez y Esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 16
   },
   {
     "code": "Fam-Reyna-Estrada",
     "displayName": "Marisabeth Estrada y Familia",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 9
   },
   {
     "code": "Fam-Reyna-Justin",
@@ -491,7 +491,7 @@
     "code": "Fam-M-Cortez-Jaime",
     "displayName": "Jaime Cortez y Familia",
     "maxGuests": 3,
-    "table": "No asignada"
+    "table": 17
   },
   {
     "code": "Fam-Herrera-San-Luis",
@@ -523,7 +523,7 @@
     "displayName": "Brenda Jasso y Esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
-    "table": "No asignada"
+    "table": 8
   },
   {
     "code": "Fam-Herrera-Jesus",
