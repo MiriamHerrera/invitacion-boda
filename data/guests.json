@@ -140,19 +140,19 @@
     "code": "Fam-M-Jaime",
     "displayName": "Jaime Cortez y Familia",
     "maxGuests": 2,
-    "table": 12
+    "table": 15
   },
   {
     "code": "Fam-Montiel-Ale",
     "displayName": "Alejandra Montiel y Familia",
     "maxGuests": 3,
-    "table": 15
+    "table": 17
   },
   {
     "code": "Fam-Montiel-Alma",
     "displayName": "Alma Montiel y Familia",
     "maxGuests": 3,
-    "table": 15
+    "table": 17
   },
   {
     "code": "Fam-Montiel-Blanca",
@@ -172,7 +172,7 @@
     "displayName": "Titi Montiel y Esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
-    "table": 17
+    "table": 15
   },
   {
     "code": "IN-Ramiro",
@@ -486,7 +486,7 @@
     "code": "Fam-M-Cortez-Jaime",
     "displayName": "Jaime Cortez y Familia",
     "maxGuests": 3,
-    "table": 17
+    "table": 15
   },
   {
     "code": "Fam-Herrera-San-Luis",
@@ -550,6 +550,6 @@
     "displayName": "Cristel y Esposo",
     "partnerLabel": "esposo",
     "maxGuests": 2,
-    "table": 17
+    "table": 15
   }
 ]
