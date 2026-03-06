@@ -303,7 +303,7 @@
     "code": "Am-Arturo",
     "displayName": "Arturo Estrada",
     "maxGuests": 1,
-    "table": 4
+    "table": 5
   },
   {
     "code": "Am-Lore",
@@ -444,7 +444,7 @@
     "code": "Am-Garza",
     "displayName": "Alejandro Garza",
     "maxGuests": 1,
-    "table": 4
+    "table": 3
   },
   {
     "code": "Fam-Montiel-Enrique",
