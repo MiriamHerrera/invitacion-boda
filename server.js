@@ -54,6 +54,13 @@ app.get('/api/guest', async (req, res) => {
 		if (!guest) {
 			return res.status(404).json({ error: 'Invitado no encontrado' });
 		}
+		if (guest.revoked) {
+			return res.json({
+				revoked: true,
+				displayName: guest.displayName,
+				code: guest.code
+			});
+		}
 		const maxGuestsFromInvitees = Array.isArray(guest.invitees) && guest.invitees.length > 0 ? guest.invitees.length : undefined;
 		return res.json({
 			code: guest.code,
@@ -98,6 +105,11 @@ app.post('/api/rsvp', async (req, res) => {
 		const guest = guests.find((g) => String(g.code).toLowerCase() === normalizedCode);
 		if (!guest) {
 			return res.status(404).json({ error: 'Código inválido' });
+		}
+		if (guest.revoked) {
+			return res.status(403).json({
+				error: 'Esta invitación ya no está vigente. Los lugares han sido reasignados. Agradecemos tu comprensión.'
+			});
 		}
 		const maxAllowed = Number.isFinite(guest.maxGuests) ? guest.maxGuests : 2;
 		if (attendeesNum > maxAllowed) {

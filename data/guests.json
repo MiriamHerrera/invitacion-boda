@@ -207,7 +207,7 @@
     "displayName": "Missael y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": 17
+    "table": 16
   },
   {
     "code": "Am-Marcos",
@@ -240,7 +240,7 @@
     "code": "Am-Tavo",
     "displayName": "Octavio Huerta",
     "maxGuests": 2,
-    "table": 3
+    "table": 4
   },
   {
     "code": "Am-Bustos",
@@ -407,7 +407,7 @@
     "code": "Cm-Orlando",
     "displayName": "Orlando Martinez",
     "maxGuests": 2,
-    "table": 4
+    "table": 18
   },
   {
     "code": "Cm-Francisco",
@@ -428,12 +428,6 @@
     "table": 10
   },
   {
-    "code": "Cm-Luis",
-    "displayName": "Luis Alfonso Martinez",
-    "maxGuests": 1,
-    "table": 6
-  },
-  {
     "code": "Cm-Joaquin",
     "displayName": "Joaquin Nabi y esposa",
     "partnerLabel": "esposa",
@@ -444,14 +438,15 @@
     "code": "Am-Garza",
     "displayName": "Alejandro Garza",
     "maxGuests": 1,
-    "table": 3
+    "table": 4
   },
   {
     "code": "Fam-Montiel-Enrique",
     "displayName": "Enrique Montiel y esposa",
     "partnerLabel": "esposa",
     "maxGuests": 2,
-    "table": 17
+    "table": 17,
+    "revoked": true
   },
   {
     "code": "Fam-Montiel-Damian",
@@ -548,7 +543,7 @@
     "code": "Cm-Abel",
     "displayName": "Abel Rubio",
     "maxGuests": 1,
-    "table": 18
+    "table": 16
   },
   {
     "code": "Fam-Montiel-Cristel",

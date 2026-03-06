@@ -31,6 +31,10 @@
 	const honorBadge = document.getElementById('honorBadge');
 	const honorSpeech = document.getElementById('honorSpeech');
 	const introShareTextEl = document.getElementById('introShareText');
+	const revokedWrap = document.getElementById('revokedWrap');
+	const revokedText = document.getElementById('revokedText');
+	const rsvpSection = document.querySelector('.rsvp.card');
+	const invitationRequiredEl = document.querySelector('.invitation-required');
 
 	let currentGuest = null;
 	let currentCode = '';
@@ -127,6 +131,30 @@
 			throw new Error(data.error || 'No se pudo cargar el invitado');
 		}
 		return res.json();
+	}
+
+	function showRevokedInvitation(data, code) {
+		currentGuest = null;
+		currentCode = '';
+		try { sessionStorage.setItem(PASS_KEY, '1'); } catch {}
+		const name = (data.displayName || '').trim() || 'invitado/a';
+		greetEl.textContent = `Estimado/a ${name}`;
+		guestNameTextEl.textContent = '';
+		if (introShareTextEl) introShareTextEl.hidden = true;
+		if (invitationRequiredEl) invitationRequiredEl.hidden = true;
+		if (honorBadge) honorBadge.hidden = true;
+		if (honorSpeech) honorSpeech.hidden = true;
+		const message = 'Con agradecimiento por tu interés en acompañarnos, te informamos que los lugares asignados a esta invitación han sido reasignados o cedidos. Esta invitación ya no está vigente y no podrá utilizarse para el acceso al evento. Te agradecemos de corazón tu comprensión.';
+		if (revokedText) revokedText.textContent = message;
+		if (revokedWrap) revokedWrap.hidden = false;
+		if (rsvpSection) rsvpSection.style.display = 'none';
+		codeBox.style.display = 'none';
+		const url = new URL(window.location.href);
+		url.pathname = '/rubenymiriam';
+		url.searchParams.set('i', code);
+		window.history.replaceState({}, '', url.toString());
+		const detailsSec = document.querySelector('.details');
+		if (detailsSec) detailsSec.hidden = false;
 	}
 
 	function personalize(guest, code) {
@@ -250,10 +278,14 @@
 		if (hasAssignedTable) {
 			tableInfoWrap.style.display = '';
 			tableInfo.textContent = String(guest.table);
+			tableInfo.classList.add('has-number');
+			tableInfo.classList.remove('is-pending');
 		} else {
 			// Mostrar leyenda cuando aún no hay mesa asignada
 			tableInfoWrap.style.display = '';
 			tableInfo.textContent = 'La asignación de tu mesa se mostrará acercándose la fecha del evento.';
+			tableInfo.classList.remove('has-number');
+			tableInfo.classList.add('is-pending');
 		}
 		// Hide manual code box after successful load
 		codeBox.style.display = 'none';
@@ -270,6 +302,10 @@
 			setLoading(true);
 			clearAlerts();
 			const guest = await fetchGuestByCode(code);
+			if (guest.revoked) {
+				showRevokedInvitation(guest, code);
+				return;
+			}
 			personalize(guest, code);
 		} catch (err) {
 			showError(err.message);
