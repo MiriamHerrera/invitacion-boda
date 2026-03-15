@@ -73,7 +73,7 @@
   {
     "code": "Fam-Moreno-Hernandez",
     "displayName": "Familia Moreno Hernandez",
-    "maxGuests": 3,
+    "maxGuests": 4,
     "table": 11
   },
   {
@@ -127,7 +127,7 @@
   {
     "code": "Fam-Nuñez-Marcelo",
     "displayName": "Marcelo Sosa",
-    "maxGuests": 2,
+    "maxGuests": 3,
     "table": 12
   },
   {
@@ -356,7 +356,7 @@
   {
     "code": "Am-Natalia",
     "displayName": "Natalia Rodríguez",
-    "maxGuests": 1,
+    "maxGuests": 2,
     "table": 5
   },
   {
@@ -551,5 +551,11 @@
     "partnerLabel": "esposo",
     "maxGuests": 2,
     "table": 15
+  },
+  {
+    "code": "AM-Andres",
+    "displayName": "Andres",
+    "maxGuests": 1,
+    "table": 3
   }
 ]
